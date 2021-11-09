@@ -1,0 +1,245 @@
+<!--
+* 파일명 		: ADVCEXC12S01.html (e-12-01)
+* 업무		: 자문실행 > 자문계약
+* 설명		: 자문계약을 한다.
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.11.19
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+	<div class="container e_12_01">
+
+		<!-- 21-06-30 box-gray 생성 -->
+        <div class="box-gray">
+            <div class="box-inner">
+                <div class="box_r">
+                    <div class="box-inner">
+                    
+                    	<!-- 21-06-30 이미지 추가 -->
+                        <div class="mf_logo">
+                            <img src="../../images/mymuffler_logo.svg" alt="마이머플러">
+                        </div>
+                        <!-- 21-06-30 이동 및 텍스트 변경 -->
+                        <h3 class="page_title"><span>투자자문계약하기</span></h3>
+                        
+                        
+                        <div class="box">
+				              <div class="assess">
+				                  <div class="assess-item">
+				                      <div class="assess-item-tit">계약자 성명</div>
+				                      <div class="assess-item-value">
+				                          <span class="value" id="user_nm">박연금</span>
+				                      </div>
+				                  </div>
+				
+				                  <div class="assess-item">
+				                      <div class="assess-item-tit">생년월일</div>
+				                      <div class="assess-item-value">
+				                          <span class="value" id="user_brth_dt">1999-02-02</span>
+				                      </div>
+				                  </div>
+				
+				                  <div class="assess-item">
+				                      <div class="assess-item-tit">계약일</div>
+				                      <div class="assess-item-value">
+				                          <span class="value" id="cntrt_dt">2021-06-30</span>
+				                      </div>
+				                  </div>
+				
+				                  <div class="assess-item">
+				                      <div class="assess-item-tit">서비스제공자</div>
+				                      <div class="assess-item-value">
+				                          <span class="value">웰스가이드</span>
+				                      </div>
+				                  </div>
+				
+				                  <div class="assess-item">
+				                      <div class="assess-item-tit">계약기간</div>
+				                      <div class="assess-item-value">
+				                          <span class="value">1년(자동갱신)</span>
+				                      </div>
+				                  </div>
+				              </div>
+        				</div>
+        				<!-- // 투자자문 계약자 정보 -->
+        			
+        				<div class="box">
+				            <div class="title">투자자문대상계좌</div>
+					            <div class="assess">
+					            	<ul class="goods-list" id="ulAcntList"></ul>
+						            <script id="_dumyAcnt" type="text/x-handlebars-template">
+				                       <div class="assess-item">
+				                    		<div class="assess-item-tit">
+				                        		[<span class="bankName">{{fncl_agc_nm}}</span>]
+				                        		<span class="prdName">{{acnt_nm}}</span>
+				                    		</div>				
+				                       		<div class="assess-item-value">
+				                       			<span class="value">{{acnt_no_dis}}</span>
+				                       		</div>
+				                       </div>
+									</script>
+				            	</div>
+       						</div>
+        				<!-- // 투자자문 계좌 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- section 추가 계약서 이동 21-05-11 --> 
+        <div class="section">
+            <div class="section-inner">
+                <!-- 계약서 -->
+                <div class="box_r check">
+                    <ul>
+                        <li id="liContractCheck_1" data-idx="4">
+	                        <div class="checkbox">
+	                            <label for="contractCheck_1">
+		                            <input type="checkbox" id="contractCheck_1" disabled>
+		                            <i class="check_ico"></i>
+		                            <span>투자권유문서</span>
+		                        </label>
+	                        </div>
+	                    </li>
+	
+	                    <li id="liContractCheck_2" data-idx="1">
+	                        <div class="checkbox">
+	                            <label for="contractCheck_2">
+		                            <input type="checkbox" id="contractCheck_2" disabled>
+		                            <i class="check_ico"></i>
+		                            <span>투자자문계약서</span>
+		                        </label>
+	                        </div>
+	                    </li>
+	
+	                    <li id="liContractCheck_3" data-idx="2">
+	                        <div class="checkbox">
+	                            <label for="contractCheck_3">
+		                            <input type="checkbox" id="contractCheck_3" disabled>
+		                            <i class="check_ico"></i>
+		                            <span>로보어드바이저 유의사항</span>
+		                        </label>
+	                        </div>
+	                    </li>
+	
+	                    <li id="liContractCheck_4" data-idx="3">
+	                        <div class="checkbox">
+	                            <label for="contractCheck_4">
+		                            <input type="checkbox" id="contractCheck_4" disabled>
+		                            <i class="check_ico"></i>
+		                            <span>마이머플러 위험고지</span>
+		                        </label>
+	                        </div>
+	                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- 확인 버튼 변경 21-05-11 -->
+        <div class="bt-wrap">
+            <button class="bt bt-color" disabled id="btnNext"><span>다음</span></button>
+        </div>
+        
+        
+    
+
+        <!-- popup -->
+        <div class="popup_wrap index01"  id="divIndex_1">
+            <div class="popup_header">
+                <h2><span>투자권유문서</span></h2>
+                <button class="popup_close"><span>취소</span></button>
+            </div>
+    
+            <div class="popup_content"> 
+            	<!-- 투자권유문서 내용 -->
+                <div class="centered"  id="divCntt_1"></div>
+            </div>
+    
+            <!-- 버튼 변경 21-05-11 -->
+            <div class="modal-page-btn">
+                <button class="bt bt-color" id="btnOk_1" data-idx="1"><span>이해하고 확인했습니다</span></button>
+            </div>
+    
+        </div>
+        <!-- //popup -->
+        
+        <!-- popup -->
+        <div class="popup_wrap index02"  id="divIndex_2">
+            <div class="popup_header">
+                <h2><span>투자자문계약서</span></h2>
+                <button class="popup_close"><span>취소</span></button>
+            </div>
+    
+            <div class="popup_content"> 
+            	<!-- 투자권유문서 내용 -->
+                <div class="centered"  id="divCntt_2"></div>
+            </div>
+            
+            <!-- 버튼 변경 21-05-11 -->
+            <div class="modal-page-btn">
+                <button class="bt bt-color" id="btnOk_2" data-idx="2"><span>이해하고 확인했습니다</span></button>
+            </div>
+    
+        </div>
+        <!-- //popup -->
+        
+        <!-- popup -->
+        <div class="popup_wrap index03"  id="divIndex_3">
+            <div class="popup_header">
+                <h2><span>로드어드바이저 유의사항</span></h2>
+                <button class="popup_close"><span>취소</span></button>
+            </div>
+    
+            <div class="popup_content"> 
+            	<!-- 투자권유문서 내용 -->
+                <div class="centered"  id="divCntt_3"></div>
+            </div>
+    
+            <!-- 버튼 변경 21-05-11 -->
+            <div class="modal-page-btn">
+                <button class="bt bt-color" id="btnOk_3" data-idx="3"><span>이해하고 확인했습니다</span></button>
+            </div>
+    
+        </div>
+        <!-- //popup -->
+        
+        <!-- popup -->
+        <div class="popup_wrap index04"  id="divIndex_4">
+            <div class="popup_header">
+                <h2><span>마이머플러 위험고지</span></h2>
+                <button class="popup_close"><span>취소</span></button>
+            </div>
+    
+            <div class="popup_content"> 
+            	<!-- 투자권유문서 내용 -->
+                <div class="centered"  id="divCntt_4"></div>
+            </div>
+    
+            <!-- 버튼 변경 21-05-11 -->
+            <div class="modal-page-btn">
+                <button class="bt bt-color" id="btnOk_4" data-idx="4"><span>이해하고 확인했습니다</span></button>
+            </div>
+    
+        </div>
+        <!-- //popup -->
+        
+    </div>
+    <!-- //container-->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/adviceExecution/adviceContract/ADVCEXC12S01.js"></script>
+</th:block>

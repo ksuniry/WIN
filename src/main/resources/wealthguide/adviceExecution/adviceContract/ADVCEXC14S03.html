@@ -1,0 +1,95 @@
+<!--
+* 파일명 		: ADVCEXC14S03.html (e-14-03)
+* 업무		: 자문실행 > 계좌이전신청 결과
+* 설명		: 계좌이전신청을 결과화면
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.16
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+	<div class="container e_14_03">
+        
+		<h3 class="page_title">
+            <span>이전 신청 완료</span>
+        </h3>
+        <p class="txt_2x">계좌이전신청이 완료되었습니다.</p>
+        
+        
+        <!-- section 추가 21-05-11 -->
+        <div class="section">
+            <div class="section-inner">
+            
+                <div class="breadCrumbs">
+                    <span id="acnt_type_nm"><!-- 개인연금 --></span>
+                    <span>계좌</span>
+                </div>
+                <div class="account__head account__head__item">
+                    <div class="account__head__logo"><img src="../../images/bank_circle_logo/294.png" class="bank_ico" id="fncl_agc_img"></div>
+                    <div class="account__head__tit">
+                        <p class="account__head__name">
+                            [<span class="bankName" id="fncl_agc_nm"><!-- KB증권 --></span>] <!-- 괄호추가 21-05-11 -->
+                            <span class="prdName" id="acnt_nm"><!-- 중요 IRP --></span>
+                        </p>
+                        
+                        <p class="account__head__number">
+                            <span id="acnt_no_dis" data-nounit="true"><!-- 123456-456789-45 --></span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- box-gray 추가 transfer 이동 21-05-11 -->
+        <div class="box-gray">
+            <div class="transfer">
+                <i class="ico"></i>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-inner">
+            
+                <div class="breadCrumbs">
+                    <span id="chng_acnt_type_nm"><!-- 개인연금 --></span>
+                    <span>계좌</span>
+                </div>
+                <div class="account__head account__head__item">
+                    <div class="account__head__logo"><img src="../../images/bank_circle_logo/294.png" class="bank_ico" id="chng_fncl_agc_img"></div>
+                    <div class="account__head__tit">
+                        <p class="account__head__name">
+                            [<span class="bankName" id="chng_fncl_agc_nm"><!-- KB증권 --></span>]
+                            <span class="prdName" id="chng_acnt_nm"><!-- 중요 IRP --></span>
+                        </p>
+                        <p class="account__head__number">
+                            <span id="chng_acnt_no_dis" data-nounit="true"><!-- 123456-456789-45 --></span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        
+        <!-- 확인 버튼 변경 21-05-11 -->
+        <div class="bt-wrap">
+            <button class="bt bt-color" id="btnOk"><span>확인</span></button>
+        </div>
+        
+    </div>
+    <!-- //container-->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/adviceExecution/adviceContract/ADVCEXC14S03.js"></script>
+</th:block>

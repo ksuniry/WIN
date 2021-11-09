@@ -1,0 +1,72 @@
+<!--
+* 파일명 		: PENSION03S04.html
+* 업무		: 연금관리  > 상품구성변경 (new_m-03-04.html)
+* 설명		: 상품구성변경 리스트 조회
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.11.13
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content">
+
+    <nav class="lnb" id="navi">
+        <ul>
+            <li>
+                <a href="javascript:void(0);" data-link="addSave">추가저축</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-link="limitSave">연금저축한도</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="is_active" data-link="changeProd">상품구성변경</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-link="adviceHistory">자문이력</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container m_03_04">
+        <h3 class="page_title"><span>내 연금 상품구성<br>변경하기</span></h3>
+
+        <div class="box_color">
+            <p class="sub_title">내가 직접 운용하는 연금계좌입니다.<br>변경할 계좌를 선택해 주세요.</p>
+          
+            <ul id="productList"></ul>
+            	<script id="_dumyProductList" type="text/x-handlebars-template">
+                <li class="box_r" id="item_{{index}}">
+                    <a href="#" class="flex between i_align">
+
+                        <div class="acc_info">
+                            <p class="acc_name"><span>{{product}}</span></p>
+                            <p class="acc_price"><span> {{save_dis}}</span>{{save_unit}}</p>
+                            <p class="acc_per"><span>{{rvnu_addplus}}{{rvnu_dis}}</span>{{rvnu_unit}}</p>
+                        </div>
+
+                        <div class="acc_chart">
+                            <canvas id="myChart_{{index}}" width="85px" height="85px"></canvas>
+                            <div class="tooltipCanvas">
+                                <p class="chart_label"><span>주식</span></p>
+                                <span class="chart_value">{{stck_dis}}{{stck_unit}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+				</script>
+        </div>
+    </div>
+    <!-- //container-->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/chart.v2.9.4.js"></script>
+<script src="/js/pensionMng/PENSION03S04.js"></script>
+</th:block>

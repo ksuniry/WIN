@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-09-01</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="javascript:history.back();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+    </div>
+
+    <div class="popup_wrap index01 e_09_02">
+
+        <div class="popup_header">
+            <button class="popup_close"><span>취소</span></button>
+        </div>
+
+        <div class="container">
+            <div class="popup_content">
+                <h3 class="untact_instructions">
+                    <span> 계좌개설 시 설정한<br>비밀번호를 입력해주세요</span>
+                </h3>
+                    
+                <div class="resi_num">
+                    <input type="password" placeholder="****"  class="input">
+                </div>
+    
+            </div>            
+        </div>
+    </div>
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         
+            $('.popup_close').click(function(){
+                $(this).parents('.popup_wrap').hide();
+            });
+
+        });
+    </script>
+
+
+</body>
+</html>

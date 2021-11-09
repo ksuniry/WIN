@@ -1,0 +1,140 @@
+<!--
+* 파일명 		: HELPDES03S03.html
+* 업무		: 메인 > 고객센터 > 1:1문의(c-03-03)
+* 설명		: 내자문내역
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.02
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+	<div class="container c_03_03">
+	    
+	    <div class="tab-head">
+            <ul role="tablist" class="tab-label" id="tablist">
+                <li class="tab-label-item" id="tab1"><a href="javascript:void(0);" role="tab" class="is_active">문의하기</a></li>
+                <li class="tab-label-item" id="tab2"><a href="javascript:void(0);" role="tab">나의문의내역</a></li>
+            </ul>
+        </div>
+	    
+	    
+	    <div class="tab_panel" id="tabPanel-1" role="tabpanel">
+			
+			<div class="box-gray">
+                <div class="box-inner">
+                    <div class="inquire_info" id="divEmailInfo" style="display:none;">
+                        <p>답변 받을 이메일</p>
+                        <span id="userEmail"><!-- admin@wealthguide.co.kr --></span>
+                    </div>
+                    <div class="inquire_info">
+                        <p>휴대폰 번호</p>
+                        <span id="userPn"><!-- 010-1234-5678 --></span>
+                    </div>
+                </div>  
+            </div>
+            
+           
+           <p class="txt note" id="divEmailMsg" style="display:none;">이메일 및 정보는 메뉴 &#62; 내정보에서 수정할 수 있습니다.</p>
+           <!-- <p class="txt note" >이메일 및 정보는 메뉴 &#62; 내정보에서 수정할 수 있습니다.</p> -->
+
+           <div class="box_inner">
+                <input type="text" id="q_title" required placeholder="제목을 입력해주세요." class="inquire_title inp_with_btn" title="제목">
+
+                <div class="box_select">
+                    <select class="inquire_select inp_with_btn" name="q_type" id="q_type" required title='문의유형'>
+            			<option value="">문의유형</option>
+        			</select>
+        			<i class="ico arr_down"></i>
+                </div>
+                
+
+                <textarea cols="30" rows="10" class="inquire_textarea inp_with_btn" name="q_content" id="q_content" required
+    placeholder="문의 내용 입력 시, 주민등록번호, 전화번호 등 고객님의 소중한 정보가 입력되지 않도록 주의하여 주세요." title='문의 내용'></textarea>
+
+            </div>
+            
+            <!-- 21-05-11 버튼 교체 -->
+	         <div class="bt-wrap">
+	             <button class="bt bt-color" id="btnSave"><span>문의하기</span></button>
+	         </div>
+            
+            
+        </div>
+        <!-- tabpanel1 -->
+        
+        
+        
+        
+        <div class="tab_panel" id="tabPanel-2" role="tabpanel">
+        	<div class="search_result" id="divTypeList"></div>
+        	
+        	<div class="no_result" id="no_result" style="display:none"> 
+                <p>문의내역이 없습니다.</p>
+            </div>
+        </div>
+        
+        
+        <script id="_dumyType" type="text/x-handlebars-template">
+                <div class="result_section">
+                    <h4 class="r_section_name"><span>{{q_type}}</span></h4>
+					<div id="qnaRow_{{q_type}}"></div>
+                </div>
+		</script>
+		
+		<script id="_dumyResult" type="text/x-handlebars-template">
+	                    <div class="result_ask">
+	                        <p>
+	                            <span>{{{q_title}}}</span>
+	                        </p>
+	                        
+	                        <div class="ask_r">
+	                            <span class="{{class_ask}}">{{txt_ask}}</span>
+	                            <i class="ico arr_down"></i>
+	                        </div>
+	                    </div>
+	                    <div class="result_answer">
+	                        <p class="question">
+	                            <i>문의</i> <span>{{{q_content}}}</span>
+	                        </p>
+							{{#ifCond a_content 'isNotNull'}}
+	                        <p class="answer">
+	                            <i>답변</i> <span>{{{a_content}}}</span>
+	                        </p>
+							{{/ifCond}}
+	                    </div>
+        </script>
+		
+        <!-- tabpanel2 -->
+	    
+
+	</div>
+    <!-- //container-->
+
+    <div class="modal_wrap" style="display:none;" id="divPop0303">
+        <div class="dim"></div>
+        <div class="modal"> 
+            <p class="modal_txt">
+                <span>작성하신 내용으로<br>
+                    문의를 접수할까요?</span>
+            </p>
+            <div class="modal_btn half">
+                <button class="cancel" id="btnPopCancel"><span>취소</span></button>
+                <button class="ok" id="btnPopOk"><span>확인</span></button>
+            </div>
+        </div>
+    </div>
+    <!-- //modal -->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/main/helpDesk/HELPDES03S03.js"></script>
+</th:block>

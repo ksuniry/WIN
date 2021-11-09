@@ -1,0 +1,119 @@
+<!--
+* 파일명 		: PENSION12S06.html 
+* 업무		: 웰컴보드 > 리밸런싱 (m-12-06)
+* 설명	    : 리밸런싱 상세화면
+* 작성자		: 배수한
+* 최초 작성일자	: 2021-08-09
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+    <div class="container m_12_06">
+            <div class="section">
+                <div class="section-inner">
+
+                    <div class="box_r border">
+                        <div class="box-box">
+                            <p class="title">정기 리밸런싱</p>
+                            <p class="txt">
+                                연간 1회 실시되며, 다음 예정일(<span id="reblnc_est_dt"></span>)까지 <span id="reblnc_remn_prd"></span>일 남았습니다.
+                            </p>
+                        </div>
+                        <div class="box-box">
+                            <p class="title">수시 리밸런싱</p>
+                            <p class="txt">
+                                현금흐름 변경 요인 발생 시 자산구성/저축액을 조정합니다.
+                            </p>
+                        </div>
+                    </div>
+                  
+                    <div class="box-gray">
+                        <div class="box-inner">
+                            <p class="txt_2x">
+                                정기/수시 리밸런싱 자문은 마이머플러 로보어드바이저(RA)에 의해 자동으로 실행됩니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">
+                        연금설계 정보
+                    </div>
+                    <p class="txt_2x">
+                        은퇴나이, 수입, 지출 내용에 주요 변경사항이 있으면 수정하신 후 새로운 자문안을 받아 보실 수 있습니다.
+                    </p>
+
+                    <div class="info-edit-wrap">
+                        <div class="info-edit-item">
+                            <div class="title">은퇴나이
+                                <p class="txt">(현재 <span id="retr_age">65</span>세)</p>
+                            </div>
+                            <!-- <input type="num" id="retirementAge_keypad" placeholder="60" class="info-edit-inp old inp_with_btn" keypad="W" keyon!="Y" maxlength="3" readOnly>  -->
+                            <input type="number" id="retirementAge" placeholder="60" class="info-edit-inp old inp_with_btn" maxlength="3">
+                            <em class="unit">세</em>
+                        </div>
+
+                        <div class="info-edit-item">
+                            <div class="title">월수입
+                                <p class="txt">(현재 <span id="mon_income_amt">500</span>만원)</p>
+                            </div>
+                            <!-- <input type="num" id="monthlySalary_keypad" placeholder="500" class="info-edit-inp inp_with_btn" keypad="W" keyon!="Y" maxlength="6" readOnly>  -->
+                            <input type="number" id="monthlySalary" placeholder="500" class="info-edit-inp inp_with_btn" maxlength="6" amtOnly>
+                            <em class="unit">만원</em>
+                        </div>
+
+                        <div class="info-edit-item">
+                            <div class="title">월지출
+                                <p class="txt">(현재 <span id="mon_expense_amt">400</span>만원)</p>
+                            </div>
+                            <!-- <input type="num" id="payforMonth_keypad" placeholder="400" class="info-edit-inp inp_with_btn" keypad="W" keyon!="Y" maxlength="6" readOnly>  -->
+                            <input type="number" id="payforMonth" placeholder="400" class="info-edit-inp inp_with_btn" maxlength="6" amtOnly>
+                            <em class="unit">만원</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bt-wrap">
+                <button class="bt bt-color" id="btnSave"><span>변경내용 적용하기</span></button>
+            </div>
+    </div>
+    <!-- //container-->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/chart.v2.9.4.js"></script>
+<script src="/js/chart.plugin.annotation.js"></script>
+<script src="/js/pensionMng/PENSION12S06.js"></script>
+<script>
+$(function(){
+    // 입력창 키보드 + 고정버튼  
+    $('.inp_with_btn').each(function(){
+
+        $(this).bind("focus", function(){
+            $(this).parent('.info-edit-item').addClass("focus");
+            $(".bt-wrap").addClass("fixed");
+            $(".info-edit-wrap").addClass("forBtn");
+        });
+
+        $(this).bind("blur",function(){
+            $(this).parent('.info-edit-item').removeClass("focus");
+            $(".bt-wrap").removeClass("fixed");
+            $(".info-edit-wrap").removeClass("forBtn");
+        });
+
+    });
+});
+</script>
+</th:block>

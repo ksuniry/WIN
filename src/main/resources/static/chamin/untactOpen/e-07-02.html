@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-07-02</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="javascript:history.back();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+
+    </div>
+
+    
+    <div class="popup_wrap index01 e_02_03"> 
+
+        <div class="popup_content">
+           
+            <div class="exclamation_mark">
+                <h2>납입한도를 조정해주세요</h2>
+    
+                <h3>연금계좌의 납입한도는<br>모든 금융기관을 합산하여<br>연간 1,800만원입니다.<br>머플러 자문안 실행을 위해서<br>타기관에 설정된 납입한도를 줄여주세요.</h3>
+            </div>
+
+
+        </div>
+
+        <!-- 21-05-11 버튼 교체-->
+        <div class="modal-page-btn">
+            <button class="bt bt-normal"><span>재입력</span></button>
+            <button class="bt bt-color"><span>계속하기</span></button>
+        </div>
+
+    </div>
+    <!-- //popup -->
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        	debugger;
+         
+
+            $('.popup_close').click(function(){
+                $(this).parents('.popup_wrap').hide();
+            });
+
+        });
+    </script>
+
+
+</body>
+</html>

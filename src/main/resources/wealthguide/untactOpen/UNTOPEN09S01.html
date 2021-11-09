@@ -1,0 +1,63 @@
+<!--
+* 파일명 		: UNTOPEN09S01.html (E-09-01)
+* 업무		: 비대면계좌개설 > 비밀번호 입력화면
+* 설명		: 계좌의 비밀번호 입력
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.08
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+	
+	<div class="container e_09_01">
+        
+        <div class="untact_open_steps">
+            <ul>
+                <li><span>01</span></li>
+                <li><span>02</span></li>
+                <li><span>03</span></li>
+                <li><span>04</span></li>
+                <li><span>05</span></li>
+                <li class="is_active"><span>06</span></li>
+                <li><span>07</span></li>
+                <li><span>08</span></li>
+                <li><span>09</span></li>
+            </ul>
+        </div>
+
+        <h3 class="untact_instructions">
+            <span id="pwdMsg">계좌의 비밀번호를<br>입력해주세요.</span>
+        </h3>
+
+    	<div class="resi_num" id="divKeyPad">
+        	<input id="vkpad_acntPw1" name="vkpad_acntPw1" type="password" knc_etoe="N" maxlength="4" placeholder="****" class="input">
+    	</div>
+    	<!-- <div class="resi_num" id="divKeyPad2">
+        	<input id="vkpad_acntPw2" name="vkpad_acntPw2" type="password" knc_etoe="N" maxlength="4" placeholder="****">
+    	</div> -->
+    	
+    	
+    	<p class="error_txt">
+            <span id="errorMsg"><!-- 비밀번호는 4에서 60자 사이여야 하며, 물결 기호는 사용하실 수 없습니다.  --></span>
+        </p>
+        
+    </div>
+    <!-- //container-->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/cmm/kbkeypad/vKeypad.min.js"></script>
+<script src="/js/cmm/kbkeypad/kjscrypto.min.js"></script>
+<script src="/js/cmm/kbkeypad/kjscrypto_contrib.min.js"></script>
+<script src="/js/cmm/kbkeypad/vKeypadAPI.js"></script>
+<script src="/js/untactOpen/UNTOPEN09S01.js"></script>
+</th:block>

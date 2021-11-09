@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="38" viewBox="0 0 22 38">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="사각형_410" fill="none" d="M0 0H15.272V19.928H0z"/>
+        </clipPath>
+        <style>
+            .cls-6{fill:#999}
+        </style>
+    </defs>
+    <g id="icon_txt_siren" transform="translate(-1007 -2489)">
+        <text id="심각" fill="#333" font-family="SpoqaHanSans-Regular, SpoqaHanSans" font-size="12px" letter-spacing="-0.01em" transform="translate(1018 2523)">
+            <tspan x="-10.98" y="0">심각</tspan>
+        </text>
+        <g id="icon_siren" transform="translate(1010 2489)">
+            <g id="그룹_1047" clip-path="url(#clip-path)">
+                <path id="패스_770" fill="#ff952b" d="M24.3 40.581a5.94 5.94 0 1 0-11.88 0v6.662H24.3z" transform="translate(-10.723 -29.91)"/>
+                <path id="패스_771" fill="#333" d="M15.272 128.678v-.643a1.113 1.113 0 0 0-1.113-1.113H1.113A1.113 1.113 0 0 0 0 128.035v1.482h15.272z" transform="translate(0 -109.589)"/>
+                <path id="패스_772" d="M51.573 1.748c0 .383.013.767 0 1.15a.5.5 0 0 1-.489.543.48.48 0 0 1-.532-.5c-.025-.81-.025-1.623 0-2.433A.485.485 0 0 1 51.068 0a.49.49 0 0 1 .5.53c.018.405 0 .811.005 1.217" class="cls-6" transform="translate(-43.63)"/>
+                <path id="패스_773" d="M83.062 17.064a.68.68 0 0 1-.249.505c-.544.516-1.086 1.035-1.639 1.541-.267.244-.593.431-.9.1-.324-.352-.037-.625.216-.863q.819-.77 1.652-1.526a.545.545 0 0 1 .624-.144.468.468 0 0 1 .293.388" class="cls-6" transform="translate(-69.189 -14.358)"/>
+                <path id="패스_774" d="M6.256 17.064a.68.68 0 0 0 .249.505c.544.516 1.086 1.035 1.639 1.541.267.244.593.431.9.1.324-.352.037-.625-.216-.863q-.819-.77-1.652-1.526a.544.544 0 0 0-.624-.144.468.468 0 0 0-.293.388" class="cls-6" transform="translate(-5.402 -14.358)"/>
+                <path id="패스_775" fill="#fefefe" d="M29.478 48.086a2.95 2.95 0 0 1-2.7 2.475.748.748 0 0 1-.693-.91 3.018 3.018 0 0 1 2.551-2.3.767.767 0 0 1 .846.733" transform="translate(-22.516 -40.887)"/>
+            </g>
+        </g>
+    </g>
+</svg>

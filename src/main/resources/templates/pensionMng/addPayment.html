@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{layouts/mainLayout}">
+	<th:block layout:fragment="html_head">
+    <title>WEALTH GUIDE</title>
+    <script type="text/javascript">
+    $(function() {  //onready
+		//여기에 최초 실행될 자바스크립트 코드를 넣어주세요
+		$("#pTitle").text("연금저축한도");
+		gfn_OnLoad();
+		
+		fn_init();
+		
+		fn_content();
+	});
+	
+	// 화면내 초기화 부분
+	function fn_init() {
+	
+	}
+	
+////////////////////////////////////////////////////////////////////////////////////
+	// 호출부분 정의
+	// 리스트 조회
+	function fn_content() {
+	
+		var inputParam = new Object();
+		inputParam.sid 				= "addional_pay_amt";
+		inputParam.url 				= "/pension/addional_pay_amt";
+		inputParam.data = new Object();		
+		
+		gfn_Transaction( inputParam );
+	
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////
+	// 콜백 함수
+	function fn_callBack(sid, result, success){
+		//debugger;
+		
+		if(success != "success" ) {
+		//if (!result.success) {
+			alert("서버에서 오류가 발생하였습니다.");
+			history.back();
+			return;
+		}
+		//alert(sid);
+		//alert(result.year_max_pay_lmt_expl);
+		
+		// fn_content
+		if(sid == "addional_pay_amt"){
+			gfn_clearData($("#contents"));
+			gfn_setDetails(result, $("#contents"));	// 지역내 상세 내용 셋업
+			
+			//List 관련 처리
+			//var tbHiddenInfo = ["DISPLAY_TYPE_CD", "PROD_NO"]; // row에 추가할 히든 컬럼 설정  없으면 삭제
+			//gfn_displayList(result.ds_list, "tb_list", tbHiddenInfo);
+			
+		}
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 로딩 시작 종료 함수
+	function loadStart() {
+		document.getElementById("loadBar").style.display = "block";
+	}
+	function loadStop() {
+		document.getElementById("loadBar").style.display = "none";
+	}
+    </script>
+</th:block>
+<body>   
+        <div class="con_wrap m_03_03" layout:fragment="content" id="contents">   
+			<form id="dataForm" name="dataForm" method="post" action="#" onsubmit="return false;">
+				<input type="hidden" name="activeToken" id="activeToken" th:value="${params.activeToken}" />
+				<input type="hidden" name="refreshToken" id="refreshToken" th:value="${params.refreshToken}"/>
+		    </form>
+            <h3 class="title ico">올해 입금할 수 있는 돈</h3>
+
+            <div class="con_r_box">
+                <div class="con_inner">
+                    <p class="txt_3x flex">
+                        <span>A. 연간 입금 최대한도</span>
+                        <span id="year_max_pay_lmt_dis">1,800 만원</span>
+                    </p>
+                    <div class="box_r">
+                        <p class="txt_sm" id="year_max_pay_lmt_expl">전 금융기관 세제적격 연금상품 납입액 연간 합산 금액 기
+                            준으로 1,800만원 이내<br>
+                            (세제비적격 연금보험은 별도 1,800만원 한도 적용)</p>
+                    </div>
+                    
+                    <p class="txt_3x flex">
+                        <span>B. 세액공제한도</span>
+                        <span id="tax_crdt_lmt_dis">700 만원</span>
+                    </p>
+                    <div class="box_r">
+                        <p class="txt_sm" id="tax_crdt_lmt_expl">전 금융기관 세액공제 연금상품(연금저축, IRP, DC) 납입
+                            액 연간 합산 금액 기준으로 700만원 이내<br>
+                            (50세 이상 한도 한시적으로 900만원으로 확대 : 3년간, 
+                            2020~2022년)</p>
+                    </div>
+    
+                    <p class="txt_3x flex">
+                        <span>C. 연간입금액 추정치</span>
+                        <span id="year_pay_guess_dis">1,032 만원</span>
+                    </p>
+                    <div class="box_r">
+                        <p class="txt_sm" id="year_pay_guess_expl">금감원 연금포털에서 제공하는  예상월납입액을 기준으로 
+                            산출한 올해 납부한 연간입금액 추정치<br>(정보가 정확하지 
+                            않을 수 있습니다)</p>
+                    </div>
+                </div>        
+            </div>
+            <!-- // con_r_box -->
+        </div>
+		<!-- //container -->        
+        <!-- footer -->    
+</body>
+</html>

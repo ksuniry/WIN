@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m-03-04</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">연금관리</p>
+        </div>
+    </div>
+
+    <nav class="lnb">
+        <ul>
+            <li>
+                <a href="new_m-03-02.html">추가저축</a>
+            </li>
+            <li>
+                <a href="new_m-03-03.html">연금저축한도</a>
+            </li>
+            <li>
+                <a href="new_m-03-04.html" class="is_active">상품구성변경</a>
+            </li>
+            <li>
+                <a href="new_m-03-05.html">자문이력</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container m_03_04">
+        <h3 class="page_title"><span>내 연금 상품구성<br>변경하기</span></h3>
+
+        <div class="box_color">
+            <p class="sub_title">내가 직접 운용하는 연금계좌입니다.<br>변경할 계좌를 선택해 주세요.</p>
+          
+            <ul>
+                <li class="box_r">
+                    <a href="#" class="flex between i_align">
+
+                        <div class="acc_info">
+                            <p class="acc_name"><span>[신한은행] 개인IRP</span></p>
+                            <p class="acc_price"><span> 6,227,724</span>원</p>
+                            <p class="acc_per"><span>-5.3</span>%</p>
+                        </div>
+
+                        <div class="acc_chart">
+                            <canvas id="myChart1" width="85px" height="85px"></canvas>
+                            <div class="tooltipCanvas">
+                                <p class="chart_label"><span>주식</span></p>
+                                <span class="chart_value">65%</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <!-- // -->
+
+                <li class="box_r">
+                    <a href="#" class="flex between i_align">
+
+                        <div class="acc_info">
+                            <p class="acc_name"><span>[신한은행] 개인IRP</span></p>
+                            <p class="acc_price"><span> 6,227,724</span>원</p>
+                            <p class="acc_per"><span>-5.3</span>%</p>
+                        </div>
+
+                        <div class="acc_chart">
+                            <canvas id="myChart2" width="85px" height="85px"></canvas>
+                            <div class="tooltipCanvas">
+                                <p class="chart_label"><span>주식</span></p>
+                                <span class="chart_value">65%</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <!-- // -->
+
+                <li class="box_r">
+                    <a href="#" class="flex between i_align">
+
+                        <div class="acc_info">
+                            <p class="acc_name"><span>[신한은행] 개인IRP</span></p>
+                            <p class="acc_price"><span> 6,227,724</span>원</p>
+                            <p class="acc_per"><span>-5.3</span>%</p>
+                        </div>
+
+                        <div class="acc_chart">
+                            <canvas id="myChart3" width="85px" height="85px"></canvas>
+                            <div class="tooltipCanvas">
+                                <p class="chart_label"><span>주식</span></p>
+                                <span class="chart_value">65%</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <!-- // -->
+
+            </ul>
+        </div>
+
+    </div>
+    <!-- //container-->
+
+    <!-- //footer-->
+    
+    
+    <!-- chart.js -->
+    <script src="../../js/chart.v2.9.4.js"></script>
+    <script>
+
+        // v2.1.3 플러그인 사용가능
+        // round corners
+        Chart.pluginService.register({
+            afterUpdate: function (chart) {
+                if (chart.config.options.elements.arc.roundedCornersFor !== undefined) {
+                    var arc = chart.getDatasetMeta(0).data[chart.config.options.elements.arc.roundedCornersFor];
+                    arc.round = {
+                        x: (chart.chartArea.left + chart.chartArea.right) / 2,
+                        y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
+                        radius: (chart.outerRadius + chart.innerRadius) / 2,
+                        thickness: (chart.outerRadius - chart.innerRadius) / 2 - 1,
+                        backgroundColor: arc._model.backgroundColor
+                    }
+                }
+            },
+
+            afterDraw: function (chart) {
+                if (chart.config.options.elements.arc.roundedCornersFor !== undefined) {
+                    var ctx = chart.chart.ctx;
+                    var arc = chart.getDatasetMeta(0).data[chart.config.options.elements.arc.roundedCornersFor];
+                    var startAngle = Math.PI / 2 - arc._view.startAngle;
+                    var endAngle = Math.PI / 2 - arc._view.endAngle;
+
+                    ctx.save();
+                    ctx.translate(arc.round.x, arc.round.y);
+                    console.log(arc.round.startAngle)
+                    ctx.fillStyle = arc.round.backgroundColor;
+                    ctx.beginPath();
+                    ctx.arc(arc.round.radius * Math.sin(startAngle), arc.round.radius * Math.cos(startAngle), arc.round.thickness, 0, 2 * Math.PI);
+                    ctx.arc(arc.round.radius * Math.sin(endAngle), arc.round.radius * Math.cos(endAngle), arc.round.thickness, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.restore();
+                }
+            },
+        });
+
+        // draw options
+        var options ={
+            maintainAspectRatio: false,
+            cutoutPercentage: 80,
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                enabled: false
+            },
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            elements: {
+                arc: {
+                    roundedCornersFor: 0
+                }
+            }
+        }
+
+        var selectBgColor = 'rgb(102, 102, 102)';
+        
+        //data1
+        var data1={
+            labels: ['주식'],
+            datasets: [{
+                label: '# of Votes',
+                data: [70,100-50],
+                backgroundColor: [
+                    selectBgColor
+                ],
+                borderWidth:0,
+                hoverBackgroundColor:[
+                    selectBgColor
+                ]
+            }]
+        }
+
+        //data2
+        var data2={
+            labels: ['주식'],
+            datasets: [{
+                label: '# of Votes',
+                data: [15,100-50],
+                backgroundColor: [
+                    selectBgColor
+                ],
+                borderWidth:0,
+                hoverBackgroundColor:[
+                    selectBgColor
+                ]
+            }]
+        }
+     
+        //data3
+        var data3={
+            labels: ['주식'],
+            datasets: [{
+                label: '# of Votes',
+                data: [80,100-50],
+                backgroundColor: [
+                    selectBgColor
+                ],
+                borderWidth:0,
+                hoverBackgroundColor:[
+                    selectBgColor
+                ]
+            }]
+        }
+
+        var ctx1 = document.getElementById('myChart1').getContext('2d');
+        new Chart(ctx1, {
+            type :'doughnut',
+            data : data1,
+            options : options
+        });
+
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        new Chart(ctx2, {
+            type :'doughnut',
+            data : data2,
+            options : options
+        });
+
+        var ctx3 = document.getElementById('myChart3').getContext('2d');
+        new Chart(ctx3, {
+            type :'doughnut',
+            data : data3,
+            options : options
+        });
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d-02</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="head">
+            <a href="#" class="logo">
+                <span class="blind">MUFFLER</span>
+            </a>
+
+            <div class="head_right">
+                <a href="#" class="push">
+                    <span class="blind">알림</span>
+                </a>
+                <a href="#" class="menu">
+                    <span class="blind">메뉴</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container d_0">
+        <div class="box_color">
+
+            <div class="pension_slide">
+                <div class="mf_item d_02_s">
+                    <div class="box_r">
+                        <div class="item_tit">
+                            
+                            <p class="item_sub_txt">
+                                <span>지금까지<br>내가 모은 연금은</span>
+                            </p>
+                            
+                            <div class="switch_box">
+                                <span>국민연금</span>
+                                <input type="checkbox" class="inp_switch" id="aaa1" checked>
+                                <label for="aaa1"></label>
+                            </div> 
+
+                            <div class="item_value"><span>55,616,176</span>원</div>
+                        </div>
+
+                        <img src="../../images/down_img.svg" alt="내 연금 하향곡선">
+
+                        <div class="box_r dark">
+                            <div class="retired_val">
+                                <p>연 평균 수익률</p>
+
+                                <!-- 수익률 수정 210507 -->
+                                <div>
+                                    <span class="value plus">2.2</span>
+                                    <em class="unit plus">%</em>
+                                </div>
+
+                            </div>
+
+                            <!-- 21-05-14 버튼교체 -->
+                            <button class="bt bt-color s"><span>내 연금 상세보기</span></button>
+
+                        </div>
+                        
+                        <div class="item_next_txt">
+                            <p class="next_q"><span>은퇴 후 생활비로 쓸 수 있는<br>연금수령액은 얼마인가요?</span></p>
+                            <p class="next_txt"><span>화면을 왼쪽으로 밀어보세요</span></p>
+                        </div>
+                    </div> <!-- box_r -->
+                </div>
+                <!-- d-02 -->
+
+                <div class="mf_item d_05_s">
+                    <div class="box_r">
+                        <div class="item_tit">
+                            
+                            <p class="item_sub_txt">
+                                <span>현재 연금으로 은퇴후에<br>
+                                받을 수 있는 월평균 수령액은</span>
+                            </p>
+
+                            <div class="switch_box">
+                                <span>국민연금</span>
+                                <input type="checkbox" class="inp_switch" id="aaa2" checked>
+                                <label for="aaa2"></label>
+                            </div> 
+
+                            <div class="item_value"><span>113</span>만원</div>
+                        </div>
+
+                        <div class="box_r diagram">
+                            <ul>
+
+                                <!-- 국민연금 -->
+                                <li class="nps" style="width:10%;"></li>
+
+                                <!-- 퇴직연금 -->
+                                <li class="retirement" style="width:20%;">
+                                </li>
+
+                                <li  class="currently" style="width:30%;">
+                                </li>
+                                <!-- 세모세모 -->
+                                <li  class="currently top" style="width:30%;">
+                                    <p>현재<span>113만원</span></p>
+                                </li>
+
+                                <li class="suitable" style="width:70%;">
+                                    <p>적정<span>119만원</span></p>
+                                </li>
+
+                                <li class="safety" style="width:92%;">
+                                    <p>안전<span>267만원</span></p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="box_r dark">
+                            <ul>
+                                <!-- 21-05-17 
+                                    flex 의 태그 p 를 div 로 바꾸고
+                                    <span>00만원</span> 을 아래와 같이 바꿔주세요
+                                    '만원' 분리 수정
+                                -->
+                                <li>
+                                    <div class="flex">
+                                        <strong>국민연금</strong>
+                                        <p>
+                                            <span class="value">375</span>
+                                            <em class="unit">만원</em>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex">
+                                        <strong>퇴직연금</strong>
+                                        <p>
+                                            <span class="value">375</span>
+                                            <em class="unit">만원</em>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex">
+                                        <strong>개인연금</strong>
+                                        <p>
+                                            <span class="value">375</span>
+                                            <em class="unit">만원</em>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="item_next_txt">
+                            <p class="next_q"><span>이 돈으로 은퇴생활비가<br>
+                                얼마나 준비될까요?</span></p>
+                            <p class="next_txt"><span>화면을 왼쪽으로 밀어보세요</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- d-05 -->
+
+                <div class="mf_item d_04_s">
+                    <div class="box_r">
+                        <div class="item_tit">
+                            
+                            <p class="item_sub_txt">
+                                <span>은퇴 후에 필요한<br>노후생활비 대비 연금액 비율은</span>
+                            </p>
+
+                            <div class="switch_box">
+                                <span>국민연금</span>
+                                <input type="checkbox" class="inp_switch" id="aaa3" checked>
+                                <label for="aaa3"></label>
+                            </div> 
+
+                            <div class="item_value"><span>34</span>%</div>
+                        </div>
+
+                        <div class="box_r diagram">
+                            <ul>
+                                <li class="safety" style="width:87%;">
+                                    <p>안전<span>80%</span></p>
+                                </li>
+                                <li class="suitable" style="width:60%;">
+                                    <p>적정<span>60%</span></p>
+                                </li>
+
+                                <!-- 세모세모 -->
+                                <li  class="currently top" style="width:34%;">
+                                    <p>현재<span>34%</span>
+                                        
+                                    </p>
+                                </li>
+
+                                <li  class="currently" style="width:34%;">
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="box_r dark">
+                            <!-- 21-05-17 
+                                flex 의 태그 p 를 div 로 바꾸고
+                                <span>00만원</span> 을 아래와 같이 바꿔주세요
+                                '만원' 분리 수정
+                            -->
+
+                            <div><em class="reserve_ratio"></em>
+                                <div class="flex">
+                                    <strong>연금준비율(b/a)</strong>
+                                    <p>
+                                        <span class="value">34</span>
+                                        <em class="unit">%</em>
+                                    </p>
+                                </div>
+                            </div>
+                            <ol>
+                                <li>
+                                    <div class="flex">
+                                        <strong>은퇴생활비</strong>
+                                        <p>
+                                            <span class="value">34</span>
+                                            <em class="unit">억원</em>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex">
+                                        <strong>연금수령액</strong>
+                                        <p>
+                                            <span class="value">34</span>
+                                            <em class="unit">억원</em>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <div class="item_next_txt">
+                            <p class="next_q"><span>연금준비율에 만족하십니까?<br>머플러는 당신의<br>풍요로운 은퇴를 자문합니다.<br>어떻게 할까요?</span></p>
+                            <p class="next_txt"><span>화면을 왼쪽으로 밀어보세요</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- d-04 -->
+
+                <div class="mf_item d_08_s">
+                    <div class="box_r">
+                        <div class="item_tit">
+                            <h3 class="item_hl"><span>머플러 로보자문</span></h3>
+                            <p class="item_sub_txt">
+                                <span>머플러는 아래 3단계로 자문과정이 진행됩니다.</span>
+                            </p>
+                        </div>
+
+                        <div class="plan_steps">
+                            <ul>
+                                <li>
+                                    <h4>
+                                        1단계. 모으기 플랜
+                                        <span>(저축)</span>
+                                    </h4>
+                                </li>
+                                <li>
+                                    <h4>
+                                        2단계. 불리기 플랜
+                                        <span>(자산관리)</span>
+                                    </h4>
+                                </li>
+                                <li>
+                                    <h4>
+                                        3단계. 더 받기 플랜
+                                        <span>(연금수령)</span>
+                                    </h4>
+                                </li>
+                            </ul>
+                            
+                        </div>
+
+                        <div class="view_more">
+                            <a href="#">자세히보기</a>
+                        </div>
+
+                        <div class="item_next_txt">
+                            <p class="next_q"><span>
+                                머플러 자문을 받으면<br>연금수령액은 얼마로 바뀔까요?</span></p>
+                            <p class="next_txt"><span>화면을 왼쪽으로 밀어보세요</span></p>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- d-08 -->
+                
+                <div class="mf_item d_06_s">
+                    <div class="box_r">
+                        <div class="item_tit">
+                           
+                            <p class="item_sub_txt">
+                                <span>마이머플러(로보) 자문이<br>제안하는 월평균 수령액은</span>
+                            </p>
+                            
+                            <div class="switch_box">
+                                <span>국민연금</span>
+                                <input type="checkbox" class="inp_switch" id="aaa4" checked>
+                                <label for="aaa4"></label>
+                            </div> 
+
+                            <div class="item_value"><span>148</span>만원</div>
+                        </div>
+
+                        <div class="box_r diagram">
+                            <ul>
+                                <!-- 국민연금 -->
+                                <li class="nps" style="width:5%;"></li>
+
+                                <!-- 퇴직연금 -->
+                                <li class="retirement" style="width:6%;">
+                                </li>
+
+                                <li  class="currently" style="width:83%;">
+                                    <p>현재<span>113</span></p>
+                                </li>
+
+                                <!-- 세모세모 -->
+                                <li  class="muffler top" style="width:86%;">
+                                    <p>제안<span>148만원</span>
+                                        
+                                    </p>
+                                </li>
+
+                                <li class="muffler" style="width:86%;">
+                                    <p>제안<span>148만원</span>
+                                        
+                                    </p>
+                                </li>
+
+                                <!-- 안전 -->
+                                <li class="safety" style="width:83%;">
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="box_r dark">
+                            <ul>
+                                <!-- 수정 21-05-10 -->
+                                <li>
+                                    <p class="flex">
+                                        <strong>국민연금</strong>
+                                        <span>현재와 동일</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="flex">
+                                        <strong>퇴직연금</strong>
+                                        <span>월 10만원 증가</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="flex">
+                                        <strong>개인연금</strong>
+                                        <span>월 10만원 증가</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 21-05-18 버튼 텍스트 수정 -->
+                        <div class="bt-wrap">
+                            <a class="bt bt-color m"><span>마이머플러 제안 자세히보기</span></a>
+                        </div> 
+
+                        <div class="item_next_txt">
+                            <p class="next_q"><span>머플러 제안대로 하면<br>
+                                어떻게 변할까요</span></p>
+                            <p class="next_txt"><span>화면을 왼쪽으로 밀어보세요</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- d-06 -->
+                <div class="mf_item d_07_s">
+                    <div class="box_r">
+                        <div class="item_tit">
+                            <h3 class="item_hl"><span>머플러 혜택</span></h3>
+                            
+                            <div class="switch_box">
+                                <span>국민연금</span>
+                                <input type="checkbox" class="inp_switch" id="aaa5" checked disabled>
+                                <label for="aaa5"></label>
+                            </div> 
+
+                        </div>
+
+                        <div class="m_suggest">
+                            <p><span>연평균 기대수익률</span><em>(국민연금 미포함)</em></p>
+                            <div class="suggest_point">
+                                <div class="suggest_before"><span>1.2</span>%</div>
+                                <div class="suggest_after">
+                                    <strong><span>4</span>%</strong>
+                                    <i>(<span>233</span>% <span class="up">&#9650;</span>)</i>
+                                </div>
+                            </div>
+                            <p><span>내가 받을 수 있는 연금</span></p>
+                            <div class="suggest_point">
+                                <div class="suggest_before"><span>3.9</span>억</div>
+                                <div class="suggest_after">
+                                    <strong><span>5.1</span>억</strong>
+                                    <i>(<span>31</span>% <span class="down">&#9660;</span>)</i>
+                                </div>
+                            </div>
+                            <p><span>연금준비율</span></p>
+                            <div class="suggest_point">
+                                <div class="suggest_before"><span>148</span>%</div>
+                                <div class="suggest_after">
+                                    <strong><span>148</span>%</strong>
+                                    <i>(<span>41</span>% <span class="up">&#9650;</span>)</i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 21-05-14 버튼교체 -->
+                        <div class="bt-wrap">
+                            <a class="bt bt-color m"><span>상세보기</span></a>
+                        </div> 
+                        
+                        <div class="item_next_txt">
+                            <p class="next_q"><span>연금 더 받으러<br>
+                                머플러 따라 가자 !!!</span></p>
+
+                            <p class="next_txt"><span>화면을 왼쪽으로 밀어보세요</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- d-07 -->
+
+
+                <div class="mf_item d_09_s">
+                    <div class="box_r">
+                        <div class="item_tit">
+                            <div class="switch_box">
+                                <span>국민연금</span>
+                                <input type="checkbox" class="inp_switch" id="a123" checked>
+                                <label for="a123"></label>
+                            </div> 
+                        </div>
+                        <div class="chart_wrap">
+                            <canvas id="d9Chart"></canvas>
+                        </div>
+
+                        <div class="financial_service">
+
+                            <!-- 21-06-17 타이틀 & 이미지 추가 -->
+                            <div class="section-title">마이머플러 혜택</div>
+                            <img src="../../images/fcs_event.jpg" class="event_img" alt="최초1회 연금자산 평가금액 1000만원 될때까지 자문보수 무료 / 삼성자산운용 마이머플러 특별상품 / kb증권 IRP 관리수수료 무료">
+                            <div class="fsc">
+                                <img src="../../images/fsc_logo.png" alt="금융위원회">
+                                <div>
+                                    <strong>2019년</strong>
+                                    <span>혁신금융서비스 지정(국내 유일 연금자문)</span>
+                                </div>
+                                <div>
+                                    <strong>2020년</strong>
+                                    <span>로보어드바이저 심사 통과</span>
+                                </div>
+                            </div>
+
+                            <!-- 21-06-17 삼성 kb 삭제 -->
+                        </div>
+
+                        <!-- 21-05-14 버튼교체 -->
+                        <div class="bt-wrap">
+                            <a class="bt bt-color"><span>머플러 자문서비스 받기</span></a>
+                        </div> 
+                    </div>
+                </div>
+                <!-- d-09 -->
+            </div>
+          
+        </div>
+
+
+    </div>
+    <!-- //container-->
+
+    <!-- //footer-->
+    <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../slick/slick.min.js"></script>  
+    <link rel="stylesheet" href="../../slick/slick.css">
+    <script src="../../js/chart.v2.9.4.js"></script>
+    <script src="../../js/chart.plugin.annotation.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+      
+            $('.pension_slide').slick({
+                infinite: false,
+                dots: true,
+                arrows: true,
+                centerMode: true,
+                centerPadding: '20px',
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                pauseOnFocus: false,
+            });
+
+            //슬라이드 넘겼을 때
+            $('.pension_slide').on('afterChange', function(event, slick, currentSlide, nextSlide){
+                //alert('slide');
+            });
+
+            //슬라이드 높이
+            var windowHeight = $(window).height();
+            var tabScroll = windowHeight - 160;   // 21-05-10  마이너스값 변경해주세요 (145 => 160)
+            $('.mf_item>.box_r').height(tabScroll);
+
+
+            //다이어그램 툴팁 위치변경 
+            var diagram = $('.d_0 .diagram ul');
+            var diagramWidth = $('.d_0 .diagram ul').width();
+            var diagramList = diagram.children('li');
+
+            var i;
+            for (i = 0; i < diagramList.length; i++) {
+                var thisIs = diagramList.eq(i);
+                var thisWidth = thisIs.width();
+                var thisPer = (thisWidth/diagramWidth)*100;
+                if(thisPer < 15){
+                    thisIs.addClass('under');
+                    //alert('15보다 작습니다');
+                }else if(thisPer > 85){
+                    thisIs.addClass('over');
+                    //alert('85보다 큽니다');
+                }else{
+                    //아님말고
+                }
+            }
+        });
+
+
+        var minimum = 0;
+        var first = '65세'; // 1기
+        var second = '70세'; // 2기
+        var third = '80세'; // 3기
+
+        var ctx = document.getElementById('d9Chart').getContext('2d'),
+            gradient = ctx.createLinearGradient(0, 0, 0, 450);
+            
+            gradient.addColorStop(0, 'rgba(255, 149, 43, 0.6)');
+            gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.3)');
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+
+        var arrow = new Image();
+        // arrow.src = '../../images/triangle.svg'; //21-05-10 차트 분기별 삼각형 제거해주세요
+
+        var getIcon = function(index, startAge){
+            return{
+                index:index,
+                start:startAge
+            };
+        }
+        var icon =[
+            getIcon(1, first),
+            getIcon(2, second), 
+            getIcon(3, third)
+        ]
+
+        var data={
+            labels: ["60세","65세","70세","75세","80세","85세","90세"],
+            datasets: [
+            {
+                label: '자문', 
+                data: [800,	1000,500, 1200, 1400,1000,1100], 
+                borderColor: '#ff952b', 
+                borderWidth: 2, // 21-06-14 수정
+                backgroundColor: gradient,
+                lineTension: 0
+                
+            }],
+            icon : icon
+        }
+        var annoLine = [first,second,third];
+        var annotations = annoLine.map(function(date, index) {
+            return {
+                type: 'line',
+                id: 'vline' + index,
+                mode: 'vertical',
+                scaleID: 'x-axis-0',
+                value: date,
+                borderColor: 'rgb(102, 102, 102)',
+                borderWidth: 1,
+                label: {
+                    enabled: false,
+                    position: "top",
+                    content: [index+1]+'기',
+                    backgroundColor:'rgb(102, 102, 102)',
+                    fontSize:11,
+                    // yAdjust: -20,
+                }
+            }
+        });
+
+        var options={
+            responsive: true,
+            aspectRatio:3/2,
+            tooltips: {
+                enabled: false
+            },
+            legend: {
+                display: false,
+            },
+            scales:{
+                xAxes:[{
+                    display: true,
+                    gridLines: {
+                        display: false,
+                        color:'rgb(221, 221, 221)',
+                        drawBorder: false,
+                        borderDash:[2,3],
+                    },
+                    ticks:{
+                        fontColor: "#999999",
+                        beginAtZero: true,
+                        padding: 8,
+                    }
+                }],
+                yAxes:[{
+                    gridLines: {
+                        display: true,
+                        color:'rgb(221, 221, 221)',
+                        drawBorder: true,
+                        borderDash:[2,3],
+                    },
+                    ticks: {
+                        min:0,
+                        max:1600,
+                        stepSize:400,
+                        fontColor: "#999999",
+                        beginAtZero: true,
+                        padding: 3,
+                    }
+                }],
+                
+            },
+            elements: {
+                point:{
+                    radius: 0
+                }
+            },
+            annotation: {
+                drawTime: 'afterDatasetsDraw',
+                annotations: annotations
+            }
+
+        }
+
+
+
+
+
+       
+    const originalLineDraw = Chart.controllers.line.prototype.draw;
+    Chart.helpers.extend(Chart.controllers.line.prototype, {
+        draw : function() {
+
+            //draw line
+            originalLineDraw.apply(this, arguments);
+            var chart = this.chart;
+            var icon = chart.config.data.icon;
+            var ctx = chart.chart.ctx;
+            var xaxis = chart.scales['x-axis-0'];
+            var yaxis = chart.scales['y-axis-0'];
+            ctx.save();
+               
+                var xaxis = chart.scales['x-axis-0'];
+                var yaxis = chart.scales['y-axis-0'];
+
+                icon.forEach(ele => {
+
+                    var i = ele.index;
+
+                    //rounded corner
+                    CanvasRenderingContext2D.prototype.roundedRectangle = function(x, y, width, height, rounded) {
+                        const radiansInCircle = 2 * Math.PI
+                        const halfRadians = (2 * Math.PI)/2
+                        const quarterRadians = (2 * Math.PI)/4  
+                        
+                        // top left arc
+                        this.arc(x , y , 0, -quarterRadians, halfRadians, true)
+                        // line from top left to bottom left
+                        this.lineTo(x, y + height)
+                        // bottom left arc  
+                        this.arc( x -1, height + y, 0, halfRadians, quarterRadians, true)  
+                        // line from bottom left to bottom right
+                        this.lineTo(x + width - rounded, y + height)
+                        // bottom right arc
+                        this.arc(x + width - rounded, y + height - rounded, rounded, quarterRadians, 0, true)  
+                        // line from bottom right to top right
+                        this.lineTo(x + width, y + rounded)  
+                        // top right arc
+                        this.arc(x + width - rounded, y + rounded, rounded, 0, -quarterRadians, true)  
+                        // line from top right to top left
+                        this.lineTo(x + rounded, y)  
+                    }
+                    
+                    //icon position
+                    var xStartPixel = xaxis.getPixelForValue(ele.start); // x점
+                    var yEndPixel = yaxis.getPixelForValue(minimum); // y하위점
+                 
+                    //center
+                    var xCenter = xStartPixel - 11;
+                    var yBottom = yEndPixel - 5;
+
+                    ctx.drawImage(arrow, xCenter, yBottom, 22, 23);
+
+                    //btn
+                  
+                    ctx.beginPath();
+                    ctx.fillStyle = "#666666";
+                    ctx.roundedRectangle(xStartPixel, 6 , 30, 20, 10);
+                    ctx.fill();
+
+                    ctx.font = "12px Arial";
+                    ctx.fillStyle = "#ffffff";
+                    ctx.textAlign = "center";
+                    ctx.fillText(i+"기", xStartPixel + 14, 21);
+
+
+                })
+            ctx.restore();
+                   
+        }
+    });
+
+
+Chart.pluginService.register(originalLineDraw);
+
+
+
+        new Chart(ctx, {
+            type :'line',
+            data : data,
+            options : options
+        });
+
+    </script>
+
+</body>
+</html>

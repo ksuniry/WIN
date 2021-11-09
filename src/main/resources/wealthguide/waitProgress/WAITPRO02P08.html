@@ -1,0 +1,59 @@
+<!--
+* 파일명 		: WAITPRO02P08.html (W-02-08)
+* 업무		: 연금대기 > 입금대기 > 납입한도 조정안내 팝업 
+* 설명		: 납입한도 조정안내 
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.06.09
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/popLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="P02-content">
+
+	<div class="popup_wrap w_02_08"> 
+        <div class="popup_header">
+            <h2><span>납입한도 조정안내</span></h2>
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+
+        <div class="popup_content">
+            <div class="box">
+                <div class="box-inner">
+
+                    <div class="problem-box">
+                        <p class="problem-title problem-caution">
+                            <span>고객님은 타금융기관에 설정된 연금계좌 납입한도로 인해 자문안실행을 위한 계좌에 입금이 불가능한 상태입니다 (법정 연금계좌의 연간 총납입한도는 1,800만원). </span>
+                        </p>
+                    </div>
+
+                    <p class="txt_2x">
+                        아래와 같은 순서로 납입한도를 조정한 후 입금을 진행하시면 됩니다.
+                    </p>
+                    <ol type="1">
+                        <li>1. 현재 납입을 하지않는 타금융기관의 연금계좌 납입한도를 전액 또는 일부감액 신청합니다.  </li>
+                        <li>2. 입금 예정계좌의 납입한도를 증액조정합니다.</li>
+                    </ol>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-page-btn">
+            <button class="bt bt-color" onClick="javascript:gfn_closePopup();"><span>닫기</span></button>
+        </div>
+    </div>
+    <!-- //popup -->
+        
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/waitProgress/WAITPRO02P08.js"></script>
+</th:block>

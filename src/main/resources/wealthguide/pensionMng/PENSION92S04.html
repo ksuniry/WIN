@@ -1,0 +1,357 @@
+<!--
+* 파일명 		: PENSION92S04.html (m-12-04)
+* 업무		: 내 연금 정보			
+* 설명		: 내 연금 정보		
+* 작성자		: 정의진
+* 최초 작성일자	: 2021.05.04
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+	<div class="container m_12_04">
+            <div class="tab-head">
+                <ul role="tablist" class="tab-label" id="tablist01">
+                    <li class="tab-label-item"><a href="#tabPanel-1" role="tab" class="is_active">모은 연금</a></li>
+                    <li class="tab-label-item"><a href="#tabPanel-2" role="tab">받을 연금</a></li>
+                </ul>
+            </div>
+    
+            <div class="tab-panel tab-panel-01 " id="tabPanel-1" role="tabpanel">
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="chart-circle">
+                            <canvas id="bigCircle"></canvas>
+                            <div class="chart-circle-value">
+                                <p>
+                                    <span class="value" id="my_tot_pnsn_dis" data-nounit="true"><!-- 123,123,123 --></span>
+                                    <em class="unit" id="my_tot_pnsn_unit"><!-- 원 --></em>
+                                </p>
+                                <p class="anchor-date"><span  id="idx_date"><!-- 2020-06-12 --></span> 기준</p>
+                            </div> 
+                        </div>
+
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit">국민연금<span class="pers" id="ntnl_pnsn_cpst_dis"><!-- 60% --></span></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="ntnl_pnsn_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="ntnl_pnsn_pay_unit"><!-- 원 --></em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">퇴직연금<span class="pers" id="retr_pnsn_cpst_dis"><!-- 25% --></span></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="retr_pnsn_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="retr_pnsn_pay_unit"><!-- 원 --></em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">개인연금<span class="pers" id="prsn_pnsn_cpst_dis"><!-- 15% --></span></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="prsn_pnsn_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="prsn_pnsn_pay_unit"><!-- 원 --></em>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">
+                            <p>내 연금 수익률</p>
+                            <div class="plus">
+                                <span id="prsn_retr_pnsn_rvnu_rate"><!-- 3.5 --></span>
+                                <em class="unit" id="prsn_retr_pnsn_rvnu_unit"><!-- % --></em>
+                            </div>
+                        </div>
+
+                        <div class="rate-img">
+                            <!-- 수익률 - 일 때 
+                            <img src="../../images/img_rateDown.png">-->
+
+                            <!-- 수익률 + 일 때 -->
+                            <img src="../../images/img_rateUp.png" id="rate_img">
+                        </div>
+
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit">총 납입액</div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="prsn_retr_pnsn_tot_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="prsn_retr_pnsn_tot_pay_unit"><!-- 원 --></em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">총 적립액</div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="prsn_retr_pnsn_tot_save_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="prsn_retr_pnsn_tot_save_unit"><!-- 원 --></em>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="txt align_r">(국민연금, 퇴직연금DB 제외)</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">
+                            책임의 한계
+                        </div>
+                        <p class="txt_2x">
+                            마이머플러에서 사용하는 데이터는 통합연금포털 기반으로 실시간 정보가 아닙니다. 현재 시점의 평가액과 차이가 있을 수 있음을 고지합니다. 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">
+                            보유 연금상품
+                        </div>
+                        
+                        <div id="pensionList">
+                        	
+						<script id="_dumyPrdtList" type="text/x-handlebars-template">
+                        <div class="section-sub-title">{{title}}</div>
+						<ul class="goods-list" id="list_{{type}}"></ul>
+						</script>
+						
+						<script id="_dumyPensionList" type="text/x-handlebars-template">
+                        	
+                            <li class="goods-list-item" id="{{type}}List_{{idx}}">
+                                <a class="goods-list-link">
+                                    <div class="goods">
+                                        <div class="goods-head">
+                                            <div class="goods-logo">
+                                                <img src="{{product_img}}" class="bank_ico">
+                                            </div>
+                                            <div class="goods-title">
+                                                <p class="bankName"><span>{{company}}</span></p>
+                                                <p class="prdName"><span>{{product}}</span></p>
+                                            </div>
+                                        </div>
+                                        <i class="ico arr_right"></i>
+                                    </div>
+                                    <div class="goods-assess">
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="value">{{pay_dis}}</span>
+                                                <em class="unit">{{pay_unit}}</em>
+                                            </div>
+                                            <span class="plus" id="{{type}}_rate_{{idx}}">{{rvnu_rate}}<em class="unit">{{rvnu_unit}}</em></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        
+						</script>
+						
+                        </div>                       
+
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="tab-panel tab-panel-02" id="tabPanel-2" role="tabpanel">
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="priceBox">
+                            <p class="priceBox-txt"><span id="tot_recv_term"><!-- 30년 --></span> 간<br>수령할 총 연금</p>
+                            <p class="priceBox-price">
+                                <span class="priceBox-price-value" id="prsn_recv_dis" data-nounit="true"><!-- 188,000,000 --></span>
+                                <em class="priceBox-price-currency" id="tot_recv_unit"><!-- 원 --></em>
+                            </p>
+                        </div>
+
+                        <div class="section-title">
+                            <div class="monthly-left">
+                                <div class="monthly-left-value">
+                                    <span class="title">월 연금 수령액</span>
+                                    <span class="value" id="tot_mon_recv_dis" data-nounit="true"><!-- 115 --></span>
+                                    <em class="unit" id="tot_mon_recv_unit"><!-- 만원 --></em>
+                                </div>
+                                <p class="txt">(<span id="recv_strt_age"><!-- 60세 --></span>~<span id="recv_end_age"><!-- 90세 --></span>)</p>
+                            </div>
+
+                            <div class="switch_box">
+                                <span>국민연금</span>
+                                <input type="checkbox" class="inp_switch" id="myAnn" checked>
+                                <label for="myAnn"></label>
+                            </div>
+                        </div>
+
+                        <div class="chart">
+                            <p class="txt">(<span>만원</span>)</p>
+                            <canvas id="myBarChart"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-inner">
+                        <p class="txt">현재 보유상품 유지할 경우</p>
+                        <div class="section-title">마이머플러 제안 금액
+                            <p><span class="value" id="tot_pnsn_recv_dis" data-nounit="true">666,000</span>
+                            <em class="unit" id="tot_pnsn_recv_unit">만원</em></p>
+                        </div>
+
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit">국민연금<span class="pers" id="ntnl_pnsn_recv_amt_dis"><!-- 60% --></span></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="ntnl_pnsn_recv_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="ntnl_pnsn_recv_unit"><!-- 원 --></em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">퇴직연금<span class="pers" id="retr_pnsn_recv_amt_dis"><!-- 25% --></span></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="retr_pnsn_recv_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="retr_pnsn_recv_unit"><!-- 원 --></em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">개인연금<span class="pers" id="prsn_pnsn_recv_amt_dis"><!-- 15% --></span></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="prsn_pnsn_recv_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="prsn_pnsn_recv_unit"><!-- 원 --></em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">은퇴 Roadmap</div>
+
+                        <div class="tab-head">
+                            <ul role="tablist" class="tab-label" id="tablist02">
+                            <script id="_dumyTabList" type="text/x-handlebars-template">
+                                <li class="tab-label-item" id="tab-label-item-{{idx}}" data-idx="{{idx}}" data-currentslide="0"><a href="#tabPanel-{{tab_idx}}" role="tab">{{section_nm}}</a></li>
+							</script>
+                            </ul>
+                        </div>
+                        
+                		<div id="tab-panel-contents">
+                        <script id="_dumyAgeDetail" type="text/x-handlebars-template">
+                        <div class="tab-panel-second" id="tabPanel-{{tab_idx}}" role="tabpanel">
+                            <div class="box_r tooltip-wrap">
+                                <div class="box-box ">
+                                    <p class="title">연금수령나이</p>
+                                    <p class="expenses"><span>{{recv_strt_age2}}~{{recv_end_age2}}</span><em class="unit">세</em><i class="ico info big" id="tooltipIco_{{idx}}"></i></p>
+                                    <div class="tooltip" id="tootip-{{idx}}">
+                                        <p class="tooltip-txt">
+                                            은퇴시점부터 국민연금이 개시되기 전 까지의 소득단절구간을 의미합니다. 은퇴시점에 따라 사람마다 차이는 나지만 통상적으로 55~65세 구간에 발생되며 연금소득이 집중적으로 필요한 시기이며 은퇴설계시 연금소득이 집중될수 있도록 설계가 필요한  구간입니다.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="box-box">
+                                    <p class="title">월평균수령액</p>
+                                    <p class="expenses"><span>{{avg_mon_recv_dis}}</span><em class="unit">{{avg_mon_recv_unit}}</em></p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="slider-nav" id="slider-nav-{{idx}}">
+
+									{{#each age_status_list}}
+                                		<div class="slider-nav-item">
+                                        	<span class="nav-item">{{age}}</span>
+                                    	</div>
+									{{/each}}
+
+                                </div>
+
+                                <div class="slider-for" id="slider-for-{{idx}}">
+
+									{{#each age_status_list}}
+                                    <div class="slider-for-item">
+										{{#ifCond age '==' '60세'}}
+										<div class="tip"><p>국민연금 수령 개시</p></div>
+										{{/ifCond}}
+                                        <div class="slider-age-state">
+                                            <div>
+                                                <span class="value">{{age2}}</span><em class="unit">세</em>
+                                                <span class="date-yyyy">{{year}}</span>
+                                            </div>
+											{{#ifCond stus_cd '==' '1'}}
+												<div><span class="state plenty">{{stus_nm}}</span></div>
+											{{else}}
+                                            	<div><span class="state lack">{{stus_nm}}</span></div>
+											{{/ifCond}}
+                                        </div>
+
+                                        <ul class="slider-price-list">
+                                            <li class="slider-price-list-item">
+                                                <p class="title">월 수령액</p>
+                                                <p>
+                                                    <span class="value">{{mon_recv_dis}}</span>
+                                                    <em class="unit">{{mon_recv_unit}}</em>
+                                                </p>
+                                            </li>
+                                            
+                                            <li class="slider-price-list-item">
+                                                <p class="title">은퇴후 월생활비</p>
+                                                <p>
+                                                    <span class="value">{{mon_liv_dis}}</span>
+                                                    <em class="unit">{{mon_liv_unit}}</em>
+                                                </p>
+                                            </li>
+                                            
+                                            <li class="slider-price-list-item">
+                                                <p class="title">부족한 연금</p>
+                                                <p>
+                                                    <span class="value">{{rdy_dis}}</span>
+                                                    <em class="unit">{{rdy_unit}}</em>
+                                                </p>
+                                            </li>
+                                        </ul>
+
+                                        <p class="txt">지출 대비 연금 월소득 준비율이 33%에 불과합니다. 원활한 생활을 위해 더 많은 준비를 고려해 보시기 바랍니다. </p>
+                                    </div>
+									{{/each}}
+
+									
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- tab 1기 -->
+						</script>	
+                		</div>
+                     
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+</section>
+
+<th:block layout:fragment="f-script">
+	<script type="text/javascript" src="../../slick/slick.min.js"></script>  
+	<link rel="stylesheet" href="../../slick/slick.css">
+	<script src="../../js/chart.v2.9.4.js"></script>
+	<script src="../../js/chart.plugin.annotation.js"></script>
+	<script src="/js/pensionMng/PENSION92S04.js"></script>
+</th:block>

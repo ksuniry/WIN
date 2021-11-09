@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="layouts/htmlHeader :: htmlHeader">
+</head>
+<meta charset="UTF-8">
+<body>
+	<!--HEADER -->
+	<header th:replace="layouts/mainHeader :: mainHeader">
+	</header>
+	<!--//HEADER-->
+	
+	<div class="header">
+        <div class="page_head">
+            <a href="javascript:gfn_finishView();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">local test</p>
+        </div>
+    </div>
+    
+	<!-- content s  -->
+	<div class="container qna">
+		<input type="text" id="uid"></input>
+        <select id="serviceId">
+            <option value="muffler" selected>머플러</option>
+            <option value="lcCard">롯데카드</option>
+            <option value="kaBank">카카오뱅크</option>
+        </select>
+        <div class="btn_box" style='display:none;'>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnSetToken"><span>btnSetToken</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnResetToken"><span>btnResetToken</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnIndex"><span>go Index</span></a>
+            <a href="https://www.kbsec.com/go.able?linkcd=s060902030000&amp;seq=10002988&amp;idt=20210622" class="btn btn_color02"><span>공지사항 링크 test</span></a>
+            <!-- 
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnNext0"><span>연금가입필요시 </span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnNext"><span>go DashBoard </span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnNext2"><span>go Contract </span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnNext3"><span>go WelcomeBoard </span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnNext4"><span>go CallMenu </span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnPinPop"><span>pin popup test</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnFundPdf"><span>fund pdf test</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOpenApiTestG" data-method="FF"><span>GET FORM TO FORM Open Api 001</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOpenApiTestG" data-method="FJ"><span>GET FORM TO JSON Open Api 001</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOpenApiTestG" data-method="JF"><span>GET JSON TO FORM Open Api 001</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOpenApiTestG" data-method="JJ"><span>GET JSON TO JSON Open Api 001</span></a> 
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOpenApiTestP" data-method="FF"><span>PUTH FORM TO FORM Open Api 002</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOpenApiTestP" data-method="FJ"><span>PUSH FORM TO JSON Open Api 002</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOpenApiTestP" data-method="JF"><span>PUSH JSON TO FORM Open Api 002</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOpenApiTestP" data-method="JJ"><span>PUSH JSON TO JSON Open Api 002</span></a>
+            
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOpenApiTest" data-method="FF"><span>dto FORM TO FORM Open Api 001</span></a>
+            -->
+        </div>
+        <div class="btn_box">
+			<input type="text" id="user_ci" value="TESTSqSGNBEXhiNH26qcrau8+8g3Ku3UbkY+eldxO/nJG3XaHppkqPiTRPQczqqCIkLvLMC/NovNKz3T1/WGog=="></input>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOauthBankTest" data-industry="bank"><span>은행개별인증</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOauthInvestTest" data-industry="invest"><span>금투개별인증</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnOauthInsuTest" data-industry="insu"><span>보험개별인증</span></a>
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnMydataTest"><span>마이데이터테스트</span></a>
+        </div>
+    </div>
+	<!-- content e  -->
+	
+	
+	<!--FOOTER -->
+	<footer th:replace="layouts/mainFooter :: mainFooter">
+	</footer>
+
+	<script src="/js/template/testMain.js"></script>
+	<!--//FOOTER-->
+</body>
+</html>

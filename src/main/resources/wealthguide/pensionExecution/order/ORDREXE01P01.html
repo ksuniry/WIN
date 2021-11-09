@@ -1,0 +1,211 @@
+<!--
+* 파일명 		: ORDREXE01P01.html
+* 업무		: 거래 > 주문내용확인 (o-01-01)
+* 설명		: 주문내용확인
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.22
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/popLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+
+<section layout:fragment="f-content" id="po0101-content">
+
+<div class="container o_01_01">
+
+	<div class="popup_wrap o_01_01 fixed index01">
+        <div class="popup_header">
+            <h2><span>주문 내용 확인</span></h2> <!--21-05-11 타이틀 수정-->
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+        
+        <div class="popup_content" >
+        
+        	<div id="divOrderList"></div>
+        
+        	<div class="modal-page-btn">
+                <button class="bt bt-color" id="btnOrder"><span>주문하기</span></button>
+            </div>
+        </div>
+        
+        	<script id="_dumyOrder" type="text/x-handlebars-template">
+			<div class="section" id="orderDetail_{{idx}}">
+        		<div class="section-inner">
+                    <!-- breadCrumbs 부분에 매도 매수 추가 -->
+                    <div class="flex between">
+                        <div class="breadCrumbs">
+                            <span>{{acnt_type_nm}}</span>
+                            <span>계좌</span>
+                        </div>
+                        <div class="this-percent">
+                            <span class="percent-name {{orderClass}}">{{orderText}}</span>
+                        </div>
+                    </div>
+                    
+					<div class="account__head account__head__item">
+                        <div class="account__head__logo"><img src="{{companyImgSrc}}" class="bank_ico" onerror="this.src='/images/bank_circle_logo/999.png';"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name"> <!-- 20-15-12 [증권사] 추가 -->
+                                [<span class="bankName">{{fncl_agc_nm}}</span>]
+                                <span class="prdName">{{acnt_nm}}</span>
+                            </p>
+                            <p class="account__head__number">
+                                <span>{{acnt_no_pt}}</span>
+                            </p>
+                        </div>
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit">계좌총평가액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">{{blnc_amt_dis}}</span>
+                                    <em class="unit">원</em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">{{orderText2}}금액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">{{dpst_amt_dis}}</span>
+                                    <em class="unit">원</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<div class="accordion-wrap">
+                    <div class="accordion">
+                        <div class="accordion-head"> <!-- cnt 클레스 추가 21-05-12-->
+                            <p>계좌 속 펀드<span class="cnt">{{fund_cnt}}</span></p><i class="ico arr_down"></i>
+                        </div>
+
+                        <div class="accordion-hidden">
+                            <div class="box-gray">
+                                <div class="box-inner">
+                                    <div class="fund-wrap">
+                                        <ul class="fund fund-list" id="ulOrderList_{{idx}}"></ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</script>
+			
+			
+        	<script id="_dumyFund" type="text/x-handlebars-template">
+											<li class="fund-item">
+                                                <div class="fund-item-head">
+                                                    <div class="fund-item-percent">
+
+                                                        <!-- 추가 --><span class="fund-label">펀드</span>
+                                            
+                                                    </div>
+                                                </div>
+                                                <p class="fund-item-name">
+                                                    <span>{{prdt_nm}}</span>
+                                                </p>
+
+                                                <div class="assess">
+                                                    <div class="assess-item">
+
+                                                        <div class="assess-item-tit">주문금액</div>
+
+                                                        <div class="assess-item-value">
+                                                            <span class="value">{{order_amt_dis}}</span>
+                                                            <em class="unit">원</em>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+			</script>
+			
+	  <!-- 모달 창 시작 -->		
+	  <div class="modal-page-wrap w_01_01_pop_04" id="msgPopup" style="display: none;">
+		      <div class="dim"></div>
+		
+		      <div class="modal-page modal-position-bottom" id="buyApprovalConfirm" style="display: none;">
+		          <div class="modal-page-body">
+		              
+		                  <div class="flex between">
+		                        <div class="breadCrumbs">
+		                            <span id="acnt_type_nm"><!-- 개인연금 --></span>
+		                            <!-- <span>2기</span>  -->
+		                     	</div>
+		                      	<div class="this-percent">
+		                          	<span class="percent-name" id="orderText"><!-- 매도 --></span>
+		                	    </div>
+		                  </div>    
+		
+				          <div class="account__head">
+				                <div class="account__head__logo"><img src="/images/bank_circle_logo/294.png" class="bank_ico"></div>
+				                <div class="account__head__tit">
+				                    <p class="account__head__name">
+				                        [<span class="bankName" id="fncl_agc_nm"><!-- KB증권 --></span>]
+				                        <span class="prdName" id="acnt_nm"><!-- 미래보장증권고배당많이주세요 --></span>
+				                    </p>
+				                    <p class="account__head__number">
+				                        <span id="acnt_no_pt"><!-- 123456-456789-45 --></span>
+				                    </p>
+				
+				                    <div class="p_assess">
+				                        <div class="p_assess_total">
+				                            <p>계좌총평가액</p>
+				                            <p><span class="value" id="blnc_amt_dis" data-nounit="true"><!-- 145,111,521 --></span>
+				                                <em class="unit">원</em>
+				                            </p>
+				                        </div>
+				                        <div class="p_assess_total">
+				                            <p>주문금액합계</p>
+				                            <p><span class="value" id="tot_order_amt_dis" data-nounit="true"><!-- 145,111,521 --></span>
+				                                <em class="unit">원</em>
+				                            </p>
+				                        </div>
+				                        <div class="p_assess_deposit">
+				                            <p>초과입금액</p>
+				                            <p><span class="value" id="over_dpst_dis" data-nounit="true"><!-- 145,111,521 --></span>
+				                                <em class="unit" id="over_dpst_unit"><!-- 원 --></em>
+				                            </p>
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
+		
+				            <div class="problem-box">
+				                <p class="problem-title problem-caution">
+				                    <span>마이머플러 자문안보다 월적립금이 초과 입금되었습니다.  초과 입금분도 기존 자문안의 투자비중과 동일하게 매수됩니다.</span>
+				                </p>
+				            </div>
+		
+				            <div class="checkbox">
+				                <label for="agree1">
+				                    <input type="checkbox" id="agree1" onclick="ORDREXE01P01.event.toggleBtnColour();">
+				                    <i class="check_ico"></i>
+				                    <span>이상없이 확인합니다.</span>
+				                </label>
+				            </div>
+				            
+				            
+		            </div>
+		            <div class="modal-page-btn static">
+		                <button class="bt bt-color orderConfirm disabled" id="orderConfirim"><span>확인</span></button>
+		            </div>
+		        </div>
+
+    	</div>	
+	<!-- 모달 창 끝 -->
+
+       
+    </div>  
+    
+</div>
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/pensionExecution/order/ORDREXE01P01.js"></script>
+</th:block>

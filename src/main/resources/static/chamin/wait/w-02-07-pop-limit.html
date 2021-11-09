@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>w-02-07</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <p class="txt">이곳은 모달과 상관없이 컨텐츠 내용이 들어갈 부분입니다</p>
+    </div>
+
+
+    <div class="modal-page-wrap">
+        <div class="dim"></div>
+
+        <!-- case : 1 = w-02-07 입금안내 -->
+        <div class="modal-page modal-position-bottom w_02_07_limit">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>한도금액설정</span>
+                </p>
+                
+                <div class="assess">
+
+                    <!-- 한도 == '0' -->
+                    <div class="assess-item">
+                        <div class="assess-item-tit">한도금액</div>
+                        <div class="assess-item-value">
+                            <input type="number" placeholder="360" class="value">
+                            <em class="unit">만원</em>
+                        </div>
+                    </div>
+                </div>
+                <p class="txt align_r">
+                    고객님의 한도 잔여금액은 최대 <span>1300</span>만원입니다.<br>
+                    월납입액 기준으로 <span>360</span>만원 설정을 추천드립니다.  
+                </p>
+
+
+            </div>
+
+            <div class="modal-page-btn">
+                <button class="bt bt-normal"><span>취소</span></button>
+                <button class="bt bt-color"><span>저장</span></button>
+            </div>
+        </div>
+
+    </div>
+    <!-- //modal -->
+
+        
+
+
+    <!-- jquery 01~04 모두 동일합니다-->
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function modalClose(){
+                $('.modal-page-wrap').hide();
+            }
+
+            $('.modal-page-btn button, .dim').on("click",modalClose);
+
+        });
+
+    </script>
+</body>
+</html>

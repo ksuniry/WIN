@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d-07-02</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        d-07-02 페이지
+        
+    </div>
+
+    <!-- 요기서 부터-->
+
+    <div class="popup_wrap d_07_02 fixed index01">
+        <div class="popup_header">
+            <h2><span>머플러 제안</span></h2>
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+        <div class="popup_content">
+            <div class="robo_offer_tit">
+                <h3>머플러 로보어드바이저 제안<br>월평균 예상수령액</h3>
+            </div>
+
+            <div class="box_color">
+                <div class="box_r">
+                    <div class="tab">
+                        <ul role="tablist" class="tablist">
+                            <li><p role="tab" class="is_active tab_hl">현재</p></li>
+                            <li><p class="tab_hl" role="tab">제안</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="expectation">
+                        <div class="flex">
+                            <div>
+                                <p class="price">월 연금 수령액<strong><span>115</span>만원</strong></p>
+                                <p class="txt">국민연금 포함, 총수령액 현재가치</p>
+                            </div>
+                            <div class="switch_box">
+                                <span>현재 수령액</span>
+                                <input type="checkbox" class="inp_switch" id="myAnn" checked>
+                                <label for="myAnn"></label>
+                            </div>
+                        </div>
+
+                        
+                        <div class="chart_wrap">
+                            <div class="chart_info">
+                                <p>(<span>만원</span>)</p>
+                            </div>
+                            <div>
+                                <canvas id="myBarChart" height= '270'></canvas>
+                            </div>  
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box_r mp_receipt">
+                    
+                    <p class="txt">현재 보유상품 유지할 경우</p>
+                    <div class="flex">
+                        <div class="tit">총 연금 수령액</div>
+                        <p><span>25,948</span>만원</p>
+                    </div>
+                    <div class="flex">
+                        <div>국민연금 </div>
+                        <p><span>25,948</span>만원</p>
+                    </div>
+                    <div class="flex">
+                        <div>퇴직연금 </div>
+                        <p><span>3</span>만원</p>
+                    </div>
+                    <div class="flex">
+                        <div>개인연금 </div>
+                        <p><span>2,053</span>만원</p>
+                    </div>
+                </div>
+
+                <div class="box_r">
+                    <div class="accor_title">
+                        <p>
+                            <span>[자료] 금감원 연금포털 / 웰스가이드</span>
+                        </p>
+                        <div class="ask_r">
+                            <i class="ico arr_down"></i>
+                        </div>
+                    </div>
+                    <div class="accor_txt">
+                        <ul class="list_dots">
+                            <li>
+                                <p><b>현재가치:</b>미래에 수령할 연금(예정)수령액을
+                                    물가로 할인해서 현재가치 기준으로 표시한 금액입니다.</p>
+                            </li>
+                            <li>
+                                <p><b>월 연금 수령액:</b>연금포털에서 제공하는 예시연금액을 머플러에서 사용하고 있는 
+                                    기준물가(1.5%)로 할인해서 현재가치로 표시한 금액입니다.</p>
+                            </li>
+                            <li>
+                                <p><b>국민연금 예시수령액:</b>만 60세까지 중단없이 납부할 경우, 
+                                    매월 받게 되는 예상 연금 월 수령액입니다.</p>
+                            </li>
+                            <li>
+                                <p><b>퇴직연금, 개인연금 예시수령액:</b>
+                                    현재 기준의 연금수령액은 각 연금사업자가 산출한 예시금액이며, 
+                                    연금수령 개시년월이 정확하게 반영되지 않을 수 있습니다. 
+                                    머플러가 제안하는 연금수령액은 변경된 자문 내용을 기준으로 산출한 예시금액입니다.</p>
+                            </li>
+                        </ul>
+                        <p>예시수령액은 향후 납입정보, 수익률, 기준물가 등 상황 변화에 따라 변동될 수 있으며 실제 수령금액과 다를 수 있습니다.</p>
+                        
+                    </div>
+                    <!-- 1 -->
+                </div>
+
+                <div class="box_r">
+                    <h4 class="title_l"><span>연평균 기대수익률</span></h4>
+                    <div class="compare_box">
+                        <div class="now">
+                            <p class="compare_head">현재</p>
+                            <div class="compare_con">
+                                <span>2.9</span>%
+                            </div>
+                        </div>
+                        <div class="mf">
+                            <p class="compare_head">제안</p>
+                            <div class="compare_con">
+                                <span>4.8</span>%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box_r">
+                    <h4 class="title_l"><span>연금준비율</span></h4>
+                    <div class="flex reserve_rate">
+                        <div class="cost">
+                            <p class="tit">은퇴 후<br>월평균 생활비</p>
+                            <p class="price"><span>300</span>만원</p>
+                            <a href="#" class="btn"><span>변경</span></a>
+                        </div>
+                        <div class="rate">
+                            <p>연금준비율</p>
+
+
+                            <div class="acc_chart">
+                                <canvas id="myChart3" width="85px" height="85px"></canvas>
+                                <div class="tooltipCanvas">
+                                    <span class="chart_value">38%</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box_r retire_state">
+                    <ul>
+                        <li>
+                            <strong>은퇴 생활비</strong>
+                            <p>월 평균 <span>250</span>만원</p>
+                        </li>
+                        <li>
+                            <strong>은퇴생활기간</strong>
+                            <p><span>31</span>년</p>
+                        </li>
+                        <li>
+                            <strong>A.총 은퇴 생활비</strong>
+                            <p><span>93,000</span>만원</p>
+                        </li>
+                        <li>
+                            <strong>B.총 연금 수령액</strong>
+                            <p><span>25,948</span>만원</p>
+                        </li>
+                        <li>
+                            <strong class="hl">연금준비율(B/A)</strong>
+                            <p><span>28</span>%</p>
+                        </li>
+                        <li>
+                            <strong class="hl"><span>적정 연금준비율에 미달합니다.</span></strong>
+                        </li>
+                    </ul>
+                </div>
+                <p class="txt noti">
+                    적정 연금준비율 60% <br>
+                    연금 및 은퇴생활비 : 현재가치 기준<br>
+                    할인율 : 물가상승률 1.5%<br>
+                    연금수령 시작 나이 : 은퇴나이와 다를 수 있습니다.
+                </p>
+
+                <div class="popup_btn btn_box">
+                    <button class="btn btn_color02"><span>확인</span></button>
+                </div>
+            </div>
+      
+        </div>
+    </div>
+    <!-- //popup -->
+
+    <div class="modal_wrap index02 d_07_02_pop">
+        <div class="dim"></div>
+        <div class="modal"> 
+            <div class="modal_close">
+                <button class="m_close"><span class="blind">닫기</span></button>
+                <div class="retire_now">
+                    <p>은퇴생활비</p>
+                    현재<span>400만원</span>
+                </div>
+                <div class="change">
+                    <input type="text" value="300"><span>만원</span>
+                </div>
+            </div>
+            <div class="modal_btn half">
+                <button class="cancel"><span>닫기</span></button>
+                <button class="ok"><span>확인</span></button>
+            </div>
+        </div>
+    </div>
+    <!-- //modal -->
+
+    
+    <a href="#" class="to_top">
+        <i class="ico"></i>
+        <span class="blind">최상단으로 이동</span>
+    </a>
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script src="../../js/chart.v2.9.4.js"></script>
+    <script>
+
+        $(document).ready(function(){
+         
+
+            $('.popup_close').click(function(){
+                $(this).parents('.popup_wrap').hide();
+            });
+
+            function modalClose(){
+                $('.modal_wrap').hide();
+            }
+
+            $('.modal button, .dim').on("click",modalClose);
+
+
+            
+
+            // 상단이동
+            var goToTop = $('.to_top');
+            $(window).scroll(function() {
+                scrollFunction();
+            });
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                    goToTop.show();
+                } else {
+                    goToTop.hide();
+                }
+            }
+
+            // 팝업 상단이동
+            $('.popup_wrap').scroll(function() {
+                scrollFunctionInpop();
+                //alert($('.popup_wrap').scrollTop());
+            });
+
+            function scrollFunctionInpop() {
+                if($('.popup_wrap').scrollTop() > 80){
+                    goToTop.show();
+                    goToTop.click(function(){
+                        event.preventDefault();
+                        $('.popup_wrap').scrollTop(0);
+                    });
+                    
+                }else{
+                    goToTop.hide();
+                }
+            }
+        });
+
+
+    </script>
+
+</body>
+</html>

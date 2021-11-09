@@ -1,0 +1,258 @@
+<!--
+* 파일명 		: PENSION12S04.html 
+* 업무		: 웰컴보드 > 신규 메인 화면 > 내 연금 정보 상세보기 (m-12-04)
+* 설명		: 내 연금 정보 상세보기 화면 
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.05.04
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+
+    <div class="container m_12_04">
+        <div class="tab-head">
+            <ul role="tablist" class="tab-label" id="tabList_12S04">
+                <li class="tab-label-item"><a href="#tabPanel-1" role="tab" class="is_active">총 연금</a></li>
+                <li class="tab-label-item"><a href="#tabPanel-2" role="tab">자문계좌 연금</a></li>
+            </ul>
+        </div>
+		
+		<!-- 총 연금 Tab Start -->
+        <div class="tab-panel tab-panel-01" id="tabPanel-1" role="tabpanel">
+            <div class="section">
+                <div class="section-inner">
+                    <div class="chart-circle">
+                        <canvas id="bigCircle"></canvas>
+                        <div class="chart-circle-value">
+                            <p>
+                                <span class="value" id="my_tot_pnsn_dis" data-nounit="true"><!-- 123,123,123 --></span>
+                                <em class="unit" id="my_tot_pnsn_unit"><!-- 원 --></em>
+                            </p>
+                            <p class="anchor-date"><span><em id="base_dt"><!-- 2020-06-12 --></em> 기준</span></p>
+                        </div> 
+                    </div>
+
+                    <div class="assess">
+                        <div class="assess-item">
+                            <div class="assess-item-tit">국민연금<span class="pers" id="ntnl_pnsn_cpst_dis"><!-- 60% --></span></div>
+                            <div class="assess-item-value">
+                                <span class="value" id="ntnl_pnsn_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                <em class="unit" id="ntnl_pnsn_pay_unit"><!-- 원 --></em>
+                            </div>
+                        </div>
+    
+                        <div class="assess-item">
+                            <div class="assess-item-tit">퇴직연금<span class="pers" id="retr_pnsn_cpst_dis"><!-- 25% --></span></div>
+                            <div class="assess-item-value">
+                                <span class="value" id="retr_pnsn_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                <em class="unit" id="retr_pnsn_pay_unit"><!-- 원 --></em>
+                            </div>
+                        </div>
+    
+                        <div class="assess-item">
+                            <div class="assess-item-tit">개인연금<span class="pers" id="prsn_pnsn_cpst_dis"><!-- 15% --></span></div>
+                            <div class="assess-item-value">
+                                <span class="value" id="prsn_pnsn_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                <em class="unit" id="prsn_pnsn_pay_unit">원</em>
+                            </div>
+                        </div>
+                        
+                        <!-- 21-09-09 기타 추가 -->
+                        <div class="assess-item">
+                            <div class="assess-item-tit">기타<span class="pers" id="etc_pnsn_cpst_dis"><!-- 7% --></span></div>
+                            <div class="assess-item-value">
+                                <span class="value" id="etc_pnsn_pay_dis" data-nounit="true"><!-- 145,521 --></span>
+                                <em class="unit" id="etc_pnsn_pay_unit"><!-- 원 --></em>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">
+                        연금상품
+                    </div>
+                	<div id="productList"></div>
+                </div>
+            </div>
+        </div>
+        
+        <script id="_dumyProductList" type="text/x-handlebars-template">
+			<div class="section-sub-title">{{title}}</div>
+            <ul class="goods-list" id="productList_{{type}}"></ul>
+	    </script>
+	
+        <script id="_dumyProductDetail" type="text/x-handlebars-template">
+            <li class="goods-list-item" id="product_{{type}}_{{idx}}">
+                 <div href="javascript:void(0);" class="goods-list-link">
+                      <div class="goods">
+                            <div class="goods-head">
+                                  <div class="goods-logo">
+                                        <img src="{{compImgSrc}}" class="bank_ico" id="">
+                                  </div>
+                                  <div class="goods-title">
+										<p class="title">
+                                            [<span class="bankName">{{company}}</span>]
+                                             <span class="prdName">{{product}}</span>
+                                        </p>
+                                  </div>
+                            </div>
+                       </div>
+                       <div class="goods-assess">
+                            <div class="goods-assess-item">
+                                   <div class="assess-item-value">
+                                        <span class="value">{{pay_dis}}</span>
+                                        <em class="unit">{{pay_unit}}</em>
+                                   </div>
+ 								   <p class="plus">
+                                        <span class="value">{{rvnu_rate}}</span>
+                                        <em class="unit">%</em>
+                                   </p>
+                            </div>
+							{{#ifCond index_date 'isNotNull'}}
+							<div class="goods-assess-item">
+								<div class="assess-item-value">
+                                    <span class="name">조회기준일 : </span>
+                                    <span class="date">{{index_date}}</span>
+                                </div>
+                            </div>
+							{{/ifCond}}
+                       </div>
+                  </div>
+              </li>
+		</script>
+        <!-- 총 연금 Tab End -->
+        
+		<!-- 자문 계좌 연금 Tab Start -->
+        <div class="tab-panel tab-panel-02" id="tabPanel-2" role="tabpanel">
+            <div class="section">
+                <div class="section-inner">
+                    <div class="chart-circle">
+                        <canvas id="bigCircle2"></canvas>
+                        <div class="chart-circle-value">
+                            <p> 
+                                <span class="value" id="my_advice_tot_dis" data-nounit="true"><!-- 123,123,123 --></span>
+                                <em class="unit" id="my_advice_tot_unit"><!-- 원 --></em>
+                            </p>
+                            <p class="anchor-date"><span><em id="idx_date"><!-- 2020-06-12 --></em> 기준</span></p>
+                        </div> 
+                    </div>
+
+                    <div class="assess">
+                        <div class="assess-item">
+                            <div class="assess-item-tit">연금저축<span class="pers" id="pnsn_prdt_ratio_dis"><!-- 60% --></span></div>
+                            <div class="assess-item-value">
+                                <span class="value" id="pnsn_prdt_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                <em class="unit" id="pnsn_prdt_unit"><!-- 원 --></em> 
+                            </div>
+                        </div>
+    
+                        <div class="assess-item">
+                            <div class="assess-item-tit">개인IRP<span class="pers" id="irp_prdt_ratio_dis"><!-- 25% --></span></div>
+                            <div class="assess-item-value">
+                                <span class="value" id="irp_prdt_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                <em class="unit" id="irp_prdt_unit"><!-- 원 --></em>
+                            </div>
+                        </div>
+    
+                        <div class="assess-item">
+                            <div class="assess-item-tit">기타<span class="pers" id="other_prdt_ratio_dis"><!-- 15% --></span></div>
+                            <div class="assess-item-value">
+                                <span class="value" id="other_prdt_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                <em class="unit" id="other_prdt_unit">원</em>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+	
+            
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">
+                        연금상품
+                    </div>
+                	<div id="productList2"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 자문계좌 연금 Tab Start -->
+        <script id="_dumyProductList2" type="text/x-handlebars-template">
+			<div class="section-sub-title">{{title}}</div>
+            <ul class="goods-list" id="productList2_{{type}}"></ul>
+	    </script>
+	
+        <script id="_dumyProductDetail2" type="text/x-handlebars-template">
+            <li class="goods-list-item" id="product2_{{type}}_{{idx}}">
+                 <div href="javascript:void(0);" class="goods-list-link">
+                      <div class="goods">
+                            <div class="goods-head">
+                                  <div class="goods-logo">
+                                        <img src="{{compImgSrc}}" class="bank_ico" id="">
+                                  </div>
+                                  <div class="goods-title">
+										<p class="title">
+											 <span class="prdName">{{acnt_nm}}</span>
+                                        </p>
+                                  </div>
+                            </div>
+                       </div>
+                       <div class="goods-assess">
+                            <div class="goods-assess-item">
+                                   <div class="assess-item-value">
+                                        <span class="value">{{save_dis}}</span>
+                                        <em class="unit">{{save_unit}}</em>
+                                   </div>
+                                   <p class="plus">
+                                        <span class="value">{{save_ratio_rate}}</span>
+                                        <em class="unit">%</em>
+                                   </p>
+                            </div>
+							{{#ifCond index_date 'isNotNull'}}
+							<div class="goods-assess-item">
+								<div class="assess-item-value">
+                                    <span class="name">조회기준일 : </span>
+                                    <span class="date">{{index_date}}</span>
+                                </div>
+                            </div>
+							{{/ifCond}}
+                       </div>
+                  </div>
+              </li>
+		  </script>
+		  <!-- 자문 계좌 연금 Tab End -->
+        			
+		  <!-- 21-07-07 추가 -->
+          <div class="box-gray">
+               <div class="box-gray-title">자문계좌의 의미</div>
+               <div class="box-inner">
+                   <div class="bar_box left_bar">
+                       <p class="txt">
+                           자문계좌는 마이머플러가 고객과 자문계약을 맺고 자산관리 서비스를 제공하는 계좌를 의미합니다. 자문계좌를 포함한 연금계좌의 적립/평가액은 통합연금포털 데이터를 사용하고 있습니다.
+                       </p>
+                   </div>
+               </div>
+          </div>
+    </div>
+    <!-- //container-->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/chart.v2.9.4.js"></script>
+<script src="/js/chart.plugin.annotation.js"></script>
+<script src="/js/pensionMng/PENSION12S04.js"></script>
+</th:block>

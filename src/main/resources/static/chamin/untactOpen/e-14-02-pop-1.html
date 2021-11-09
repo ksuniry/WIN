@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-14-02</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+
+    <div class="header">
+        <div class="page_head">
+            <a href="javascript:history.back();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">연금 계좌이체 신청</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container e_14_02">
+
+        </div>
+    </section>
+
+
+    <div class="modal_wrap">
+        <div class="dim"></div>
+        <div class="modal">
+            <p class="modal_txt">
+                <span>정상적으로 등록되었습니다.</span>
+            </p>
+            <div class="modal_btn">
+                <button class="ok"><span>확인</span></button>
+            </div>
+        </div>
+    </div>
+    <!-- //modal -->
+
+
+    <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function modalClose(){
+                $('.modal_wrap').hide();
+            }
+
+            $('.modal button, .dim').on("click",modalClose);
+
+        });
+    </script>
+</body>
+</html>

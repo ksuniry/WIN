@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c-03-10</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <p class="txt">이곳은 모달과 상관없이 컨텐츠 내용이 들어갈 부분입니다</p>
+    </div>
+
+
+    <div class="modal-page-wrap">
+        <div class="dim"></div>
+
+        <div class="modal-page modal-position-bottom c_03_10_p1">
+            <div class="modal-page-head">
+                <div class="title">최대 설정가능 금액은<span>1,800</span>만원 입니다</div>
+            </div>
+            <div class="modal-page-body">
+                <div class="modal-page-input-wrap">
+                    <div class="modal-page-input">
+                        <div>
+                            <input type="text" placeholder="1,800" class="value">
+                            <em class="unit">만원</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-normal"><span>취소</span></button>
+                <button class="bt bt-color"><span>저장</span></button>
+            </div>
+        </div>
+
+    </div>
+    <!-- //modal -->
+
+    
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function modalClose(){
+                $('.modal-page-wrap').hide();
+            }
+
+            $('.modal-page-btn button, .dim').on("click",modalClose);
+
+        });
+
+    </script>
+</body>
+</html>

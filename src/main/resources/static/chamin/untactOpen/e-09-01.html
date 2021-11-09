@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-09-01</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="javascript:history.back();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container e_09_01">
+        
+        <div class="untact_open_steps">
+            <ul>
+                <li><span>01</span></li>
+                <li><span>02</span></li>
+                <li><span>03</span></li>
+                <li><span>04</span></li>
+                <li><span>05</span></li>
+                <li><span>06</span></li>
+                <li class="is_active"><span>07</span></li>
+                <li><span>08</span></li>
+                <li><span>09</span></li>
+            </ul>
+        </div>
+
+        <h3 class="untact_instructions">
+            <span>계좌의 비밀번호를<br>
+                입력해주세요.</span>
+        </h3>
+        <p class="pw_set_txt">
+            <span>
+                연속된 숫자,  동일한 숫자, 생년월일, 핸드폰 번호는 비밀번호로 설정할 수 없습니다. 
+            </span>
+        </p>
+
+        <div class="resi_num">
+            
+            <input type="password" placeholder="****"  class="input">
+
+        </div>
+
+
+        <p class="error_txt">
+            <span>비밀번호는 4에서 60자 사이여야 하며, 물결 기호는 사용하실 수 없습니다. </span>
+        </p>
+   
+
+
+<!--     
+        <ul class="password">
+            <li class="is_active"><span>01</span></li>
+            <li><span>02</span></li>
+            <li><span>03</span></li>
+            <li><span>04</span></li>
+            <li><span>05</span></li>
+            <li><span>06</span></li>
+        </ul> -->
+
+
+    </div>
+
+    <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         
+            var winHeight = $(window).height();
+            alert(winHeight);
+            $("body").css("min-height", winHeight);
+
+        });
+    </script>
+
+
+</body>
+</html>

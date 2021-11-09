@@ -1,0 +1,61 @@
+<!--
+* 파일명 		: CMMPINN01P01.html 
+* 업무		: 핀번호 확인 공통팝업  (C-04-21)
+* 설명		: 핀번호 확인 필요시 호출  성공여부를 알려준다.
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.01.16
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/popLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="PC01-content">
+	<div class="popup_wrap c_03_03_pw ">
+	
+	
+		<div class="popup_header">
+            <button class="popup_close" onClick="javascript:gfn_closePopup();"><span>닫기</span></button>
+        </div>		
+
+        <div class="popup_content">
+            
+            <h3 class="untact_instructions">
+                <span><em id="pTitle"></em> 위해<br>
+                    6자리 인증번호를 입력하세요</span>
+            </h3>
+    
+            <div class="password" keypad="W" keyon!="Y" id="pin_keypad" type="num" maxLength='6' data-callback="CMMPINN01P01.callBack.pinComplate">
+            <!-- <div class="password" keypad="W" keyon!="Y" id="pin_keypad" type="num" maxLength='6'> -->
+                <ul>
+                    <li><span class="blind">첫 번째 자리</span></li>
+                    <li><span class="blind">두 번째 자리</span></li>
+                    <li><span class="blind">세 번째 자리</span></li>
+                    <li><span class="blind">네 번째 자리</span></li>
+                    <li><span class="blind">다섯 번째 자리</span></li>
+                    <li><span class="blind">여섯 번째 자리</span></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+		<!-- <input id="pin" name="pin" type="number" pattern="\d*" maxlength="6" placeholder="주민등록번호 13자리를 입력해주세요" class="input"> -->
+		
+        <div class="popup_btn btn_box" style="display:none;">
+            <button class="btn btn_color02" id="btnCheckPin"><span>확인</span></button>
+        </div>
+    </div>
+	
+	
+    <!-- //popup -->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/popup/CMMPINN01P01.js"></script>
+</th:block>

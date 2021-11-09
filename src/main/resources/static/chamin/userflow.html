@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[마이머플러] userflow </title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .flow-title{
+            text-align: center;
+            font-size: 60px;
+            text-transform: uppercase;
+            padding: 40px 0;
+        }
+        .flow-wrap{
+            background-color: #e5ecf1;
+            width: 1400px;
+            margin: 0 auto 50px;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .cols{
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            align-items: center;
+            grid-auto-rows: 40px;
+        }
+        .cols.high{
+            display: grid;
+            grid-template-rows: 100px;
+        }
+
+        .flow-page{
+            justify-self: center;
+            display: inline-block;
+            height: 32px;
+            text-align: center;
+            width: 170px;
+            border-radius: 16px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .flow-page span{
+            display: inline-block;
+            font-size: 12px;
+            height: 32px;
+            line-height: 32px;
+            color: #1166BC;
+            letter-spacing: -0.5px;
+        }
+
+        .flow-page.fill.blue{
+            background-color: #1166BC;
+        }
+        .flow-page.fill.gray{
+            background-color: #999999;
+        }
+        .flow-page.fill span{
+            color: #fff;
+        }
+        .flow-page.line.blue{
+            background: #fff;
+            border: 1px solid #1166BC;
+        }
+        .flow-diamond{
+            justify-self: center;
+            background: #1166BC;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            transform: rotate(45deg);
+            margin: 10px 10px;
+            text-align: center;
+        }
+        .flow-diamond span{
+            display: table-cell;
+            transform: rotate(-45deg);
+            font-size: 12px;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            line-height: 16px;
+            vertical-align: middle;
+        }
+        .flow-dbcircle{
+            justify-self: start;
+            position: relative;
+            padding-left: 32px;
+            padding-right: 10px;
+            background: #e5ecf1;
+        }
+        .flow-dbcircle span{
+            font-size: 12px;
+            height: 28px;
+            line-height: 28px;
+            color: #1166BC;
+        }
+        .flow-dbcircle::before{
+            position: absolute;
+            top: 9px;
+            left: 14px;
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #1166BC;
+        }
+        .flow-dbcircle::after{
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border:2px solid #1166BC;
+        }
+
+        a.notLink{
+            cursor:default;
+        }
+        .flow-empty{}
+        
+        /* 요기서부터 그리드 스타일 */
+        .line04{
+            grid-template-columns:  1fr 1fr 5fr;
+        } 
+        .line10{
+            grid-template-columns:  1fr 1fr 1fr 4fr;
+        }       
+
+        /* 요기서부터 라인 스타일 */
+        .flow-dotted-ver{
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 2px dotted #999;
+        }
+        .flow-wrap>.flow-dotted-ver{
+            height: calc(100% - 80px);
+            top: 60px;
+            left: 133px;
+        }
+        .line03 .flow-dotted-ver{
+            top: 50px;
+            height: 250px;
+            left: 282px;
+        }
+        .line11 .flow-dotted-ver{
+            top: 50px;
+            height: 350px;
+            left: 282px;
+        }
+        .line23 .flow-dotted-ver{
+            top: 10px;
+            height: 100px;
+            left: 282px;
+        }
+        .line33 .flow-dotted-ver{
+            top: 19px;
+            height: 180px;
+            left: 658px;
+        }
+        .line35 .flow-dotted-ver{
+            top: 50px;
+            height: 80px;
+            left: 470px;
+        }
+        .line68 .flow-dotted-ver{
+            top: 20px;
+            height: 120px;
+            left: 282px;
+        }
+
+        .flow-dotted-hor{
+            position: absolute;
+            top: calc(50% - 1px);
+            left: 96px;
+            border-bottom: 2px dotted #999;
+        }
+        .line03 .flow-dotted-hor{
+            width: 40%;
+        }
+        .line04 .flow-dotted-hor{
+            left:282px;
+            width: 20%;
+        }
+        .line05 .flow-dotted-hor{
+            width: 25%;
+        }
+        .line07 .flow-dotted-hor{
+            width: 60%;
+        }
+        .line09 .flow-dotted-hor{
+            width: 20%;
+        }
+        .line10 .flow-dotted-hor{
+            width: 37%;
+        }
+        .line11 .flow-dotted-hor{
+            width: 20%;
+        }
+        .line11-1 .flow-dotted-hor{
+            left: 282px;
+            width: 40%;
+        }
+        .line12 .flow-dotted-hor{
+            left: 282px;
+            width: 55%;
+        }
+        .line14 .flow-dotted-hor{
+            left: 282px;
+            width: 30%;
+        }
+        .line15 .flow-dotted-hor{
+            left: 282px;
+            width: 65%;
+        }
+        .line16 .flow-dotted-hor{
+            top: 100px;
+            width: 187px;
+        }
+        .line17 .flow-dotted-hor{
+            width: 187px;
+        }
+        .line19 .flow-dotted-hor{
+            width: 30%;
+        }
+        .line22 .flow-dotted-hor{
+            width: 20%;
+        }
+        .line23 .flow-dotted-hor{
+            width: 30%;
+        }
+        .line23-1 .flow-dotted-hor,
+        .line23-2 .flow-dotted-hor{
+            left: 282px;
+            width: 20%;
+        }
+        .line24 .flow-dotted-hor{
+            width: 20%;
+        }
+        
+        .line30 .flow-dotted-hor{
+            width: 80%;
+        }
+        
+        .line31 .flow-dotted-hor{
+            width: 70%;
+        }
+        .line33 .flow-dotted-hor{
+            width: 562px;
+        }
+        .line34 .flow-dotted-hor{
+            left: 650px;
+            width: 20%;
+        }
+        .line35 .flow-dotted-hor{
+            width: 562px;
+        }
+        .line37 .flow-dotted-hor{
+            width: 30%;
+        }
+        .line39 .flow-dotted-hor{
+            width: 80%;
+        }
+        .line59 .flow-dotted-hor{
+            width: 60%;
+        }
+        .line61 .flow-dotted-hor{
+            width: 70%;
+        }
+        .line63 .flow-dotted-hor{
+            width: 20%;
+        }
+        .line68 .flow-dotted-hor{
+            width: 20%;
+        }
+        .line69 .flow-dotted-hor{
+            left: 282px;
+            width: 10%;
+        }
+        .line70 .flow-dotted-hor{
+            left: 282px;
+            width: 10%;
+        }
+        .line71 .flow-dotted-hor{
+            left: 282px;
+            width: 10%;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div>
+
+        <h2 class="flow-title">userflow</h2>
+        <div class="flow-wrap">
+            <div class="flow-dotted-ver"></div>
+
+            <div class="cols line01">
+                <a href="javascript:void(0);" class="flow-page fill blue notLink"><span>앱 실행</span></a>
+            </div>
+            <div class="cols line02">
+                <a href="javascript:void(0);" class="flow-page line blue notLink"><span>스플래쉬 / Intro-01</span></a>
+            </div>
+            <div class="cols high line03">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-dotted-ver"></div>
+                <div class="flow-diamond"><span>첫방문</span></div>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>온보딩01 / info-02</span></a>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>온보딩02 / info-03</span></a>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>온보딩03 / info-04</span></a>
+            </div>
+            <div class="cols line04">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>권한요청 / S-01-02</span></a>
+                <div class="flow-dbcircle"><span>카메라 / 저장소 / 기기 및 앱 기록</span></div>
+            </div>
+            <div class="cols high line05">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-diamond"><span>토큰</span></div>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>로그인 / S-01-03</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>SNS / 애플 로그인</span></a>
+            </div>
+            <div class="cols line06">
+                <div class="flow-empty"></div>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>문자 본인인증 / PASS</span></a>
+            </div>
+            <div class="cols line07">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>약관동의 / S-01</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink" onclick="alert('네이티브');"><span>개인정보처리방침 / S-02-03</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink" onclick="alert('네이티브');"><span>서비스 이용약관 / S-02-02</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink" onclick="alert('네이티브');"><span>마케팅 활용 동의(선택) / S-02-04</span></a>
+            </div>
+            <div class="cols line08">
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>인증번호 6자리 / S-14</span></a>
+            </div>
+            <div class="cols high line09">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-diamond"><span>인증번호</span></div>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>인증번호 6자리 확인</span></a>
+            </div>
+            <div class="cols line10">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>연금설계 필수정보 / S-15</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink" onclick="alert('네이티브');"><span>예상은퇴나이 설정 / S-15-01</span></a>
+                <div class="flow-dbcircle"><span>현재 월 소득 / 현재 월 지출 / 예상 월 은퇴 생활비 / 예상 은퇴 나이</span></div>
+            </div>
+
+            <div class="cols high line11">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-dotted-ver"></div>
+                <div class="flow-diamond"><span>연금포털<br>연결</span></div>
+                <a href="pensionAdvise/d-01-01_noData.html" target="_blank" class="flow-page line blue"><span>연금데이터 연결하기 / d-01-01</span></a>
+              
+            </div>
+
+            <div class="cols line11-1">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <a href="menu/c-03-21.html" target="_blank" class="flow-page line blue"><span>연금포털 가입하기 / C-03-21</span></a>
+                <div class="flow-dbcircle"><span>아이디 로그인</span></div>
+                <a href="#" class="flow-page line blue"><span>연금통합포털 ID 입력 / C-03-20</span></a>
+                <a href="#" class="flow-page line blue"><span>비밀번호 입력 / C-03-20</span></a>
+            </div>
+
+            <div class="cols line12">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-dbcircle"><span>공인인증서 로그인</span></div>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>주민등록번호 입력 / S-02-01</span></a>
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>공인인증서 선택하기 / S-04-01</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink" onclick="alert('네이티브');"><span>공인인증서 비밀번호 입력</span></a>
+            </div>
+
+            <div class="cols line13">
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page line blue"><span>공인인증서 가져오기 / S-04-02</span></a>
+            </div>
+
+            <div class="cols line14">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-dbcircle"><span>계정찾기</span></div>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>연금포털 홈페이지 연결</span></a>
+            </div>
+
+            <div class="cols line15">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-dbcircle"><span>가입하기</span></div>
+                <a href="menu/c-03-22.html" target="_blank" class="flow-page line blue"><span>연금포털 가입하기 / C-03-22</span></a>
+                <a href="menu/c-03-23.html" target="_blank" class="flow-page line blue"><span>연금포털 이용동의 / C-03-23</span></a>
+                <a href="menu/c-03-24.html" target="_blank" class="flow-page line blue"><span>연금포털 회원정보 입력 / C-03-24</span></a>
+                <a href="menu/c-03-25.html" target="_blank" class="flow-page line blue"><span>연금포털 가입완료 / C-03-25</span></a>
+            </div>
+
+            <div class="cols high line16">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-diamond"><span>연금포털<br>로그인</span></div>
+            </div>
+
+            <div class="cols high line17">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-diamond"><span>가입 후<br>3일</span></div>
+                <a href="pensionAdvise/d-01-01.html" target="_blank" class="flow-page line blue"><span>연금데이터 연결중 / D-01-01</span></a>
+            </div>
+
+            <div class="cols line18">
+                <a href="pensionAdvise/d-01.html" target="_blank" class="flow-page line blue"><span>Dashboard / D-01-01</span></a>
+            </div>
+
+            <div class="cols line19">
+                <div class="flow-dotted-hor"></div>
+                <a href="pensionAdvise/d-02.html" target="_blank" class="flow-page line blue"><span>d-02</span></a>
+                <a href="pensionAdvise/d-02-02.html" target="_blank" class="flow-page fill gray"><span>내 연금 상세보기 / D-02-02</span></a>
+                <a href="pensionAdvise/d-02-03.html" target="_blank" class="flow-page fill gray"><span>보유 연금 상세보기 / D-02-04</span></a>
+            </div>
+
+            <div class="cols line20">
+                <a href="#" class="flow-page line blue"><span>d-05</span></a>
+            </div>
+            <div class="cols line21">
+                <a href="#" class="flow-page line blue"><span>d-04</span></a>
+            </div>
+            <div class="cols line22">
+                <div class="flow-dotted-hor"></div>
+                <a href="#" class="flow-page line blue"><span>d-08</span></a>
+                <a href="pensionAdvise/d-08-07.html" target="_blank" class="flow-page fill gray"><span>로보자문 3단계 플랜 / D-08-07</span></a>
+            </div>
+            <div class="cols line23">
+                <div class="flow-dotted-ver"></div>
+                <div class="flow-dotted-hor"></div>
+                <a href="#" class="flow-page line blue"><span>d-06</span></a>
+                <a href="pensionAdvise/d-08-02.html" target="_blank" class="flow-page fill gray"><span>제안 1단계 / D-08-02</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>고객운용계좌란?</span></a>
+               
+            </div>
+            <div class="cols line23-1">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page fill gray"><span>제안 2단계</span></a>
+                <a href="pensionAdvise/d-03-06.html" target="_blank" class="flow-page fill gray"><span>기대수익률과 위험산출 기준 / D-03-06</span></a>
+            </div>
+            <div class="cols line23-2">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page fill gray"><span>제안 3단계</span></a>
+                <a href="pensionAdvise/d-03-07.html" target="_blank" class="flow-page fill gray"><span>은퇴주기별 3단계 / D-03-07</span></a>
+            </div>
+            <div class="cols line24">
+                <div class="flow-dotted-hor"></div>
+                <a href="#" class="flow-page line blue"><span>d-07</span></a>
+                <a href="pensionAdvise/d-07-02.html" target="_blank" class="flow-page fill gray"><span>마이머플러 제안 / D-07-02</span></a>
+                <a href="/pensionAdvise/d-07-02_pop.html" target="_blank" class="flow-page fill gray"><span>월평균 생활비 변경 / D-07-02-pop</span></a>
+            </div>
+            <div class="cols line25">
+                <div class="flow-dotted-hor"></div>
+                <a href="#" class="flow-page line blue"><span>d-09</span></a>
+            </div>
+            <div class="cols high line26">
+                <div class="flow-diamond"><span>투자성향<br>기록</span></div>
+            </div>
+            
+            <div class="cols line27">
+                <a href="pensionAdvise/d-04-01.html" target="_blank" class="flow-page line blue"><span>투자성향분석 시작 / D-04-01</span></a>
+            </div>
+            
+            <div class="cols line28">
+                <a href="pensionAdvise/d-04-02.html" target="_blank" class="flow-page line blue"><span>투자자정보 제공여부 / D-04-02</span></a>
+            </div>
+            
+            <div class="cols high line29">
+                <div class="flow-diamond"><span>투자자<br>정보제공</span></div>
+            </div>
+
+            <div class="cols line30">
+                <div class="flow-dotted-hor"></div>
+                <a href="pensionAdvise/d-05-01.html" class="flow-page line blue"><span>투자성향분석 / D-05-01</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>수입원</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>투자경험</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>위험감내수중</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>자문목적</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>자문대상 부적합</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>투자기간 동의</span></a>
+            </div>
+            
+            <div class="cols line31">
+                <div class="flow-dotted-hor"></div>
+                <a href="pensionAdvise/d-06-01.html" class="flow-page line blue"><span>투자성향결과 / D-06-01</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>안정형</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>안정추구형</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>위험중립형</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>적극투자형</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray notLink"><span>공격투자형</span></a>
+            </div>
+
+            
+            <div class="cols high line32">
+                <div class="flow-diamond"><span>서비스<br>적합</span></div>
+            </div>
+
+            <div class="cols line33">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-dotted-ver"></div>
+                <a href="untactOpen/e-01-01.html" target="_blank" class="flow-page line blue"><span>책임의 한계 / E-01-01</span></a>
+            </div>
+            <div class="cols high line34">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-diamond"><span>유의사항<br>동의</span></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-diamond"><span>소득정보<br>연동</span></div>
+                <a href="#" class="flow-page line blue"><span>연금데이터 관리</span></a>
+            </div>
+            <div class="cols high line35">
+                <div class="flow-dotted-ver"></div>
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-diamond"><span>건강보험<br>득실확인</span></div>
+                <a href="#" class="flow-page line blue"><span>건보 주민번호 입력</span></a>
+                <a href="#" class="flow-page line blue"><span>공동인증서</span></a>
+                <a href="#" class="flow-page fill gray"><span>공동인증서 입력</span></a>
+            </div>
+            
+            <div class="cols line36">
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page line blue"><span>공동인증서 가져오기</span></a>
+            </div>
+            
+            <div class="cols line37">
+                <div class="flow-dotted-hor"></div>
+                <a href="untactOpen/e-02-01.html" target="_blank" class="flow-page line blue"><span>계좌개설 시작 / E-02-01</span></a>
+                <a href="untactOpen/e-02-05.html" target="_blank" class="flow-page fill gray"><span>비대면 계좌개설 동의 / E-02-05</span></a>
+                <a href="untactOpen/e-02-02.html" target="_blank" class="flow-page fill gray"><span>API 정보제공동의 / E-02-02</span></a>
+            </div>
+
+            <div class="cols line38">
+                <a href="untactOpen/e-03-01.html" target="_blank" class="flow-page line blue"><span>주민등록번호 입력 / E-03-01</span></a>
+            </div>
+            
+            <div class="cols line39">
+                <div class="flow-dotted-hor"></div>
+                <a href="untactOpen/e-02-06.html" target="_blank" class="flow-page line blue"><span>투자자 기초정보 확인 / E-02-06</span></a>
+                <a href="untactOpen/e-02-07.html" target="_blank" class="flow-page fill gray"><span>금융자산비중 / E-02-07</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>투자경험기간</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>투자목적</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>금융지식 수준</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>기대이익 수준</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>감내손실 수준</span></a>
+            </div>
+            
+            <div class="cols line40">
+                <a href="untactOpen/e-07-01.html" target="_blank" class="flow-page line blue"><span>개설 계좌 한도 입력 / E-07-01</span></a>
+            </div>
+
+            <div class="cols high line41">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-diamond"><span>적정<br>납입한도</span></div>
+                <a href="untactOpen/e-07-03.html" target="_blank" class="flow-page fill gray"><span>납입한도 설정초과 / E-07-03</span></a>
+                <a href="untactOpen/e-07-02.html" target="_blank" class="flow-page fill gray"><span>납입한도 미달 / E-07-02</span></a>
+            </div>
+            <div class="cols line42">
+                <a href="untactOpen/e-04-01.html" target="_blank" class="flow-page line blue"><span>신분증 촬영하기 / E-04-01</span></a>
+            </div>
+            <div class="cols line43">
+                <a href="javascript:void(0);" class="flow-page line blue notLink" onclick="alert('네이티브');"><span>신분증 정보확인 / E-04-01</span></a>
+            </div>
+            <div class="cols high line44">
+                <div class="flow-diamond"><span>신분증<br>진위여부</span></div>
+            </div>
+            <div class="cols line45">
+                <a href="untactOpen/e-06-01.html" target="_blank" class="flow-page line blue"><span>개설정보입력 / E-06-01</span></a>
+                <a href="untactOpen/e-06-02.html" target="_blank" class="flow-page fill gray"><span>주소검색 / E-06-02</span></a>
+            </div>
+            <div class="cols line46">
+                <a href="untactOpen/e-09-01.html" target="_blank" class="flow-page line blue"><span>계좌비밀번호 입력 / E-09-01</span></a>
+            </div>
+            <div class="cols line47">
+                <a href="untactOpen/e-09-02.html" target="_blank" class="flow-page line blue"><span>계좌비밀번호 재 입력 / E-09-02</span></a>
+            </div>
+            <div class="cols line48">
+                <a href="untactOpen/e-10-01.html" target="_blank" class="flow-page line blue"><span>본인계좌입력 / E-10-01</span></a>
+            </div>
+            <div class="cols line49">
+                <a href="untactOpen/e-10-02.html" target="_blank" class="flow-page line blue"><span>1원 인증번호 입력 / E-10-02</span></a>
+            </div>
+            <div class="cols line50">
+                <a href="untactOpen/e-11-01.html" target="_blank" class="flow-page line blue"><span>계좌개설완료 / E-11-01</span></a>
+            </div>
+            <div class="cols line51">
+                <a href="untactOpen/e-12-01.html" class="flow-page line blue"><span>투자자문계약 진행 / E-12-01</span></a>
+                <a href="untactOpen/e-13-02.html" target="_blank" class="flow-page fill gray"><span>투자권유문서 / E-13-02</span></a>
+                <a href="untactOpen/e-13-03.html" target="_blank" class="flow-page fill gray"><span>투자자문계약서 / E-13-03</span></a>
+                <a href="untactOpen/e-13-04.html" target="_blank" class="flow-page fill gray"><span>로보어드바이저 유의사항 / E-13-04</span></a>
+                <a href="untactOpen/e-13-05.html" target="_blank" class="flow-page fill gray"><span>머플러 위험고지 / E-13-05</span></a>
+            </div>
+            <div class="cols line52">
+                <a href="#" class="flow-page line blue"><span>계약완료</span></a>
+            </div>
+            <div class="cols high line53">
+                <div class="flow-diamond"><span>타 연금<br>유무</span></div>
+                <a href="untactOpen/e-14-01.html" target="_blank" class="flow-page line blue"><span>이전신청할 계좌선택 / E-14-01</span></a>
+                <a href="#" class="flow-page fill gray"><span>다른계좌 선택</span></a>
+            </div>
+            <div class="cols line54">
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page line blue"><span>계좌이전신청 완료</span></a>
+            </div>
+            <div class="cols high line53">
+                <div class="flow-empty"></div>
+                <div class="flow-diamond"><span>남은<br>이전신청<br>계좌</span></div>
+            </div>
+            
+            <div class="cols line54">
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page line blue"><span>계좌이전신청 리스트</span></a>
+                <a href="#" class="flow-page fill gray"><span>연금계좌 이체신청 유의사항</span></a>
+            </div>
+            <div class="cols line55">
+                <a href="#" class="flow-page line blue"><span>자문안 승인 / T-01-01</span></a>
+                <a href="#" class="flow-page fill gray"><span>자문내용 / T-01-02</span></a>
+                <a href="#" class="flow-page fill gray"><span>제안 포트폴리오 펀드상세</span></a>
+            </div>
+            <div class="cols line56">
+                <a href="#" class="flow-page line blue"><span>투자설명서 확인</span></a>
+                <a href="#" class="flow-page fill gray"><span>간이투자설명서</span></a>
+                <a href="#" class="flow-page fill gray"><span>펀드상세</span></a>
+            </div>
+            <div class="cols line57">
+                <a href="#" class="flow-page line blue"><span>자산배분안 한 번에 승인 / T-02-02</span></a>
+            </div>  
+            <div class="cols line58">
+                <a href="#" class="flow-page line blue"><span>자산배분안 승인 완료 / T-03-01</span></a>
+            </div> 
+            <div class="cols line59">
+                <div class="flow-dotted-hor"></div>
+                <a href="transaction/t-04-01.html" target="_blank" class="flow-page line blue"><span>실행절차안내 / T-04-01</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>연금저축 계좌이체</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>보유계좌 펀드환매</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>상품해지 후 현금입금</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>신규계좌 현금입금</span></a>
+            </div>  
+            <div class="cols line60">
+                <a href="#" class="flow-page line blue"><span>실행절차확인 / T-05-01</span></a>
+            </div>
+
+            <div class="cols high line61">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-dotted-ver"></div>
+                <a href="wait/w-01-01.html" target="_blank" class="flow-page line blue"><span>연금자문 진행중 / W-01-01</span></a>
+                <div class="flow-diamond"><span>계좌상태</span></div>
+                <div class="flow-empty"></div>
+                <a href="wait/w-02-01.html" target="_blank" class="flow-page line blue"><span>입금대기중 / W-02-01</span></a>
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page fill gray"><span>퇴직연금 입금시간 안내</span></a>
+            </div>
+
+            <div class="cols line62">
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page line blue"><span>계좌이전 준비중</span></a>
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page fill gray"><span>연금저축 입금시간 안내</span></a>
+            </div>
+            <div class="cols high line63">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-diamond"><span>입금</span></div>
+                <a href="#" class="flow-page fill gray"><span>입금안내 / O-01-02</span></a>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page fill gray"><span>한도 0 - 수정가능</span></a>
+                <a href="#" class="flow-page fill gray"><span>한도금액설정</span></a>
+            </div>
+            <div class="cols line64">
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <div class="flow-empty"></div>
+                <a href="#" class="flow-page fill gray"><span>한도 0</span></a>
+                <a href="#" class="flow-page fill gray"><span>납입한도 조정안내</span></a>
+            </div>
+            <div class="cols line65">
+                <a href="order/o-01-01.html" target="_blank" class="flow-page line blue"><span>주문내용확인 / O-01-01</span></a>
+            </div>
+            <div class="cols line66">
+                <a href="order/o-02-01.html" target="_blank" class="flow-page line blue"><span>주문완료 / O-02-01</span></a>
+            </div>
+            <div class="cols high line67">
+                <div class="flow-diamond"><span>모든계좌<br>입금완료</span></div>
+            </div>
+            <div class="cols line68">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-dotted-ver"></div>
+                <a href="management/m-11-01.html" target="_blank" class="flow-page line blue"><span>M-11-01</span></a>
+                <a href="management/m-12-01.html" target="_blank" class="flow-page line blue"><span>적립액 상세보기 / M-12-01</span></a>
+            </div>
+            <div class="cols line69">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <a href="management/m-12-02.html" target="_blank" class="flow-page line blue"><span>연금수령액 늘리기 / M-12-02</span></a>
+                <a href="#" class="flow-page fill gray"><span>월 납입액 추가</span></a>
+            </div>
+            <div class="cols line70">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <a href="management/m-12-03.html" target="_blank" class="flow-page line blue"><span>포트폴리오 변경하기 / M-12-03</span></a>
+                <a href="management/m-13-01.html" target="_blank" class="flow-page fill gray"><span>포트폴리오 비중변경 / M-13-01</span></a>
+            </div>
+            <div class="cols line71">
+                <div class="flow-dotted-hor"></div>
+                <div class="flow-empty"></div>
+                <a href="management/m-12-04.html" target="_blank" class="flow-page line blue"><span>내 연금정보 / M-12-04</span></a>
+                <a href="javascript:void(0);" class="flow-page fill gray"><span>내 연금상품별 상세</span></a>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>

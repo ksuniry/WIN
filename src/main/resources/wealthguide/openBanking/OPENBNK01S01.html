@@ -1,0 +1,162 @@
+<!--
+* 파일명 		: OPENBNK01S01.html
+* 업무		: 오픈뱅킹 메인화면 (ob-01-01)
+* 설명		: 오픈뱅킹 메인화면
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.05.06
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+	<div class="container ob_01">
+
+            <!-- ob_title 삭제 -->
+
+            <!-- 아이콘 빠진 타이틀 추가-->
+            <div class="box"> 
+                <p class="txt_2x">고객님의 계좌에서 오픈뱅킹을 이용하여</p>
+                <p class="title_2x"><span>연금계좌로 월납입액을 이체합니다</span></p>
+            </div>
+
+            <div class="section">
+                <div class="section-inner">
+
+                    <h4 class="section-tit">출금계좌</h4>
+
+                    <div class="box_r">
+                        <div class="account" id="openBankAccountInfo">
+                            <div class="account-logo"><img src="/images/bank_circle_logo/294.png" id="openBankImg" class="bank_ico" onerror="this.src='/images/bank_circle_logo/999.png';"></div>
+                            <div class="account-title">
+                                <span class="account-title-name" id="bank_name"><!-- 카카오뱅크 --></span>
+                                <span class="account-title-number" id="account_num_masked"><!-- 0000-111-456789 --></span>
+                            </div>
+                            <div class="account-balance">
+                                <span class="account-balance-title">잔액</span>
+                                <div class="account-balance-value">
+                                    <span class="balance-value" id="balance_dis" data-nounit="true"><!-- 100,000 --></span>
+                                    <em class="balance-currency" id="balance_unit">원</em>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="view_more">
+                        <a href="javascript:void(0);" id="btnSelectOtherAcnt">다른계좌 선택</a>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-inner">
+                    <h4 class="section-tit">입금하실 연금계좌</h4> <!-- 텍스트 변경 -->
+                    
+                    <ul class="product-list" id="transAccountList">
+                    <script id="_dumyAccountList" type="text/x-handlebars-template">
+                        <li class="product-item" id="transAccountDetail_{{idx}}">
+                            <input type="checkbox" class="product-chk" id="prdChk_{{idx}}" {{obChecked}} {{obDisabled}}>
+                            <label for="prdChk_{{idx}}" class="product">
+                            
+                                <div class="account__head__name">
+                                    [<span class="bankName">{{bank_name}}</span>]
+                                    <span class="prdName">{{acnt_nm}}</span>
+                                </div>
+                                <div class="assess">
+                                    <div class="assess-item">
+                                        <div class="number">{{account_num_dis}}</div>
+                                        <div class="assess-item-value">
+                                            <span class="title">월납입액</span>
+                                            <span class="value">{{tran_dis}}</span>
+                                            <em class="unit">{{tran_unit}}</em>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </label>
+                        
+                        </li>
+					</script>
+ 
+
+                    </ul>
+                </div>
+
+                <div class="flex">
+                    <div class="flex-left">총 연금 입금액</div>  <!-- 텍스트 변경 -->
+                    <div class="flex-right">
+                        <span class="this-value" id="tot_tran_dis" data-nounit="true"><!-- 100,000 --></span>
+                        <em class="this-currency" id="tot_tran_unit">원</em>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="bt-wrap">
+                <button class="bt bt-color" id="btnExecTran"><span>입금실행</span></button> <!-- 텍스트 변경 -->
+            </div>
+
+        </div>
+    <!-- //container-->
+    
+    <div class="modal-page-wrap" style="display:none;" id="divModal">
+        <div class="dim"></div>
+
+        <div class="modal-page modal-position-bottom">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>출금계좌 선택</span> <!-- 텍스트수정 -->
+                </p>
+               
+                <div class="modal-page-account">
+                
+                    <ul class="product-list" id="openBankAccountList"></ul>
+                    <script id="_dumyOpenBankAccountList" type="text/x-handlebars-template">
+                        <li class="product-item" id="openBankDetail_{{idx}}">
+                            <div class="product">
+                                <input type="radio" id="rdoOpenBank_{{idx}}" name="rdoOpenBank" class="product-radio">
+                                <label for="rdoOpenBank_{{idx}}">
+
+                                    <div class="account noLogo">
+                                        <div class="account-title">
+                                            <span class="account-title-name">{{bank_name}}</span>
+                                            <span class="account-title-number">{{account_num_masked}}</span>
+                                        </div>
+                                        <div class="account-balance start">
+                                            <span class="account-balance-title">잔액</span>
+                                            <div class="account-balance-value">
+                                                <span class="balance-value">{{balance_dis}}</span>
+                                                <em class="balance-currency">{{balance_unit}}</em>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </li>
+					</script>
+                    
+                </div>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-default bt-arr"><span>계좌등록</span><i class="ico arr_right"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- //modal -->
+
+</section>
+
+
+<th:block layout:fragment="f-script">
+<script src="/js/openBanking/OPENBNK01S01.js"></script>
+</th:block>

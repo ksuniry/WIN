@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+encoding//src/main/resources/static/css/common.css=UTF-8
+encoding//src/main/resources/static/css/style.css=UTF-8
+encoding//src/main/resources/templates/layouts/mainFooter.html=UTF-8
+encoding//src/main/resources/templates/layouts/mainHeader.html=UTF-8
+encoding//src/main/resources/templates/pensionMng/addPayment.html=UTF-8
+encoding//src/main/resources/templates/pensionMng/changeProduct.html=UTF-8
+encoding//src/main/resources/templates/pensionMng/increaseSaving.html=UTF-8
+encoding//src/main/resources/templates/pensionMng/mngList.html=UTF-8
+encoding//src/main/resources/templates/pensionMng/welcomeBoard.html=UTF-8
+encoding//src/main/resources/wealthguide/layouts/mainHeader.html=UTF-8
+encoding//src/main/resources/wealthguide/layouts/popHeader.html=UTF-8
+encoding//src/main/resources/wealthguide/layouts/popLayout.html=UTF-8
+encoding/<project>=UTF-8

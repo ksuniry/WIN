@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-12-01</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">자문계약</p>
+        </div>
+    </div>
+
+    <div class="container e_12_01">
+
+      
+        <div class="popup_wrap index03">
+            <div class="popup_header">
+                <h2><span>로보어드바이저 유의사항</span></h2>
+                <button class="popup_close"><span>취소</span></button>
+            </div>
+    
+            <div class="popup_content">
+                <div class="centered">
+    
+                    <li class="li">
+                        로보어드바이저는 컴퓨터 프로그램을 활용한 알고리즘 및 빅데이터 분석을 통해 투자자의 성향에 맞는 투자자문･운용서비스를 제공하는 온라인 자산관리서비스입니다.
+                    </li><br>
+                    <li class="li">
+                        로보어드바이저는 평균적인 가정을 기반으로 제시되는 투자조언으로서 금융시장의 모든 변수를 반영하지 못하며, 시장상황 등에 따라 손실이 발생될 수 있습니다.
+                        <br>- 로보어드바이저를 통해 실현된 기존의 수익률이 미래의 수익률을 보장하지 않습니다.
+                    </li><br>
+                    <li class="li">
+                        로보어드바이저는 투자자 성향분석 결과를 바탕으로 자문이 이루어지므로 효율적인 투자자문을 위해서는 투자자의 정확한 답변이 중요하며, 과장되거나 사실과 다른 답변은 잘못된 운용결과를 초래할 수 있습니다.
+                        <br>-아울러, 투자자는 알고리즘의 특징에 대하여 충분히 이해하고 투자에 임해야 합니다.
+                    </li><br>
+                    <li class="li">
+                        테스트베드*는 로보어드바이저 알고리즘의 합리성, 법규 준수성, 시스템의 안정성 등을 확인하는 절차로서 알고리즘의 수익성 및 품질을 검증하는 절차는 아닙니다.
+                        <br>* 분산투자, 투자자성향 분석, 해킹방지체계 등 투자자문･일임을 수행하기 위한 최소한의 규율이 제대로 작동하는지 여부를 확인하는 절차
+                        <br>- 이에 따라, 테스트베드를 통과한 로보어드바이저가 테스트베드를 통과하지 않은 로보어드바이저에 비해 안정성 측면에서 장점이 있을 수 있으나, 반드시 더 높은 수익률을 보장하는 것은 아닙니다.
+                    </li><br>
+                    <li class="li">
+                        로보어드바이저의 자문과정에 사람의 개입이 금지되는 것은 아니므로, 시장상황의 급변 등 필요시에는 투자운용인력의 판단이 개입될 수 있습니다.
+                    </li>
+                
+                </div>
+            </div>
+    
+            <!-- 버튼 변경 21-05-11 -->
+            <div class="modal-page-btn">
+                <button class="bt bt-color"><span>이해하고 확인했습니다</span></button>
+            </div>
+    
+        </div>
+        <!-- //popup -->
+
+    </div>
+    <!-- //container-->
+
+
+    <!-- //footer-->
+
+    <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            //$('.popup_wrap').addClass('bottom');
+
+            $('.ck_list .box_r').click(function(){
+                var popIndex = $(this).index();
+                $('.index0'+(popIndex+1)).show();
+                setTimeout(function(){ 
+                    $('.index0'+(popIndex+1)).addClass('in');
+                 }, 100);
+                
+            });
+
+            $('.popup_close').click(function(){
+                $(this).parents('.popup_wrap').removeClass('in');
+                setTimeout(function(){ 
+                    $(this).parents('.popup_wrap').hide();
+                 }, 100);
+            });
+
+        });
+    </script>
+</body>
+</html>

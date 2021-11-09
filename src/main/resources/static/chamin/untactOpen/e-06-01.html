@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-06-01</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="javascript:history.back();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container e_06_01">
+        
+        <div class="untact_open_steps">
+            <ul>
+                <li><span>01</span></li>
+                <li><span>02</span></li>
+                <li><span>03</span></li>
+                <li class="is_active"><span>04</span></li>
+                <li><span>05</span></li>
+                <li><span>06</span></li>
+                <li><span>07</span></li>
+                <li><span>08</span></li>
+                <li><span>09</span></li>
+            </ul>
+        </div>
+
+        <h3 class="untact_instructions">
+            <span>개설 정보를 입력해주세요.</span>
+        </h3>
+
+        <!-- section 추가 21-05-14 -->
+        <div class="section">
+            <div class="section-inner">
+                <!-- 이름 전화 이동 및 수정 21-05-14 -->
+                <div class="info_basic">
+                    <div class="info_name">
+                        <p class="label">이름</p>
+                        <input type="text" disabled value="장머플러" class="user_name">
+                    </div>
+                    <div class="info_phone">
+                        <p class="label">전화번호</p>
+                        <input type="text" disabled value="010-1111-1111" class="user_p_num">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-inner">
+                <!-- 이메일 주소 이동 21-05-14 -->
+                <div class="info_email">
+                    <p class="label">이메일 주소</p>
+                    <input type="email" class="input inp_with_btn" placeholder="이메일주소를 입력해주세요">
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-inner">
+                <!-- 주소이동 21-05-14 -->
+                <div class="info_addr">
+                    <p class="label">주소</p>
+                    <div class="searchbox">
+                        <input type="text" class="input" disabled placeholder="도로명주소" value="">
+                        <button class="btn_search wide">
+                            <i class="ico"></i>
+                            <span class="blind">검색</span>
+                        </button> 
+                    </div>
+    
+                    <input type="text" class="input inp_with_btn" placeholder="상세주소" id="sample4_detailAddress" style="ime-mode:active">
+                </div>
+            </div>
+        </div>
+
+        <!-- 21-05-11 버튼 교체 및 위치 변경 -->
+        <div class="bt-wrap">
+            <button class="bt bt-color"><span>다음</span></button>
+        </div>   
+
+    </div>
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+
+    <script>
+        
+        // 입력창 키보드 + 고정버튼  
+        $('.inp_with_btn').each(function(){
+
+            $(this).bind("focus", function(){
+                $(".btn_box").css("display", "none");
+            });
+
+            $(this).bind("blur",function(){
+                $(".btn_box").css("display", "block");
+            });
+
+        });
+
+
+        (function($) {
+    $.fn.dSelectBox = function(options) {
+
+        var settings = {
+            isSelectTag: true,
+            eventType: 'click'
+        };
+        var opt = $.extend(settings, options);
+
+        return this.each(function() {
+            var $obj = $(this),
+                $input = $obj.find('input'),
+                $select = $obj.find('select'),
+                $vArea = $obj.find('.visible_area'),
+                $vAreaButton = $obj.find('button'),
+                $vAreaList = $obj.find('ul');
+
+            var $event = settings.eventType;
+            if ($event == 'click') {
+             
+                $vAreaButton.on({
+                    click: function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        console.log('button click');
+                        if ($(this).hasClass('on')) {
+                            $vAreaList.hide();
+                            $(this).removeClass('on');
+                        } else {
+                            $vAreaList.show();
+                            $(this).addClass('on');
+                        }
+                    }
+                });
+
+                $(document).on({
+                    click: function() {
+                        console.log('document click');
+                        $vAreaList.hide();
+                        $vAreaButton.removeClass('on');
+                    }
+                });
+            } else {
+                // mouseenter Event
+                $vArea.on({
+                    mouseenter: function() {
+                        $vAreaList.show();
+                        $(this).addClass('on');
+                    },
+                    mouseleave: function() {
+                        $vAreaList.hide();
+                    }
+                });
+            }
+
+            $vAreaList.find('li').on({
+                click: function() {
+                    var clickIdx = $(this).index(),
+                        clickTxt = $(this).text();
+                    $vAreaList.hide();
+                    //$vAreaButton.removeClass('on').text(clickTxt);
+                    $('#mailSelect').val(clickTxt);
+                    if (opt.isSelectTag) { // true false
+                        $select.children('option:selected').removeProp('selected');
+                        $select.children('option:eq(' + clickIdx + ')').prop('selected', true);
+                    }
+                }
+            });
+
+        });
+    };
+})(jQuery);
+
+$(function() {
+    $('.select_wrap').dSelectBox({
+        isSelectTag: true,
+        eventType: 'click'
+    });
+});
+    </script>
+
+</body>
+</html>

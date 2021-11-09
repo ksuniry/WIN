@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m-01</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <!-- <div>
+            <a href="#" class="back">back</a>
+            <span>연금수령계획</span>
+        </div> -->
+    </div>
+
+    <div class="container m_01">
+
+        <div class="user">
+            <div class="user_pic">
+                <img src="../../images/icon_profile.svg" alt="사용자">
+            </div>
+            <div class="user_info">
+                <p class="user_name"><span>홍길동</span></p>
+                <p class="user_with">머플러와 <span>63</span>일 째</p>
+            </div>
+        </div>
+
+        <div class="box_color">
+            <div class="box_r">
+                <div class="chart_wrap">
+                    <div class="chart_info">
+                        <p>(현재가치 :<span> 만원</span>)</p>
+                        <div class="chart_labels">
+                            <span class="origin">최초</span>
+                            <span class="now">현재</span>
+                            <span class="muffler">자문</span>
+                        </div>
+                    </div>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+
+            <div class="box_r rebalance">
+                <p class="title_l"><b>리밸런싱</b>까지 남은 기간</p>
+                <div class="">
+                    <div class="progress_bar">
+                        <div class="progress" style="width:80%">
+                            <span class="tip"><span>304</span>일</span>
+                        </div>
+                    </div>
+                    <div class="rebalance_info">
+                        <p class="rebalance_date">
+                            <span>2012-10-09</span>
+                        </p>
+                        <p class="rebalance_txt">
+                            <span>리밸런싱(재조정)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box_r">
+                <div class="my_annuity">
+                    <div class="my_ann_title">
+                        <p class="title_l"><b>내 연금</b></p>
+                        <div class="switch_box">
+                            <span>국민연금</span>
+                            <input type="checkbox" class="inp_switch" id="myAnn" checked>
+                            <label for="myAnn"></label>
+                        </div> 
+                    </div>
+
+                    <div class="my_ann">
+                        <ul>
+                            <li class="ann_title"><span>내가 모은 연금</span></li>
+                            <li class="ann_date">(<span>2020-10-20</span> 기준)</li>
+                            <li class="ann_price"><span>9,891</span>만원</li>
+                        </ul>
+                        <ul>
+                            <li class="ann_title"><span>내가 받을 연금</span></li>
+                            <li class="ann_date">(<span>30</span> 년 수령)</li>
+                            <li class="ann_price"><span>14,888</span>만원</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="go_my_ann">
+                    <a href="#">
+                        <p class="txt_2x"><span>월평균 개인/퇴직연금 수령액(만원)</span></p>
+                        <i class="ico arr_right"></i>
+                    </a>
+                </div>
+                <!-- //my_annuity -->  
+            </div>
+
+            <div class="mc2_slide m_slide">
+                <div>
+                    <a href="#" class="box_r">
+                        <p class="slide_tit">
+                            <span><b>MC2 투자</b>이야기</span>
+                        </p>
+                        <img src="../../images/sample_slide2.png" alt="투자이야기기">
+                    </a>
+                </div>
+                 <!-- //1 -->
+                
+                <div>
+                    <a href="#" class="box_r">
+                        <p class="slide_tit">
+                            <span><b>MC2</b> 222</span>
+                        </p>
+                        <img src="../../images/sample_slide.png" alt="투자이야기기">
+                    </a>
+                </div>
+                 <!-- //2 -->
+
+                <div>
+                    <a href="#" class="box_r">
+                        <p class="slide_tit">
+                            <span><b>MC2</b> 333</span>
+                        </p>
+                        <img src="../../images/sample_slide2.png" alt="투자이야기기">
+                    </a>
+                </div>
+                <!-- //3 -->
+
+                <div>
+                    <a href="#" class="box_r">
+                        <p class="slide_tit">
+                            <span><b>MC2</b> 444</span>
+                        </p>
+                        <img src="../../images/sample_slide2.png" alt="투자이야기기">
+                    </a>
+                </div>
+                <!-- //4 -->
+                <!-- 최대 4개까지 뿌립니다 -->
+            </div>
+
+            <div class="cafe_slide m_slide">
+                <div>
+                    <a href="#" class="box_r">
+                        <p class="slide_tit">
+                            <span><b>Study</b> Cafe</span>
+                        </p>
+                        <p class="slide_txt">
+                            <span>리밸런싱은<br> 무엇이며 꼭 필요한가</span>
+                        </p>
+                        <img src="../../images/sample_slide.png" alt="투자이야기기">
+                    </a>
+                </div>
+                 <!-- //1 -->
+                
+                <div>
+                    <a href="#" class="box_r">
+                        <p class="slide_tit">
+                            <span><b>Study</b> Cafe</span>
+                        </p>
+                        <p class="slide_txt">
+                            <span>리밸런싱을 무엇이며 꼭 222</span>
+                        </p>
+                    </a>
+                </div>
+                 <!-- //2 -->
+
+                <div>
+                    <a href="#" class="box_r">
+                        <p class="slide_tit">
+                            <span><b>Study</b> Cafe</span>
+                        </p>
+                        <p class="slide_txt">
+                            <span>리밸런싱을 무엇이며 꼭 333</span>
+                        </p>
+                    </a>
+                </div>
+                <!-- //3 -->
+
+                <div>
+                    <a href="#" class="box_r">
+                        <p class="slide_tit">
+                            <span><b>Study</b> Cafe</span>
+                        </p>
+                        <p class="slide_txt">
+                            <span>리밸런싱을 무엇이며 꼭 444</span>
+                        </p>
+                    </a>
+                </div>
+                <!-- //4 -->
+                <!-- 최대 4개까지 뿌립니다 -->
+            </div>
+
+            <div class="box_r est_compare">
+                <p class="title_2x"><b>예상 연금금액</b> 비교</p>
+                <p class="txt">
+                    수입증가 또는 인생기획 변경에 따라 어떻게 바뀌는지 직접 
+                    시뮬레이션을 통해 확인하시고 필요에 따라 실행까지 진행할 수 있습니다.
+                </p>
+                <ul class="ann_compare">
+                    <li>
+                        <a href="#">
+                            <span>추가납입</span>
+                            <i class="ico arr_right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>자산배분</span>
+                            <i class="ico arr_right"></i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="box_r faq">
+                <div class="box_tit flex between i_center">
+                    <p class="title_2x"><b>FAQ</b></p>
+                    <a href="#" class="txt_2x">전체보기</a>
+                </div>
+                <a href="#" class="p20">
+                    <p class="title_l">머플러는 어떤 서비스인가요?</p>
+                    <p class="txt_2x ellipsis">머플러에서 자문하는 대다수의 상품은 투자상품이며, 투자상품은 원금보장이 되지 않습니다. 머플러에서는 장기투자를 통한 연금자산 성장을 목표로 하고 있기에 투자상품을 권해드리고 있습니다.</p>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- //container-->
+
+    <!-- //footer-->
+
+    <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../slick/slick.min.js"></script>  
+    <link rel="stylesheet" href="../../slick/slick.css">
+
+    <!-- chart.js cdn -->
+    <script src="../../js/chart.v2.9.4.js"></script>
+    <script src="../../js/chart.plugin.annotation.js"></script>
+
+    <script type="text/javascript">
+
+    //slick
+    $(document).ready(function(){
+        $('.cafe_slide').slick({
+            arrows: false,
+            dots:true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 1
+        });
+
+        $('.mc2_slide').slick({
+            arrows: false,
+            dots:true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 1
+        });
+
+        
+    });
+
+    </script>
+<script>
+
+//chart yAxes
+var maximum = 200;
+var minimum = 0;
+
+//chart Axes
+var xMaximum = 90;
+var xMinimum = 55;
+
+//status
+var statusNormal = 0; // 정상
+var statusWait = 1; // 대기
+var statusWarn = 2; // 경고
+var statusSeri = 3; // 심각
+var statusLock = 4; // 잠김
+
+var waiting = new Image();
+waiting.src = '../../images/icon_waiting.svg';
+
+var warning = new Image();
+warning.src = '../../images/icon_warning.svg';
+
+var serious = new Image();
+serious.src = '../../images/icon_serious.svg';
+
+var lock = new Image();
+lock.src = '../../images/icon_lock.svg';
+
+
+var getAnnotations = function(index, status, startAge, endAge) {
+	var bgColor = 'rgb(255, 255, 255)';
+	switch(status){
+        case statusNormal: 	bgColor = 'rgba(255, 255, 255, 0)'; break; 
+        case statusWait: 	bgColor = 'rgba(153, 153, 153, 0.3)'; break; 
+        case statusWarn: 	bgColor = 'rgba(255, 149, 43, 0.3)'; break; 
+        case statusSeri: 	bgColor = 'rgba(255, 149, 43, 0.3)'; break;
+        case statusLock: 	bgColor = 'rgba(153, 153, 153, 0.3)'; break;
+    }
+	return {
+        borderColor: 'rgba(0, 0, 0, 0)',
+        borderWidth: 1,
+      	id: 'box' + index,
+        type: 'box',
+        xScaleID: 'x-axis-0',
+        yScaleID: 'y-axis-0',
+        xMin: startAge,
+        xMax: endAge,
+        backgroundColor:  bgColor,
+        onClick: function(e) {
+            if(status != 0){
+                alert(index + "기");
+            }
+        }
+    };
+};
+var annotations = [
+    getAnnotations(1, 0 , '55', '60'),
+    getAnnotations(2, 4 , '60', '75'), 
+    getAnnotations(3, 2 , '75', '90')
+];
+var getIcon = function(index,status, startAge, endAge){
+    return{
+        status:status,
+        start:startAge,
+        end:endAge
+    };
+}
+var icon =[
+    getIcon(1, 0 , '55', '60'),
+    getIcon(2, 4 , '60', '75'), 
+    getIcon(3, 2 , '75', '90')
+]
+var data={
+        labels: ["55","56","57","58","59","60",
+        "61","62","63","64","65","66","67","68","69","70",
+        "71","72","73","74","75","76","77","78","79","80",
+        "81","82","83","84","85","86","87","88","89","90",],
+        datasets: [{
+            label: '최초',
+            data: [100,	30, 100, 30, 20,100,	30, 100, 30, 20,100,	30, 100, 30, 20],
+            fill: false,
+            borderColor: '#999999', 
+            backgroundColor: '#999999', 
+            borderWidth: 1 ,
+            radius:0,
+        },
+        {
+            label: '현재', 
+            data: [150,	50,	120, 80, 80,150,	50,	120, 80, 80,150,	50,	120, 80, 80], 
+            fill: false,
+            borderColor: '#3ca455', 
+            backgroundColor: '#3ca455',
+            borderWidth: 1 ,
+            radius:0,
+        },{
+            label: '자문', 
+            data: [140,	70,	90, 100, 110,140,	70,	90, 100, 110,140,	70,	90, 100, 110],
+            fill: false,
+            borderColor: '#ff952b', 
+            backgroundColor: '#ff952b', 
+            borderWidth: 1 ,
+            radius:0,
+        }],
+        icon : icon
+}
+var options={
+    responsive: true,
+    aspectRatio:4/3,
+    tooltips: {
+        enabled: false
+    },
+    legend: {
+        display: false,
+    },
+    scales: {
+        xAxes: [{
+            display: true,
+            gridLines: {
+                display: true,
+                color:'rgb(221, 221, 221)',
+                drawBorder: false,
+                borderDash:[2,3],
+            },
+            ticks:{
+                //autoSkipPadding:40,
+                //autoSkip: false,
+                maxRotation:0,
+                maxTicksLimit: 5,
+                callback: function(value, index, values) {
+                    return value + '세';
+                },
+                min:xMinimum,
+                max:xMaximum,
+            },
+           
+        }],
+        yAxes: [{
+            display: true,
+            gridLines: {
+                display: true,
+                color:'rgb(221, 221, 221)',
+                drawBorder: false,
+                borderDash:[2,3],
+            },
+            ticks: {
+                min:minimum,
+                max:maximum,
+                stepSize:35
+            }
+        }]
+    },
+    annotation: {
+        drawTime: "beforeDatasetsDraw",
+        events: ['click'],
+        annotations: annotations
+    }
+}
+
+var afterDrawIcon = {
+    afterDraw: function() {
+
+    var originalLineDraw = Chart.controllers.line.prototype.draw;
+    // Extend the line chart, in order to override the draw function.
+    Chart.helpers.extend(Chart.controllers.line.prototype, {
+        draw : function() {
+        //draw line
+        originalLineDraw.apply(this, arguments);
+        
+        var chart = this.chart;
+        // Get the object that determines the region to highlight.
+        var icon = chart.config.data.icon;
+
+        var ctx = chart.chart.ctx;
+        var xaxis = chart.scales['x-axis-0'];
+        var yaxis = chart.scales['y-axis-0'];
+        
+        //rounded corner
+        CanvasRenderingContext2D.prototype.roundedRectangle = function(x, y, width, height, rounded) {
+            const radiansInCircle = 2 * Math.PI
+            const halfRadians = (2 * Math.PI)/2
+            const quarterRadians = (2 * Math.PI)/4  
+            
+            // top left arc
+            this.arc(rounded + x, rounded + y, rounded, -quarterRadians, halfRadians, true)
+            // line from top left to bottom left
+            this.lineTo(x, y + height - rounded)
+            // bottom left arc  
+            this.arc(rounded + x, height - rounded + y, rounded, halfRadians, quarterRadians, true)  
+            // line from bottom left to bottom right
+            this.lineTo(x + width - rounded, y + height)
+            // bottom right arc
+            this.arc(x + width - rounded, y + height - rounded, rounded, quarterRadians, 0, true)  
+            // line from bottom right to top right
+            this.lineTo(x + width, y + rounded)  
+            // top right arc
+            this.arc(x + width - rounded, y + rounded, rounded, 0, -quarterRadians, true)  
+            // line from top right to top left
+            this.lineTo(x + rounded, y)  
+        }
+        //position
+        var yStartPixel = yaxis.getPixelForValue(maximum); // 완전 최상윗점 
+        var yEndPixel = yaxis.getPixelForValue(minimum); // 완전 하위점 
+
+        // If the object exists.
+        if (icon !== undefined) {
+        
+
+                ctx.save();
+                icon.forEach(ele => {
+                
+                //icon position
+                var xStartPixel = xaxis.getPixelForValue(ele.start); // 개체 첫점
+                var xEndPixel = xaxis.getPixelForValue(ele.end); //
+                var xPixel = xStartPixel  + (xEndPixel - xStartPixel) * 0.43;
+                var yPixel = yaxis.getPixelForValue((maximum - minimum) * 0.8);
+
+                //bg transWhite
+                var xBoxStart = xStartPixel + 5;
+                var yBoxStart = yStartPixel + 5;
+                var xBoxEnd = (xEndPixel - xStartPixel) -10;
+                var yBoxEnd = yEndPixel - 17;
+
+                //btn
+                var xBtnStart = xBoxStart +10;
+                var yBtnStart = yBoxEnd - 25;
+                var xBtnEnd = xBoxEnd - 20;
+                var yBtnEnd = 26;
+
+                //center
+                var xCenter = xStartPixel  + ((xEndPixel - xStartPixel)/2);
+                var yTxt = yBtnStart +18;
+                
+                if(ele.status == statusNormal){
+                }else if(ele.status == statusWait){
+                    //line
+                    ctx.beginPath();
+                    ctx.moveTo(xStartPixel, yStartPixel);
+                    ctx.lineTo(xStartPixel, yEndPixel);
+                    ctx.stroke();
+
+                    //bg
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.02)";
+                    ctx.fillRect(xBoxStart, yBoxStart, xBoxEnd, yBoxEnd);
+                    
+                    //icon
+                    var icoCenter = xCenter -11;
+                    var img = waiting;
+                    ctx.drawImage(img, icoCenter, 35, 22, 38);
+                }else if(ele.status == statusWarn){
+
+                    //line
+                    ctx.strokeStyle = "#999999";
+                    ctx.beginPath();
+                    ctx.moveTo(xStartPixel, yStartPixel);
+                    ctx.lineTo(xStartPixel, yEndPixel);
+                    ctx.stroke();
+
+                    //bg
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.02)";
+                    ctx.fillRect(xBoxStart, yBoxStart, xBoxEnd, yBoxEnd);
+
+                    //icon
+                    var icoCenter = xCenter -12;
+                    var img = warning;
+                    ctx.drawImage(img, icoCenter, 32, 24, 41);
+                }else if(ele.status == statusSeri){
+                    //line
+                    ctx.strokeStyle = "#999999";
+                    ctx.beginPath();
+                    ctx.moveTo(xStartPixel, yStartPixel);
+                    ctx.lineTo(xStartPixel, yEndPixel);
+                    ctx.stroke();
+
+                    //bg
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.02)";
+                    ctx.fillRect(xBoxStart, yBoxStart, xBoxEnd, yBoxEnd);
+
+                    //icon
+                    var icoCenter = xCenter -11;
+                    var img = serious;
+                    ctx.drawImage(img, icoCenter, 35, 22, 38);
+                }else{
+                    //line
+                    ctx.strokeStyle = "#999999";
+                    ctx.beginPath();
+                    ctx.moveTo(xStartPixel, yStartPixel);
+                    ctx.lineTo(xStartPixel, yEndPixel);
+                    ctx.stroke();
+
+                    //lock
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.02)";
+                    ctx.fillRect(xBoxStart, yBoxStart, xBoxEnd, yBoxEnd);
+
+                    //icon
+                    var icoCenter = xCenter -11;
+                    var img = lock;
+                    ctx.drawImage(img, icoCenter, 35, 22, 38);
+                }
+            });
+          
+            var xStartPoint = xaxis.getPixelForValue(0); 
+            var xEndPoint = xaxis.maxWidth;
+            var centerBoxPixelx = (xEndPoint + xStartPoint)/2;
+            var centerBoxPixely = (yEndPixel + yStartPixel)/2; 
+
+            function drawCenter(){
+                var grd = ctx.createLinearGradient(centerBoxPixelx, 0, 250, 0);
+                grd.addColorStop(0, "#ff6414");
+                grd.addColorStop(1, "#ff952b");
+
+                //btn
+                ctx.beginPath();
+                ctx.fillStyle = grd;
+                
+                ctx.roundedRectangle(centerBoxPixelx -60 , centerBoxPixely+10 , 120, 24, 5);
+                ctx.fill();
+
+                ctx.font = "11px Arial";
+                ctx.fillStyle = "#ffffff";
+                ctx.textAlign = "center";
+                ctx.fillText("문제를 확인해주세요", centerBoxPixelx, centerBoxPixely + 26);
+            }
+            drawCenter();
+            
+            ctx.restore();
+        }
+    }
+    });
+  }
+};
+
+Chart.pluginService.register(afterDrawIcon);
+
+
+var ctx = document.getElementById('myChart').getContext('2d');
+new Chart(ctx, {
+    type :'line',
+    data : data,
+    options : options
+});
+
+
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t-02-01</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+  
+
+    <div class="modal_wrap">
+        <div class="dim"></div>
+        <div class="modal">
+            <p class="modal_txt">
+                <span class="txt_2x">현재 마이머플러 서비스는 고객님의 연금자산 현황 및 마이머플러 자문안에 따른 결과보기 서비스만 제공됩니다. 원스톱서비스를 위한 제휴사 연결이 마무리되는대로 전체 서비스를 제공할 예정입니다.</span>
+            </p>
+            <div class="modal_btn">
+                <button class="ok"><span>확인</span></button>
+            </div>
+        </div>
+    </div>
+    <!-- //modal -->
+
+    <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../slick/slick.min.js"></script>  
+    <link rel="stylesheet" href="../../slick/slick.css">
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+      
+            $('.invest_slide').slick({
+                infinite: false,
+                dots: true,
+                arrows: false,
+                centerMode: true,
+                centerPadding: '15px',
+                slidesToShow: 1,
+                adaptiveHeight: true
+            });
+
+
+            //modal
+
+            function modalClose(){
+                $('.modal_wrap').hide();
+            }
+
+            $('.modal button, .dim').on("click",modalClose);
+
+        });
+    </script>
+
+</body>
+</html>

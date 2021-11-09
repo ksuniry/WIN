@@ -1,0 +1,48 @@
+$main_color : #ff952b; // 포인트 컬러
+
+//font-color
+$base_font_color : #333333; // 타이틀 및 강조
+$base_font_color02 : #999999; // 보조설명
+$base_font_color03 : #666666; // 컨텐츠
+$base_font_color04 : #222222; // >> #333 으로 교체
+
+
+$over : #ff4e4e; // 수익률 상승
+$under : #1782ff; // 수익률 하락
+
+//fund
+$fund_color : #81c2ff; // 디자인 확정후 삭제
+$fundColor : #e8641c;
+
+//border
+$border_1px : 1px solid #cccccc;
+
+//img
+$imgUrl :"../images/";
+
+// Breakpoints
+$breakpoint-mobile: 375px;
+$breakpoint-tablet: 758px;
+$breakpoint-desktop: 1200px;
+
+$green : #28d150;
+$yellow : #fdf26a;
+$gray : #eeeeee;
+$darkgray : #888888;
+$orange : #ff952b;
+
+//주식
+$stock : $green;
+//채권
+$bond : $yellow;
+//현금
+$cash : $orange; 
+
+$etc : $darkgray;
+
+//국민연금
+$nPension : $green;
+//퇴직연금
+$rPension : $yellow;
+//개인연금
+$pPension : $orange;

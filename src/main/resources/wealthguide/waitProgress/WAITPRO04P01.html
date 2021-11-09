@@ -1,0 +1,364 @@
+<!--
+* 파일명 		: WAITPRO04P01.html
+* 업무		: 연금대기 상세보기(적립)(W-04-01)
+* 설명		: 상세보기
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.04.28
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/popLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="w0401-content">
+	<div class="container w_04_01">
+
+        <div class="popup_wrap w_04_01">
+            <div class="popup_header">
+                <h2><span>월 적립식 투자</span></h2> 
+                <button class="popup_close"><span>닫기</span></button>
+            </div>
+            <div class="popup_content">
+            
+            
+            
+		<div class="section" id="divTop">
+            <div class="section-inner">
+                <div class="section-title tooltip-wrap">
+                	<span id="mTitle"><!-- 계좌이전 진행 중 --></span>
+                	<p id="view_mTitle_2" style="display:none;" class="section-title-sub"><span id="mTitle_2"><!-- 매수주문 승인하기 --></span></p>
+					<p id="pTotalAmtInfo" style="display:none;" class="section-title-sub">총<span class="value" id="dpst_mon_pay_dis" data-nounit="true"><!-- 2,100 --></span><em class="unit" id="dpst_mon_pay_unit"><!-- 만원 --></em></p>
+                    <i id="btnTooltip" style="display:none;" class="ico question"></i>
+                    <div class="tooltip" id="divTootip_01">
+                        <div class="tooltip-txt">
+                            <div class="assess">
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">납입 안 한 적립액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="non_pay_dis" data-nounit="true"></span>
+                                        <em class="unit" id="non_pay_unit"></em>
+                                    </div>
+                                </div>
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">이번달 적립액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="mon_pay_dis" data-nounit="true"></span>
+                                        <em class="unit" id="mon_pay_unit"></em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="assess">
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">입금해야 할 합계 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="dpst_mon_pay_dis" data-nounit="true"></span>
+                                        <em class="unit" id="dpst_mon_pay_unit"></em>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="box_r">
+                                <div class="box-inner">
+                                    <div class="assess">
+                                        <div class="assess-item">
+                                            <div class="assess-item-tit">연간납입한도</div>
+                                            <div class="assess-item-value">
+                                                <span class="value" id="acnt_set_limit_dis" data-nounit="true"></span>
+                                                <em class="unit" id="acnt_set_limit_unit"></em>
+                                            </div>
+                                        </div>
+                                        <div class="assess-item">
+                                            <div class="assess-item-tit">납입한금액</div>
+                                            <div class="assess-item-value">
+                                                <span class="value" id="acnt_pay_dis" data-nounit="true"></span>
+                                                <em class="unit" id="acnt_pay_unit"></em>
+                                            </div>
+                                        </div>
+                                        <div class="assess-item">
+                                            <div class="assess-item-tit">납입가능금액</div>
+                                            <div class="assess-item-value">
+                                                <span class="value" id="acnt_pssbl_pay_dis" data-nounit="true"></span>
+                                                <em class="unit" id="acnt_pssbl_pay_unit"></em>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tooltip" id="divTootip_02">
+                        <div class="tooltip-txt">
+                            <div class="assess">
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">자문안 제안 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="orgn_reserved_dis" data-nounit="true"><!-- 2,500 --></span>
+                                        <em class="unit" id="orgn_reserved_unit"><!-- 만원 --></em>
+                                    </div>
+                                </div>
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">자문안 월적립액(누적)</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="tot_mon_pay_dis" data-nounit="true"><!-- 100 --></span>
+                                        <em class="unit" id="tot_mon_pay_unit"><!-- 만원 --></em>
+                                    </div>
+                                </div>
+                                    <div class="assess-item">
+                                    <div class="assess-item-tit">실제 납입한 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="crnt_pay_dis" data-nounit="true"><!-- 500 --></span>
+                                        <em class="unit" id="crnt_pay_unit"><!-- 만원 --></em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="assess">
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">입금해야 할 합계 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="dpst_mon_pay_dis" data-nounit="true"><!-- 2,100 --></span>
+                                        <em class="unit" id="dpst_mon_pay_unit"><!-- 만원 --></em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+				<div class="problem-box">
+                    <p class="problem-title problem-x">
+                        <span id="mBoxMsg"><!-- 계좌이전·입금이 완료되면 매수주문을<br>확인하는 내용이  안내 될 예정입니다. --></span>
+                    </p>
+                    <div class="problem-bt-wrap" id="btnTopBoxButton" style="display:none;">
+                        <button class="bt problem-bt-color"><span id="mBtnTitle"><!-- 이전 안내 --></span></button>
+                    </div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<div class="section" id="divAcntInfo">
+            <div class="section-inner">
+                <div class="flex">
+                    <div class="breadCrumbs">
+                        <span id="acnt_type_nm"><!-- 개인연금 --></span>
+                        <!-- <span>계좌</span>  -->
+                    </div>
+
+                    <p class="txt"><span id="advc_dt"><!-- 2020-04-01 --></span>자문</p>
+                </div>
+
+                <div class="account__head">
+                    <div class="account__head__logo"><img src="/images/bank_circle_logo/294.png" class="bank_ico" id="imgCompany" onerror="this.src='/images/bank_circle_logo/999.png';"></div>
+                    <div class="account__head__tit">
+                        <p class="account__head__name">
+                            [<span class="bankName" id="chng_fncl_agc_nm"><!-- KB증권 --></span>]
+                            <span class="prdName" id="chng_acnt_nm"><!-- 미래보장증권고배당많이주세요계좌이름긴이름길고긴이름 --></span>
+                        </p>
+                        <p class="account__head__number" id="pAcntNoArea" style="display:none;">
+                            <span id="chng_acnt_no_pt"><!-- 123456-456789-45 --></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="section" id="divTab">
+            <div class="section-inner">
+
+                <h4 class="section-tit">마이머플러 제안</h4>
+
+                <div class="tab-head">
+                    <ul role="tablist" class="tab-label">
+                        <li class="tab-label-item"><a href="#tabPanel-1" role="tab" class="is_active"><em id="tabText"></em><!-- 신규계좌내용 --></a></li>
+                        <li class="tab-label-item"><a href="#tabPanel-2" role="tab">포트폴리오</a></li>
+                    </ul>
+                </div>
+                <!-- 탭 판넬부분 1 -->
+                <div class="tab-panel" id="tabPanel-1" role="tabpanel">
+                	<div class="dots"><em id="acnt_advc_cntnt_expl"></em>
+                        <!-- <span>계좌명 : [KB] 연금저축펀드</span><span>세액공제액 : 연간 51만원</span><span>예상 연금수령액 : 매월 119만원(80~90세)</span> -->
+                    </div>
+                  
+                    <div class="compare-wrap">
+                        <div class="compare">
+                            <div class="compare-box after">
+                                <p class="compare-box-head" id="chgn_prdt_nm"><!-- 연금저축펀드 --></p>
+                                <div class="compare-box-con">
+                                    <div class="cp-bank">
+                                        <img src="/images/bank_circle_logo/032.png" alt="" class="bank_ico" id="chng_fncl_agc_img" onerror="this.src='/images/bank_circle_logo/999.png';">
+                                        <p class="cp-bank-name"><span id="chng_fncl_agc_nm"><!-- 전북은행 --></span></p>
+                                    </div>
+                                    <div class="cp-list-single"> <!-- 신규일때 -->
+                                        <ul class="cp-list-name">
+                                            <li class="cp-list-name-item"><span>월납입액</span></li>
+                                            <li class="cp-list-name-item"><span>납입기간</span></li>
+                                            <li class="cp-list-name-item"><span>수령개시</span></li>
+                                            <li class="cp-list-name-item"><span>수령기간</span></li>
+                                            <li class="cp-list-name-item"><strong><span>기대수익</span></strong></li>
+                                            <li class="cp-list-name-item"><strong><span>월연금액</span></strong></li>
+                                        </ul>
+	                                    <ul class="cp-list">
+	                                        <li class="cp-list-item"><span id="chng_mon_pay_dis"><!-- 40만원 --></span></li>
+		                                    <li class="cp-list-item"><span id="chng_pay_prd"><!-- 5년 --></span></li>
+		                                    <li class="cp-list-item"><span id="chng_recv_strt_age"><!-- 60세 --></span></li>
+		                                    <li class="cp-list-item"><span id="ppsl_recv_prd"><!-- 20년 --></span></li>
+		                                    <li class="cp-list-item"><strong>연<span id="chng_expt_rvnu_dis"><!-- 연1.5% --></span></strong></li>
+		                                    <li class="cp-list-item"><strong><span id="ppsl_mon_pnsn_dis"><!-- 30만원 --></span></strong></li>
+	                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="txt_2x has_ico"><i class="ico lamp"></i><em id="advc_efft_nm"><!-- 기대효과 --></em></p>
+                    <div class="dots"><em id="advc_efft_expl"></em>
+                        <!-- <span>투자(운용)기간 : 33년 (연금수령전까지 남은기간)</span>
+                        <span>장기투자에 따른 위험 감소 및 기대수익률 상승 효과</span> -->
+                    </div>
+                    
+                </div>
+                <!-- tab01 -->
+                
+                
+                
+                <!-- 탭 판넬부분 2 -->
+                <div class="tab-panel" id="tabPanel-2" role="tabpanel">
+                    <div class="compare-wrap compare-chart">
+                        <div class="compare">
+                            <div class="compare-box after">
+                                <p class="compare-box-head">제안</p>
+                                <div class="compare-box-con">
+                                    <div class="chart_circle">
+                                        <canvas id="ppslChar_0401" width="85px" height="85px"></canvas>
+                                        <div class="circle_value">
+                                            <p><span>투자기간</span></p>
+                                            <strong><span id="ppsl_invt_prd"><!-- 3년 --></span></strong>
+                                        </div> 
+                                    </div>
+                                    
+                                    <div class="cp-list-single"> <!-- 신규일때 -->
+	                                    <ul class="cp-list-name">
+                                            <li class="cp-list-name-item"><strong><span>주식</span></strong></li>
+                                            <li class="cp-list-name-item"><strong><span>채권</span></strong></li>
+                                            <li class="cp-list-name-item"><strong><span>현금</span></strong></li>
+                                        </ul>
+	                                    <ul class="cp-list">
+	                                        <li class="cp-list-item"><span class="bold" id="ppsl_stck_dis"><!-- 28% --></span></li>
+	                                        <li class="cp-list-item"><span class="bold" id="ppsl_bond_dis"><!-- 28% --></span></li>
+	                                        <li class="cp-list-item"><span class="bold" id="ppsl_cash_dis"><!-- 28% --></span></li>
+	                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <!-- txt_2x > box-gradient 로 변경 cnt 추가 21-05-13 -->
+                        <p class="box-gradient-title">제안 포트폴리오<span class="cnt" id="advc_ptfl_prdt_list_cnt"><!--3--></span></p>
+
+                        <div class="fund-wrap">
+                        	<ul class="fund" id="ulProdList"></ul>
+                            <script id="_dumyProdList" type="text/x-handlebars-template">
+								<li class="fund-item" id="prodDetail_{{idx}}">
+                                    <div class="fund-item-head">
+                                        <div class="fund-item-kind">
+                                            <span class="fund-label">펀드</span>
+                                            <span class="fund-type">{{prdt_gbn}}</span>
+                                        </div>
+                                        
+                                        <div class="fund-item-percent">
+                                            <span class="percent-name">비중</span>
+                                            <span class="percent-value">{{prdt_dis}}%</span>
+                                        </div>
+                                    </div>
+                                    <p class="fund-item-name link">
+                                        <span class="title">{{prdt_nm}}</span>
+                                        <i class="ico arr_right"></i>
+                                    </p>
+                                </li>
+							</script>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- tab02 -->
+        
+        	</div>
+        </div>
+            
+            
+            
+            
+            </div>
+        </div>
+        <!--popup-->
+
+    </div>
+    
+	<div class="modal-page-wrap" id="msgPopup" style="display: none;">
+        <div class="dim"></div>
+    <!-- modal -->
+        <!-- 입금안내 --> 
+        <div class="modal-page modal-position-bottom" id="msgCase_deposit_noti" style="display: none;">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>입금안내</span>
+                </p>
+                <p class="modal-page-txt">
+                    현재 입금할 총 금액은 자문안의 월적립금과 미입금한 금액을 합산합니다. 초과납입한 경우 '0'으로 표시될 수 있습니다. 
+                </p>                
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span>입금할 계좌</span>
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img id="imgSrc" src="/images/bank_circle_logo/294.png" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name"> 
+                                [<span class="bankName" id="chng_fncl_agc_nm"></span>]
+                                <span class="prdName" id="chng_prdt_nm"></span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" id="chng_acnt_no_pt" data-type="chng"></span>
+                            </p>
+                        </div>
+                        <div class="p_assess">
+                            <div class="p_deposit">
+                                <p>예상 입금액</p>
+                                <p><span class="value" id="dpst_mon_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="dpst_mon_pay_unit"><!-- 원 --></em>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-color" id="btnCaseDepositNotiConfirmClose"><span>확인</span></button>
+            </div>
+        </div> 
+    
+    <!-- //modal -->
+	</div>
+
+</section>
+<!-- //container-->    
+
+<th:block layout:fragment="f-script">
+<script src="/js/chart.v2.9.4.js"></script>
+<script src="/js/chart.plugin.annotation.js"></script>
+<script src="/js/waitProgress/WAITPRO04P01.js"></script>
+</th:block>

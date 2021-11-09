@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal bottom</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <p class="txt">이곳은 모달과 상관없이 컨텐츠 내용이 들어갈 부분입니다</p>
+    </div>
+
+
+    <div class="modal-page-wrap">
+        <div class="dim"></div>
+
+        <!-- case : 1 = w-02-02 계좌이전 진행중 -->
+        <!-- <div class="modal-page modal-position-bottom">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>계좌이전 진행중</span>
+                </p>
+                <p class="modal-page-txt">
+                    연금계좌 이체(계약이전) 과정 중입니다. 금융기관에서 계좌이체 여부를 확인하는 전화가 갈 예정입니다. <br> 
+                    꼭 받으셔야 이체가 진행됩니다. 경우에 따라 계좌번호를 확인하는 경우도 있습니다. <br> <br> 
+                    이미 확인을 하셨다면 처리 완료까지 기다려주십시요. <br> <br> 
+                    일반적인 경우 신청일 기준 2~3일 소요될 예정이며 이체하는 계좌에 해외펀드가 있는 경우 매도 후 현금화 과정이 최장 9일까지 소요될 수 있습니다.  
+                </p>
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span>개인연금</span>
+                        <span>계좌</span>
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img src="../../images/bank_circle_logo/294.png" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name"> 
+                                [<span class="bankName">KB증권</span>]
+                                <span class="prdName">미래보장증권고배당많이주세요계좌이름긴이름길고긴이름</span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" onclick="launch_toast('toast2')">123456-456789-45</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-normal"><span>닫기</span></button>
+            </div>
+        </div> -->
+
+        <!-- case : 2 = w-02-03 계좌이전 재신청 -->
+        <div class="modal-page modal-position-bottom">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>계좌이전 재신청</span>
+                </p>
+                <p class="modal-page-txt">
+                    연금계좌 이체(계약이전) 처리 과정 중 고객님께서 확인 전화를 받지 않았거나 
+                    계좌이체를 거절한 경우에는 신청했던 계좌이체가 취소됩니다. <br><br>
+
+                    이 경우 머플러는 2회에 걸쳐 자동으로 계좌이체 재신청 여부를 고객에게 확인합니다. 재신청 여부를 결정해 주십시요. 재신청 하시겠습니까?
+                </p>
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span>개인연금</span>
+                        <span>계좌</span>
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img src="../../images/bank_circle_logo/294.png" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name">
+                                [<span class="bankName">KB증권</span>]
+                                <span class="prdName">미래보장증권고배당많이주세요계좌이름긴이름길고긴이름</span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" onclick="launch_toast('toast2')">123456-456789-45</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="checkbox checkbox-bt">
+                    <input type="checkbox" id="agree1">
+                    <label for="agree1">
+                        <i class="check_ico"></i>
+                        <span>이전을 하지 않았습니다</span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-normal"><span>닫기</span></button>
+                <button class="bt bt-color"><span>이전 재실행</span></button>
+            </div>
+        </div>
+
+        <!-- case : 3 = w-02-04 계좌이전 불가 -->
+        <!-- <div class="modal-page modal-position-bottom">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>계좌이전 불가</span>
+                </p>
+                <p class="modal-page-txt">
+                    이전하는 계좌가 압류, 가압류, 질권 설정 등의 사유로 이체가 불가합니다. 가능한 상태가 되시면 계좌이체를 재신청하셔야 합니다.  
+                </p>
+
+                <div class="impossible">
+                    <p class="txt_2x">계좌이전이 불가능합니다</p>
+                </div>
+
+                <div class="checkbox checkbox-bt">
+                    <input type="checkbox" id="agree1">
+                    <label for="agree1">
+                        <i class="check_ico"></i>
+                        <span>해당 계좌의 이전을 취소합니다</span>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-normal"><span>닫기</span></button>
+            </div>
+        </div> -->
+        
+        <!-- case : 4 = w-02-05 해지안내 -->
+        <!-- <div class="modal-page modal-position-bottom">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>해지안내</span>
+                </p>
+                <p class="modal-page-txt">
+                    고객님께서 해지할 연금보험을 해당금융기관에서 직접 실행해야 합니다. <br> <br> 
+                    계약해지 후 자문안에 따른 해당계좌로 입금하시면 다음 과정이 진행될 예정입니다. 
+                </p>
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span>개인연금</span>
+                        <span>계좌</span>
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img src="../../images/bank_circle_logo/294.png" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name">
+                                [<span class="bankName">KB증권</span>]
+                                <span class="prdName">미래보장증권고배당많이주세요계좌이름긴이름길고긴이름</span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" onclick="launch_toast('toast2')">123456-456789-45</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox checkbox-bt">
+                    <input type="checkbox" id="agree5">
+                    <label for="agree5">
+                        <i class="check_ico"></i>
+                        <span>해지 후 입금을 하지 않겠습니다</span>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-color"><span>입금하기</span></button>
+            </div>
+        </div> -->
+
+        <!-- case : 5 = w-02-07 입금안내 -->
+        <!-- <div class="modal-page modal-position-bottom">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>입금안내</span>
+                </p>
+                <p class="modal-page-txt">
+                    자문 받으신 내용처럼 연금을 잘 관리하기 위해서 [입금금액]을 저축하셔야 합니다. <br>
+                    연금을 저축하면 마이머플러가 관리해 드립니다.
+                </p>
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span>개인연금</span>
+                        <span>계좌</span>
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img src="../../images/bank_circle_logo/294.png" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name">
+                                [<span class="bankName">KB증권</span>]
+                                <span class="prdName">미래보장증권고배당많이주세요계좌이름긴이름길고긴이름</span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" onclick="launch_toast('toast2')">123456-456789-45</span> 
+                            </p>
+                        </div>
+
+                        <div class="p_assess">
+                            <div class="p_deposit">
+                                <p>입금금액</p>
+                                <p><span>145,111,521</span>원</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-color"><span>연금저축 시작하기</span></button>
+            </div>
+        </div> -->
+
+    </div>
+    <!-- //modal -->
+
+        
+    <div id="toast2" class="toast toast_under">
+        <p class="toast_txt">
+            <span>계좌번호가 복사되었습니다</span>
+        </p>
+    </div>
+    <!-- //toast -->
+
+
+    <!-- jquery 01~04 모두 동일합니다-->
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function modalClose(){
+                $('.modal-page-wrap').hide();
+            }
+
+            $('.modal-page-btn button, .dim').on("click",modalClose);
+
+        });
+
+        //toast
+        function launch_toast(toastId) {
+            $(`#${toastId}`).addClass('show');
+            setTimeout(function(){ 
+                $(`#${toastId}`).removeClass('show');
+            }, 2950);
+        }
+    </script>
+</body>
+</html>

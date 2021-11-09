@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-10-02</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="javascript:history.back();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container e_10_02">
+        
+        <div class="untact_open_steps">
+            <ul>
+                <li><span>01</span></li>
+                <li><span>02</span></li>
+                <li><span>03</span></li>
+                <li><span>04</span></li>
+                <li><span>05</span></li>
+                <li><span>06</span></li>
+                <li><span>07</span></li>
+                <li class="is_active"><span>08</span></li>
+                <li><span>09</span></li>
+            </ul>
+        </div>
+
+        <h3 class="untact_instructions">
+            <span>고객님 [<span class="bk_name">국민은행</span>] 계좌로<br>
+                1원을 보내드렸습니다.</span>
+        </h3>
+        <p class="txt_2x"><span class="bk_num">123456-12-45400000</span></p>
+
+       
+        <div class="certi_num">
+            <input type="text" placeholder="인증번호 4자리 입력하기" class="input inp_with_btn">
+        </div>
+
+        <!-- 21-05-11 버튼 교체 -->
+        <div class="bt-wrap">
+            <button class="bt bt-color"><span>확인</span></button>
+        </div>
+
+    </div>
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+
+            // 입력창 키보드 + 고정버튼  
+            $('.inp_with_btn').each(function(){
+
+                $(this).bind("focus", function(){
+                    $(".btn_box").css("display", "none");
+                });
+
+                $(this).bind("blur",function(){
+                    $(".btn_box").css("display", "block");
+                });
+
+            });
+
+        });
+
+        (function($) {
+    $.fn.dSelectBox = function(options) {
+
+        var settings = {
+            isSelectTag: true,
+            eventType: 'click'
+        };
+        var opt = $.extend(settings, options);
+
+        return this.each(function() {
+            var $obj = $(this),
+                $input = $obj.find('input'),
+                $select = $obj.find('select'),
+                $vArea = $obj.find('.visible_area'),
+                $vAreaButton = $obj.find('button'),
+                $vAreaList = $obj.find('ul');
+
+            var $event = settings.eventType;
+            if ($event == 'click') {
+             
+                $vAreaButton.on({
+                    click: function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        console.log('button click');
+                        if ($(this).hasClass('on')) {
+                            $vAreaList.hide();
+                            $(this).removeClass('on');
+                        } else {
+                            $vAreaList.show();
+                            $(this).addClass('on');
+                        }
+                    }
+                });
+
+                $(document).on({
+                    click: function() {
+                        console.log('document click');
+                        $vAreaList.hide();
+                        $vAreaButton.removeClass('on');
+                    }
+                });
+            } else {
+                // mouseenter Event
+                $vArea.on({
+                    mouseenter: function() {
+                        $vAreaList.show();
+                        $(this).addClass('on');
+                    },
+                    mouseleave: function() {
+                        $vAreaList.hide();
+                    }
+                });
+            }
+
+            $vAreaList.find('li').on({
+                click: function() {
+                    var clickIdx = $(this).index(),
+                        clickTxt = $(this).text();
+                    $vAreaList.hide();
+                    //$vAreaButton.removeClass('on').text(clickTxt);
+                    $('#bankSelect').val(clickTxt);
+                    if (opt.isSelectTag) { // true false
+                        $select.children('option:selected').removeProp('selected');
+                        $select.children('option:eq(' + clickIdx + ')').prop('selected', true);
+                    }
+                }
+            });
+
+        });
+    };
+})(jQuery);
+
+$(function() {
+    $('.select_wrap').dSelectBox({
+        isSelectTag: true,
+        eventType: 'click'
+    });
+});
+    </script>
+
+</body>
+</html>

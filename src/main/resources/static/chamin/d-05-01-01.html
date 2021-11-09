@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d-05-01-01</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">투자성향분석</p>
+        </div>
+    </div>
+
+    <div class="container d_05_01_01">
+        <div class="survey_step">
+            <ul>
+                <li class="active"><span>01</span></li>
+                <li><span>02</span></li>
+                <li><span>03</span></li>
+                <li><span>04</span></li>
+                <li><span>05</span></li>
+        </div>
+
+        <div class="survey_question">
+            <ul class="box_r">
+                <li>
+                    <p><span>고객님의 수입원은?</span></p>
+                </li>
+                <li>
+                    <p><span>투자 예상 자금은 고객님의 전체 금융자산(부동산 제외) 중 어느 정도의 비중인가?</span></p>
+                </li>
+                <li>
+                    <p><span>다음 중 투자해본 상품은?<i>(중복 선택 가능)</i></span></p>
+                </li>
+                <li>
+                    <p><span>투자 가능 기간은?</span></p>
+                </li>
+                <li>
+                    <p><span>투자 원금에 손실이 발생할 경우 감수할 수 있는 손실 수준은?</span></p>
+                </li>
+                <li>
+                    <p><span>당신의 금융지식 수준은?</span></p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="survey_cklist">
+            <ul>
+                <li>
+                    <input type="radio" id="sv0101" name="sv01">
+                    <label for="sv0101">
+                        <p><span>현재 일정한 수입이 없음</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0102" name="sv01">
+                    <label for="sv0102">
+                        <p><span>현재 일정한 수입이 발생하고 있으나 향후 감소 또는 불안정 예상</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0103" name="sv01">
+                    <label for="sv0103">
+                        <p><span>현재 일정한 수입이 발생하고 있으며 향후 유지 또는 증가 예상</span></p>
+                    </label>
+                </li>
+            </ul>
+            <!-- //01 -->
+            <ul>
+                <li>
+                    <input type="radio" id="sv0201" name="sv02">
+                    <label for="sv0201">
+                        <p><span>10% 이내</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0202" name="sv02">
+                    <label for="sv0202">
+                        <p><span>10% 이상 ~ 20% 이내</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0203" name="sv02">
+                    <label for="sv0203">
+                        <p><span>20% 이상 ~ 30% 이내</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0204" name="sv02">
+                    <label for="sv0204">
+                        <p><span>30% 이상 ~ 40% 이내</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0205" name="sv02">
+                    <label for="sv0205">
+                        <p><span>40% 초과</span></p>
+                    </label>
+                </li>
+            </ul>
+            <!-- //02 -->
+            <ul>
+                <li>
+                    <input type="checkbox" id="sv0301">
+                    <label for="sv0301">
+                        <p><span>예적금, 국공채, MMF, CMA 등</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="checkbox" id="sv0302">
+                    <label for="sv0302">
+                        <p><span>채권형펀드, AA 이상 회사채 등</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="checkbox" id="sv0303">
+                    <label for="sv0303">
+                        <p><span>혼합형펀드, BBB 이상 회사채 등</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="checkbox" id="sv0304">
+                    <label for="sv0304">
+                        <p><span>주식형펀드, BBB 미만 회사채 등</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="checkbox" id="sv0305">
+                    <label for="sv0305">
+                        <p><span>주식투자 및 신용거래, 선물옵션, 파생상품 펀드 등</span></p>
+                    </label>
+                </li>
+            </ul>
+            <!-- //03 -->
+           
+            <ul>
+                <li>
+                    <input type="radio" id="sv0501" name="sv05">
+                    <label for="sv0501">
+                        <p><span>무슨 일이 있어도 투자원금은 보전되어야 한다. </span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0502" name="sv05">
+                    <label for="sv0502">
+                        <p><span>-10% 미만까지는 손실을 감수할 수 있을 것 같다. </span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0503" name="sv05">
+                    <label for="sv0503">
+                        <p><span>-20% 미만까지는 손실을 감수할 수 있을 것 같다.</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0504" name="sv05">
+                    <label for="sv0504">
+                        <p><span>기대수익이 높다면 위험이 높아도 상관하지 않는다. </span></p>
+                    </label>
+                </li>
+            </ul>
+            <!-- //04 -->
+            <ul>
+                <li>
+                    <input type="radio" id="sv0601" name="sv06">
+                    <label for="sv0601">
+                        <p><span><b>매우 낮은 수준</b>
+                            투자의사결정을 스스로 내려본 경험이 없는 정도</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0602" name="sv06">
+                    <label for="sv0602">
+                        <p><span><b>낮은 수준</b>
+                            주식과 채권의 차이를 구별할 수 있는 정도</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0603" name="sv06">
+                    <label for="sv0603">
+                        <p><span><b>높은 수준</b>
+                            투자할 수 있는 대부분의 금융상품의 차이를 
+                            구별할 수 있는 정도</span></p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="sv0604" name="sv06">
+                    <label for="sv0604">
+                        <p><span><b>매우 높은 수준</b>
+                            금융상품을 비롯하여 모든 투자대상 상품의 차이를 이해할 수 있는 정도</span></p>
+                    </label>
+                </li>
+            </ul>
+            <!-- //05 -->
+        </div>
+
+        <div class="btn_box">
+            <button class="btn btn_color02 btn_next"><span>다음</span></button>
+            <a href="d-06-01-01.html" class="btn btn_color02" onclick=""><span>결과보기</span></a>
+        </div>
+
+    </div>
+    <!-- //container-->
+
+    <!-- //footer-->
+
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            var svIndex=  $('.survey_step li.active').index();
+            function steps(){
+                $('.survey_question ul li').hide().eq(svIndex).show();
+                $('.survey_cklist ul').hide().eq(svIndex).show();
+
+                if(svIndex !== 4){
+                    $('.btn_box .btn:nth-child(1)').show().siblings().hide();
+                }else{
+                    $('.btn_box .btn:nth-child(1)').hide().siblings().show();
+                }
+            }
+            steps();
+            
+            $('.btn_next').click(function(){
+                var thisIndex = svIndex ++;
+                $('.survey_step li').removeClass('active').eq(thisIndex+1).addClass('active');
+                //var svIndex = thisIndex;
+                steps();
+            });
+        });
+    </script>
+</body>
+</html>

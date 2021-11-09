@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ob-01</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="head">
+            <a href="#" class="logo">
+                <span class="blind">MUFFLER</span>
+            </a>
+            <div class="head_right">
+                <a href="#" class="push active">
+                    <span class="blind">알림</span>
+                </a>
+                <a href="#" class="menu">
+                    <span class="blind">메뉴</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section>
+
+        <div class="container ob_01">
+
+            <!-- ob_title 삭제 -->
+
+            <!-- 아이콘 빠진 타이틀 추가-->
+            <div class="box"> 
+                <p class="txt_2x">고객님의 계좌에서 오픈뱅킹을 이용하여</p>
+                <p class="title_2x"><span>연금계좌로 월납입액을 이체합니다</span></p>
+            </div>
+
+            <div class="section">
+                <div class="section-inner">
+
+                    <h4 class="section-tit">출금계좌</h4>
+
+                    <div class="box_r">
+                        <div class="account">
+                            <div class="account-logo"><img src="../../images/bank_circle_logo/294.png" class="bank_ico"></div>
+                            <div class="account-title">
+                                <span class="account-title-name">카카오뱅크</span>
+                                <span class="account-title-number">0000-111-456789</span>
+                            </div>
+                            <div class="account-balance">
+                                <span class="account-balance-title">잔액</span>
+                                <div class="account-balance-value">
+                                    <span class="balance-value">100,000</span>
+                                    <em class="balance-currency">원</em>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="view_more">
+                        <a href="#">다른계좌 선택</a>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-inner">
+                    <h4 class="section-tit">입금하실 연금계좌</h4> <!-- 텍스트 변경 -->
+                    
+                    <ul class="product-list">
+                        <li class="product-item">
+                            <input type="checkbox" class="product-chk" id="prdChk">
+                            <label for="prdChk" class="product">
+                            
+                                <div class="account__head__name">
+                                    [<span class="bankName">KB증권</span>]
+                                    <span class="prdName">중요 IRP</span>
+                                </div>
+                                <div class="assess">
+                                    <div class="assess-item">
+                                        <div class="number">123456789-45-123</div>
+                                        <div class="assess-item-value">
+                                            <span class="title">월납입액</span>
+                                            <span class="value">145,111,521</span>
+                                            <em class="unit">원</em>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </label>
+                        
+                        </li>
+                        <!-- 1 -->
+
+                        <li class="product-item">
+                            <input type="checkbox" class="product-chk" id="prdChk02">
+                            <label for="prdChk02" class="product">
+                            
+                                <div class="account__head__name">
+                                    [<span class="bankName">KB증권</span>]
+                                    <span class="prdName">중요 IRP</span>
+                                </div>
+                                <div class="assess">
+                                    <div class="assess-item">
+                                        <div class="number">123456789-45-123</div>
+                                        <div class="assess-item-value">
+                                            <span class="title">월납입액</span>
+                                            <span class="value">145,111,521</span>
+                                            <em class="unit">원</em>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </label>
+                        
+                        </li>
+                        <!-- 2 -->
+
+                    </ul>
+                </div>
+
+                <div class="flex">
+                    <div class="flex-left">총 연금 입금액</div>  <!-- 텍스트 변경 -->
+                    <div class="flex-right">
+                        <span class="this-value">100,000</span>
+                        <em class="this-currency">원</em>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="bt-wrap">
+                <button class="bt bt-color"><span>입금실행</span></button> <!-- 텍스트 변경 -->
+            </div>
+
+        </div>
+
+    </section>
+    <!-- //container-->
+
+
+
+    <div class="modal-page-wrap">
+        <div class="dim"></div>
+
+        <div class="modal-page modal-position-bottom">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>출금계좌 선택</span> <!-- 텍스트수정 -->
+                </p>
+               
+                <div class="modal-page-account">
+                
+                    <ul class="product-list">
+                        <li class="product-item">
+                            <div class="product">
+                                <input type="radio" id="radio0" name="select" class="product-radio" checked>
+                                <label for="radio0">
+
+                                    <div class="account noLogo">
+                                        <div class="account-title">
+                                            <span class="account-title-name">카카오뱅크</span>
+                                            <span class="account-title-number">0000-111-456789</span>
+                                        </div>
+                                        <div class="account-balance start">
+                                            <span class="account-balance-title">잔액</span>
+                                            <div class="account-balance-value">
+                                                <span class="balance-value">100,000</span>
+                                                <em class="balance-currency">원</em>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="product-item">
+                            <div class="product">
+                                <input type="radio" id="radio1" name="select" class="product-radio" >
+                                <label for="radio1">
+                                    <div class="account noLogo">
+                                        <div class="account-title">
+                                            <span class="account-title-name">카카오뱅크</span>
+                                            <span class="account-title-number">0000-111-456789</span>
+                                        </div>
+                                        <div class="account-balance start">
+                                            <span class="account-balance-title">잔액</span>
+                                            <div class="account-balance-value">
+                                                <span class="balance-value">100,000</span>
+                                                <em class="balance-currency">원</em>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                </div>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-default bt-arr"><span>계좌등록</span><i class="ico arr_right"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- //modal -->
+
+    <!-- //footer-->
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function modalClose(){
+                $('.modal-page-wrap').hide();
+            }
+
+            $('.modal-page-btn button, .dim').on("click",modalClose);
+
+        });
+    </script>
+
+</body>
+</html>

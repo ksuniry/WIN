@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="38" viewBox="0 0 22 38">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#666;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.2px;opacity:.99}.cls-3{fill:#3ca455}
+        </style>
+    </defs>
+    <g id="icon_txt_ready" transform="translate(-1092 -2489)">
+        <text id="대기" fill="#333" font-family="SpoqaHanSans-Regular, SpoqaHanSans" font-size="12px" letter-spacing="-0.01em" transform="translate(1103 2523)">
+            <tspan x="-10.98" y="0">대기</tspan>
+        </text>
+        <g id="icon_ready" transform="translate(1055 1231)">
+            <path id="패스_734" d="M-2344.534-743.665v4.385l5.5 3.988 5.5-3.993v-4.385" class="cls-2" transform="translate(2387.034 2002.352)"/>
+            <path id="패스_735" d="M-2342.751-739.944l3.515 2.355 3.443-2.307a19.8 19.8 0 0 1-6.908-.048" class="cls-3" transform="translate(2387.232 2002.814)"/>
+            <path id="패스_736" d="M-2333.534-727.845v-4.385l-5.5-3.988-5.5 3.993v4.385" class="cls-2" transform="translate(2387.034 2003.276)"/>
+            <path id="패스_737" d="M-2335.183-730.761c0-.893-1.819-1.618-4.063-1.618s-4.064.725-4.064 1.618v.728h8.128z" class="cls-3" transform="translate(2387.164 2003.379)"/>
+            <rect id="사각형_357" width="16" height="2" fill="#333" rx="1" transform="translate(40 1258)"/>
+            <rect id="사각형_358" width="16" height="2" fill="#ccc" rx="1" transform="rotate(180 28 638.059)"/>
+        </g>
+    </g>
+</svg>

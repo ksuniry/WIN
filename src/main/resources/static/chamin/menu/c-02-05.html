@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c-02-05</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">공지사항</p>
+        </div>
+    </div>
+
+    <div class="container c_02_05">
+        
+        <div class="notice_wrap">
+
+            <ul class="notice_list">
+                
+                <li>
+                    <a href="#" class="no_visited">
+                        <div class="notice_top">
+                            <div class="list_tit">
+                            <p class="notice_txt"><span>날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                                날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                                날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                            </span></p>
+                            <span class="date">2020-10-01</span>
+                            </div>
+                            <i class="ico arr_right"></i>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <div class="notice_top">
+                            <div class="list_tit">
+                            <p class="notice_txt"><span>날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                                날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                                날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                            </span></p>
+                            <span class="date">2020-10-01</span>
+                            </div>
+                            <i class="ico arr_right"></i>
+                        </div>
+                        <img src="../../images/thumbnail_sample.jpg" alt="" class="thumb">
+                    </a>
+                </li>
+                                
+                <li>
+                    <a href="#">
+                        <div class="notice_top">
+                            <div class="list_tit">
+                            <p class="notice_txt"><span>날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                                날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                                날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                            </span></p>
+                            <span class="date">2020-10-01</span>
+                            </div>
+                            <i class="ico arr_right"></i>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <div class="notice_top">
+                            <div class="list_tit">
+                            <p class="notice_txt"><span>날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                                날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                                날씨는 변덕이지만 한결같이 찾아온 머플러 2.0 업데이트 안내
+                            </span></p>
+                            <span class="date">2020-10-01</span>
+                            </div>
+                            <i class="ico arr_right"></i>
+                        </div>
+                        <img src="../../images/thumbnail_sample.jpg" alt="" class="thumb">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+    <!-- //container-->
+
+    <!-- //footer-->
+    
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.result_ask').click(function(){
+                if($(this).children('i').hasClass('arr_down') === true){
+                    $(this).next().show();
+                    $(this).children('i').removeClass('arr_down').addClass('arr_up');
+                }else{
+                    $(this).next().hide();
+                    $(this).children('i').removeClass('arr_up').addClass('arr_down');
+                }
+            });
+
+            //clear search
+            $("#searchclear").click(function(){
+                $(".search").val('');
+            });
+
+            //더보기 스크롤
+            $(window).scroll(function() {           
+                var infScrolltop = $(document).scrollTop(); //스크롤 했을 때 top
+                var infHeightDoc = $(document).height(); //총 길이
+                var infHeightWin = $(window).height(); //윈도우 길이 
+
+                if (infScrolltop >= infHeightDoc - infHeightWin -1) {
+                    alert('더보기');
+                }
+
+            });
+         
+
+        });
+    </script>
+</body>
+</html>

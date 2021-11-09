@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="308" height="260" viewBox="0 0 308 260">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="사각형_1531" fill="#fff" stroke="#707070" d="M0 0h260v130a130 130 0 0 1-130 130A130 130 0 0 1 0 130V0z" transform="translate(50 250)"/>
+        </clipPath>
+        <filter id="사각형_1528" width="308" height="200" x="0" y="48" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur" stdDeviation="8"/>
+            <feFlood flood-opacity=".102"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <style>
+            .cls-5{fill:#fff}.cls-4{fill:#666}.cls-12{fill:none;stroke:#ff952b}
+        </style>
+    </defs>
+    <g id="그룹_3780" transform="translate(-26 -250)">
+        <circle id="타원_90" cx="130" cy="130" r="130" fill="#f6f6f6" transform="translate(50 250)"/>
+        <g id="마스크_그룹_1" clip-path="url(#clip-path)">
+            <g id="그룹_3773" transform="translate(0 8)">
+                <path id="패스_1434" d="M136.828 333.436H26.172A26.172 26.172 0 0 1 0 307.264V26.17A26.171 26.171 0 0 1 26.172 0h110.656A26.171 26.171 0 0 1 163 26.17v281.094a26.172 26.172 0 0 1-26.172 26.172" class="cls-4" transform="translate(99 243.193)"/>
+                <rect id="사각형_1530" width="145.125" height="315.562" class="cls-5" rx="15" transform="translate(107.937 252.131)"/>
+                <path id="패스_1435" d="M108.294 5.67L98.038 16.7h-62.37L25.41 5.67z" class="cls-4" transform="translate(113.647 246.461)"/>
+            </g>
+        </g>
+        <g filter="url(#사각형_1528)" transform="translate(26 250)">
+            <path id="사각형_1528-2" d="M0 0H260V152H0z" class="cls-5" transform="translate(24 69)"/>
+        </g>
+        <path id="사각형_1529" fill="#333" d="M0 0H260V50H0z" transform="translate(50 421)"/>
+        <text id="입금자명" fill="#666" font-family="SpoqaHanSans-Regular, SpoqaHanSans" font-size="15px" letter-spacing="-0.03em" transform="translate(97 364)">
+            <tspan x="-26.925" y="0">입금자명</tspan>
+        </text>
+        <text id="입금" fill="#666" font-family="SpoqaHanSans-Regular, SpoqaHanSans" font-size="14px" letter-spacing="-0.03em" transform="translate(277 363)">
+            <tspan x="-12.67" y="0">입금</tspan>
+        </text>
+        <text id="KB" fill="#333" font-family="SpoqaHanSans-Bold, SpoqaHanSans" font-size="20px" font-weight="700" letter-spacing="-0.03em" transform="translate(83 392)">
+            <tspan x="-13.37" y="0">KB</tspan>
+        </text>
+        <text id="_1_원" fill="#333" font-family="SpoqaHanSans-Regular, SpoqaHanSans" font-size="19px" letter-spacing="-0.03em" transform="translate(274 389)">
+            <tspan x="-15.96" y="0">1 원</tspan>
+        </text>
+        <text id="_" fill="#333" font-family="SpoqaHanSans-Bold, SpoqaHanSans" font-size="19px" font-weight="700" letter-spacing="-0.03em" transform="translate(120 395)">
+            <tspan x="-18.373" y="0">****</tspan>
+        </text>
+        <g id="타원_246" class="cls-12" transform="translate(97 370)">
+            <ellipse cx="23" cy="14.5" rx="23" ry="14.5"/>
+            <ellipse cx="23" cy="14.5" fill="none" rx="22.5" ry="14"/>
+        </g>
+        <path id="선_1269" d="M0 0L45.778 0" class="cls-12" transform="translate(97.722 398.541)"/>
+    </g>
+</svg>

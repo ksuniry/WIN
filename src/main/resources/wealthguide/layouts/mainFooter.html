@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<footer th:fragment="mainFooter">
+		<div class="load_wrap" id="loadBar" style="display:none">
+			<div class="loader">Loading...</div>
+		</div>
+		<div class="input_box" id="tokenBar" style="display:none">
+			<p><span class="notes">내용</span></p>
+            <textarea name="q_content" id="imsiToken" cols="30" rows="10" required></textarea>
+        </div>
+        <input type="hidden" id="accessToken" th:value="${params.accessToken}"/>
+		<input type="hidden" id="refreshToken" th:value="${params.refreshToken}"/>
+        <input type="hidden" id="operEnv" th:value="${sysInfo.operEnv}"/>
+        <input type="hidden" id="port" th:value="${sysInfo.port}"/>
+        <input type="hidden" id="lip" th:value="${sysInfo.lip}"/>
+        <input type="text" id="clip_target" class="copy_hidden" readonly="readonly"/>
+        
+		<div id="toast">
+	        <p class="toast_txt">
+	            <span id="toastTxt"></span>
+	        </p>
+	    </div>
+		<div class="modal_wrap" style="display:none;" id="divEventPop">
+	        <div class="dim"></div>
+	        <div class="modal event">
+	            <img src="../../images/event_210610.png" alt="마이머플러 출시기념 all free event" class="event-img">
+	            <p class="blind">
+	                9월까지 무료로 마이머플러를 이용하세요
+	                이벤트기간 21년 6월 1일~ 9월 30일 까지
+	                마이머플러 자문계약 고객 전원
+	                자문보수 무료
+	            </p>
+	            <a href="#" class="event-more" id="btnNoticeDetail"><span class="blind">자세히보기</span></a>
+	            <button class="event-todayHide" id="btnNoticeDeny"><span class="blind">다시보지않기</span></button>
+	            <button class="event-close"><span class="blind">닫기</span></button>
+	        </div>
+        </div>
+		<div class="modal_wrap" style="display:none; z-index:9999;" id="divProgressPop">
+	        <div class="dim load">
+        </div>
+        <div class="loading_wrap">
+            <div class="loading">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                    <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
+                      <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                      <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                      <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                    </rect>
+                    <rect x="8" y="10" width="4" height="10" fill="#333" opacity="0.2">
+                      <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                      <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                      <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                    </rect>
+                    <rect x="16" y="10" width="4" height="10" fill="#333" opacity="0.2">
+                      <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                      <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                      <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                    </rect>
+                </svg>
+            </div>
+            <p class="loading_txt" id="loadingTxt"><!-- 잠시만 기다려주세요 --></p>
+        </div>
+	</footer>
+	
+	<style>
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    padding: 15px 20px;
+    transform: translate(-50%, 10px);
+    border-radius: 30px;
+    overflow: hidden;
+    font-size: .8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s, visibility .5s, transform .5s;
+    background: rgba(0, 0, 0, .35);
+    color: #fff;
+    z-index: 10000;
+}
+
+#toast.reveal {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0)
+}
+	</style>
+	
+</html>

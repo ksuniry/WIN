@@ -1,0 +1,384 @@
+<!--
+* 파일명 		: PENSION12S01.html 
+* 업무		: 웰컴보드 > 신규 메인 화면 > 적립액 상세보기 (m-12-01)
+* 설명		: 적립액 상세보기 화면 
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.05.03
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+
+    <div class="container m_12_01">
+    	
+         <div class="tab-head">
+             <ul role="tablist" class="tab-label" id="tabList_12S01">
+                 <li class="tab-label-item"><a href="#tabPanel-1" role="tab" class="is_active">적립액 합계</a></li>
+                 <li class="tab-label-item"><a href="#tabPanel-2" role="tab">계좌별 적립액</a></li>
+             </ul>
+         </div>
+         
+         <div class="tab-panel" id="tabPanel-1" role="tabpanel">
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">
+                            <p>자문계좌 합계</p>
+                            <div class="switch_box">
+                                <span>장기추이</span>
+                             	<input type="checkbox" class="inp_switch" id="longTerm">
+                        		<label for="longTerm"></label>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-wrap">
+                            <div class="chart chart-line">
+                                <canvas id="lineChart2"></canvas>
+                            </div>
+                        </div>
+                        <p class="txt align_r">
+                            <span class="title">조회일 : </span>
+                            <span class="date" id="index_date"><!-- 2021-02-20 --></span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                	<div class="section-inner">
+                		 <div class="section-title"><em id="save_title"><!-- 적립 --></em>
+                		 	<div class="this-percent">
+                                <span class="percent-name lock" id="save_msg"></span>
+                            </div>
+                		 </div>
+
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit type02">A. 목표적립액</div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="save_target_amt_dis" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="save_target_amt_unit"></em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit type01">B. 현재평가액</div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="save_crnt_amt_dis" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="save_crnt_amt_unit"></em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit">적립금 차액(B-A)</div>
+                                <div class="assess-item-value totSave">
+                                    <span class="value" id="save_detail_amt_dis" data-addclass="true" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="save_detail_amt_unit"></em>
+                                </div>
+                            </div>
+
+                           <!--  <div class="assess-item">
+                                <div class="assess-item-tit">미달률(B/A-1)</div>
+                                <div class="assess-item-value">
+                                    <span class="value plus" id="save_detail_rate">47</span>
+                                    <em class="unit plus" id="save_detail_rate_unit" data-nounit="true">%</em>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <div class="section-title">
+                         	<span id="cause_title"><!-- 원인 --></span>
+                         	<div class="this-percent">
+                         		<span class="percent-name over" id="cause_msg"></span>
+                         	</div>
+						</div>
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit type02"><em id="cause_target_amt_title"></em><!-- C. 목표납입액, C. 연평균 기대수익률 --></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="cause_target_amt_dis" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="cause_target_amt_unit"></em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit type01"><em id="cause_crnt_amt_title"></em><!-- D. 현재납입액, D. 연평균 실제수익률 --></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="cause_crnt_amt_dis" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="cause_crnt_amt_unit"></em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit"><em id="cause_detail_amt_title"></em></div>
+                                <div class="assess-item-value totCause">
+                                    <span class="value" id="cause_detail_amt_dis" data-addclass="true" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="cause_detail_amt_unit"></em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="problem-box">
+                            <div class="section-title">제안
+                                <div class="this-percent">
+                                    <span class="percent-name" id="advice_title"><!-- 월 저축액 유지 --></span> 
+                                </div>
+                            </div>
+                            <p class="txt_2x">
+                                <span id="advice_msg"><!-- 미납입액을 납입하시면 목표선(<b>&mdash;</b>)으로 복귀할 수 있습니다. --></span>
+                            </p>
+                        </div>
+                	</div>
+                </div>
+            </div>
+            <!-- tab01 -->
+            
+            <div class="tab-panel" id="tabPanel-2" role="tabpanel">
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="box">
+                            <div class="select-wrap">
+                                <div class="select-droptitle" id="selectDropTitle">
+                                    <p>선택</p>
+                                </div>
+                                <ul class="select-dropmenu" id="acntListArea" data-idx=""></ul>
+                                <script id="_dumyResult" type="text/x-handlebars-template">
+                                    <li class="select-dropmenu-item" id="acntDetail_{{idx}}">    
+                                        [<span class="bankName">{{fncl_agc_nm}}</span>]
+                                        <span class="prdName">{{acnt_nm}}</span>
+                                    </li>
+                    			</script>
+            
+                                <i class="select-ico"></i>
+                            </div>
+                            
+                            <div class="switch_box">
+                                <span>장기추이</span>
+                                <input type="checkbox" class="inp_switch" id="acnt_longTerm">
+                                <label for="acnt_longTerm"></label>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-wrap">
+                            <div class="chart chart-line">
+                                <canvas id="lineChart3"></canvas>
+                            </div>
+                        </div>
+                        <p class="txt align_r">
+                            <span class="title">조회일 : </span>
+                            <span class="date" id="index_date"><!-- 2021-02-20 --></span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title"><em id="save_title"><!-- 적립 --></em>
+                            <div class="this-percent">
+                                <span class="percent-name" id="save_msg"><!-- 목표 미달 --></span>
+                            </div>
+                        </div>
+
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit type02">A. 목표적립액</div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="save_target_amt_dis" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="save_target_amt_unit"></em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit type01">B. 현재평가액</div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="save_crnt_amt_dis" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="save_crnt_amt_unit"></em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit">적립금 차액(B-A)</div>
+                                <div class="assess-item-value listSave">
+                                    <span class="value" id="save_detail_amt_dis" data-addclass="true" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="save_detail_amt_unit"></em>
+                                </div>
+                            </div>
+
+                           <!--  <div class="assess-item">
+                                <div class="assess-item-tit">미달률(B/A-1)</div>
+                                <div class="assess-item-value">
+                                    <span class="value plus">47</span>
+                                    <em class="unit plus">%</em>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <div class="section-title">
+                        	<span id="cause_title"><!-- 원인 --></span>
+                            <div class="this-percent">
+                                <span class="percent-name" id="cause_msg"><!-- 미납입금 --></span>
+                            </div>
+                        </div>
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit type02"><em id="cause_target_amt_title"></em><!-- C. 목표납입액, C. 연평균 기대수익률 --></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="cause_target_amt_dis" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="cause_target_amt_unit"></em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit type01"><em id="cause_crnt_amt_title"></em><!-- D. 현재납입액, D. 연평균 실제수익률 --></div>
+                                <div class="assess-item-value">
+                                    <span class="value" id="cause_crnt_amt_dis" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="cause_crnt_amt_unit"></em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit"><em id="cause_detail_amt_title"></em></div>
+                                <div class="assess-item-value listCasue">
+                                    <span class="value" id="cause_detail_amt_dis" data-addclass="true" data-nounit="true"><!-- 0 --></span>
+                                    <em class="unit" id="cause_detail_amt_unit"></em>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="problem-box">
+                            <div class="section-title">제안
+                                <div class="this-percent">
+                                    <span class="percent-name" id="advice_title"><!-- 월 저축액 유지 --></span> 
+                                </div>
+                            </div>
+                            <p class="txt_2x">
+                                <!-- <span>미납입액을 납입하시면 목표선(<b>&mdash;</b>)으로 복귀할 수 있습니다.</span> -->
+                                <span id="advice_msg"><!-- 미납입액을 납입하시면 목표선(<b>&mdash;</b>)으로 복귀할 수 있습니다. --></span>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box-gray">
+                <div class="box-gray-title">분석의 한계</div>
+                <div class="box-inner">
+                    <div class="bar_box left_bar">
+                        <p class="txt">
+                            적립액, 납입액, 중도인출액 등 분석의 기초가 되는 연금 데이타가 실시간으로 갱신되지 않을 수 있으며, 이 경우 조회일과 기초 데이타의 평가기준일 차이로 인해 발생하는 오차가 있을 수 있습니다. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+       <!--  <div class="section">
+            <div class="section-inner">
+                <div class="priceBox">
+                    <p class="priceBox-txt" id="noti_pay_amt_title">목표 대비<br>부족한 적립금액은</p>
+                    <p class="priceBox-price">
+                        <span class="priceBox-price-value" id="noti_pay_dis" data-space=" " data-nounit="true">188,000,000</span>
+                        <em class="priceBox-price-currency" id="noti_pay_unit">원</em>
+                    </p>
+                </div>
+
+                <h4 class="section-title">
+                    <p>목표 vs 실제 적립액</p>
+                    <div class="switch_box">
+                        <span>장기추이</span>
+                        <input type="checkbox" class="inp_switch" id="longTerm">
+                        <label for="longTerm"></label>
+                    </div>
+                </h4>
+
+                <div class="chart-wrap">
+                    <div class="chart-label">
+                        <p class="chart-label-item">실제적립액</p>
+                        <p class="chart-label-item">목표적립액</p>
+                    </div>
+                    <div class="chart chart-line">
+                        <canvas id="lineChart2"></canvas>
+                    </div>
+                </div>
+                
+                21-05-13 조회일 추가
+                <p class="txt align_r">
+                    <span class="title">조회일 : </span>
+                    <span class="date" id="index_date">2021-02-20</span>
+                </p>
+
+            </div>
+        </div> -->
+
+  <!--       <div class="section">
+            <div class="section-inner">
+                <ul class="txt-list">
+                    <li class="txt-list-item">
+                        <div class="txt-list-item-title">
+                            <p class="title" id="save_amt_title">적립</p>
+                            <p class="value"><span id="save_amt_msg">35 만원 미달</span></p>
+                        </div>
+                        <div class="txt-list-item-content">
+                            <p class="txt_2x">
+                                <em id="target_save_amt">(a)목표적립액: 437만원</em><br>
+                                <em id="crnt_save_amt">(b)현재평가액: 402만원</em> <br>
+                                <em id="save_detail">* 적립금 차액(b-a): -35만원, 미달률(b/a-1): -8.0%</em>
+                            </p>
+                        </div>
+                    </li>
+                   
+                    <li class="txt-list-item">
+                        <div class="txt-list-item-title">
+                            <p class="title" id="cause_amt_title">원인</p>
+                            <p class="value"><span id="cause_amt_msg">미납입금 40 만원</span></p>
+                        </div>
+                        <div class="txt-list-item-content">
+                            <p class="txt_2x">
+                                <em id="target_pay_amt">(c)목표납입액: 440만원</em><br>
+                                <em id="crnt_pay_amt">(d)현재납입액: 400만원</em><br>
+                                <em id="cause_detail">* 납입금 차액(d-c): -40만원</em>
+                            </p>
+                        </div>
+                    </li>
+                   
+                    <li class="txt-list-item">
+                        <div class="txt-list-item-title">
+                            <p class="title" id="ppsl_title">제안</p>
+                            <p class="value"><span id="ppsl_msg">월 저축액 유지</span></p>
+                        </div>
+                        <div class="txt-list-item-content">
+                            <p class="txt_2x" id="ppsl_detail">
+                                마이머플러 자문안대로 꾸준히 저축(납입)하시면 목표선(파란색)상으로 복귀 가능합니다.
+                            </p>
+                        </div>
+                    </li>
+                   
+
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <div class="section-inner">
+                <div class="section-tit">분석의 한계</div>
+                <p class="txt_2x">적립액, 납입액, 중도인출액 등 분석의 기초가 되는 연금 데이타가 실시간으로 갱신되지 않을 수 있으며, 이 경우 조회일과 기초 데이타의 평가기준일 차이로 인해 발생하는 오차가 있을 수 있습니다. </p>
+            </div>
+        </div> -->
+
+    </div>
+    <!-- //container-->
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/chart.v2.9.4.js"></script>
+<script src="/js/chart.plugin.annotation.js"></script>
+<script src="/js/pensionMng/PENSION12S01.js?v=1.0.0.2"></script>
+</th:block>

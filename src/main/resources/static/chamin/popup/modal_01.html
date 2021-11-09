@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal popup</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <p class="txt">이곳은 모달과 상관없이 컨텐츠 내용이 들어갈 부분입니다</p>
+    </div>
+
+
+    <div class="modal_wrap">
+        <div class="dim"></div>
+        <div class="modal"> <!-- modal = 일반 / modal+fail = 실패 / modal+complete = 성공 -->
+            <p class="modal_txt">
+                <span>등록하시겠습니까?</span>
+            </p>
+            <div class="modal_btn half">
+                <!-- modal 즉 일반일 때, 취소/확인 또는 확인버튼 가능 -->
+                <!-- 실패 또는 성공일 때, 닫기버튼 가능 / modal_03 04 참조 -->
+                <button class="cancel"><span>취소</span></button>
+                <button class="ok"><span>확인</span></button>
+            </div>
+        </div>
+    </div>
+    <!-- //modal -->
+
+
+    <!-- jquery 01~04 모두 동일합니다다-->
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function modalClose(){
+                $('.modal_wrap').hide();
+            }
+
+            $('.modal button, .dim').on("click",modalClose);
+
+        });
+    </script>
+</body>
+</html>

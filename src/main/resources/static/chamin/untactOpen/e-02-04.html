@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-02-04</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="javascript:history.back();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+    </div>
+
+
+    <div class="popup_wrap index01 e_02_03"> 
+
+        <div class="popup_content">
+           
+                
+            <div class="exclamation_mark">
+                <h2>죄송합니다.</h2>
+    
+                <h3>증권사 업무시간이 지나<br>
+                    연금자문이 불가능합니다.<br>
+                    영업시간 (평일 08:00 ~ 17:00)에<br>
+                    다시 실행해주세요.</h3>
+    
+                <p class="exc_txt">기존 자문내용에 대하여 영업시간에<br>알림메세지로 알려드리겠습니다.</p>
+                
+            </div>
+
+
+        </div>
+
+        <!-- 21-05-11 버튼 교체-->
+        <div class="modal-page-btn">
+            <button class="bt bt-color popup_close"><span>확인</span></button>
+        </div>
+
+    </div>
+    <!-- //popup -->
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        	debugger;
+         
+
+            $('.popup_close').click(function(){
+                $(this).parents('.popup_wrap').hide();
+            });
+
+        });
+    </script>
+
+</body>
+</html>

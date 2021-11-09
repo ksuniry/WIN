@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<html lang="ko">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html;application/json; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<%@ include file="/include/standard.jsp"%>
+
+    <title>웰컴보드</title>
+
+<script type="text/javascript">
+
+$(function() {  //onready
+	//여기에 최초 실행될 자바스크립트 코드를 넣어주세요
+	gfn_OnLoad();
+	
+	fn_init();
+	fn_srch();	// 상세조회
+	
+});
+
+// 화면내 초기화 부분
+function fn_init(){
+	//Active token 존재 여부 확인
+	//Active token 요청
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+// 호출부분 정의
+// 상세조회 조회
+function fn_srch(){
+	var inputParam = new Object();
+	inputParam.sid 				= "getDispProdOnMainDetail";
+	inputParam.url 				= "/product/getDispProdOnMainDetail.do";
+	inputParam.data 			= gfn_makeInputData($("#dataForm"));
+	//inputParam.callback			= "fn_callBack";
+	
+	gfn_Transaction( inputParam );
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////
+// 콜백 함수
+function fn_callBack(sid, result, data){
+	if (!result.success) {
+		alert(result.msg);
+		return;
+	}
+	
+	// fn_srch
+	if(sid == "getDispProdOnMainDetail"){
+		gfn_setDetails(result.ds_detail, $("#contents"));	// 지역내 상세 내용 셋업
+	}else if(sid = "saveDispProdOnMain"){
+		// 저장
+		alert("<spring:message code="success.request.msg"/>");
+		
+		var inputParam = gfn_makeInputData($("#findForm"));
+		gfn_commonGo("/product/dispProdOnMainList", inputParam, "N");
+	}
+}
+</script>
+</head>
+<body>
+	<input type="hidden" name="activeToken" id="activeToken" value=""/> 
+    <div class="wrap">
+
+        <header class="header">
+            <a href="#" class="logo">
+                <span>MUFFLER</span>
+            </a>
+        </header>
+        <!-- //header -->
+
+        <div class="con_wrap m_01">
+            <div class="con_inner">
+                <p class="txt_3x">
+                    <strong id=""><em>홍길동님</em></strong><br>
+                    <br>
+                    다시 오셨군요. 반가워요!<br>
+                    자문계약 후 납입하신 금액은<br>
+                    <strong class="color01" id="">300만원</strong>입니다.<br>
+                    <br>
+                    잘 하셨어요!!<br>
+                    <br>
+                    우리가 약속했던 앞으로 납입하셔야 할<br>
+                    총 연금 준비 금액은<br>
+                    <br>
+                    <strong class="color02" id="">25.000만원</strong>이며<br>
+                    이제까지 25% 달성하셨습니다.<br>
+                    <br>
+                    홍길동님의 은퇴까지 남은 시간은<br>
+                   <strong class="color02" id="">18년 3개월</strong> 입니다. 힘내세요!<br>
+                </p>
+
+                <div class="table_wrap">
+                    <p class="caption">이제까지 모은 연금 현황</p>
+                    <div class="thead">
+                        <div class="td">연금 종류</div>
+                        <div class="td">달성률</div>
+                        <div class="td right">금액</div>
+                    </div>
+                    <div class="tr">
+                        <div class="td">국민연금</div>
+                        <div class="td">52%</div>
+                        <div class="td right">26,222,555원</div>
+                    </div>
+                    <div class="tr">
+                        <div class="td">퇴직연금</div>
+                        <div class="td">2%</div>
+                        <div class="td right">2,555,452원</div>
+                    </div>
+                    <div class="tr">
+                        <div class="td">개인연금</div>
+                        <div class="td">45%</div>
+                        <div class="td right">45,222,450원</div>
+                    </div>
+                </div>       
+                <!-- //table -->
+                <div class="notice">
+                    <p>국민연금 조회 기준일 2020-08-11</p>
+                </div>
+
+                <div class="con_btn">
+                    <button class="btn btn_color">
+                        <span><a href="/html/m-03-02.html">매월 얼마나 연금 받을 수 있나요?</a></span>
+                    </button>
+
+                    <button class="btn btn_color2">
+                        <span><a href="/html/m-02-01.html">내 연금계좌 상세보기</a></span>
+                    </button>
+                    
+                    <button class="btn">
+                        <span><a href="/html/m-02-02.html">내 연금계좌 관리하기</a></span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- //wrap -->
+
+</body>
+</html>

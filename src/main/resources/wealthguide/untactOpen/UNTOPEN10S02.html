@@ -1,0 +1,61 @@
+<!--
+* 파일명 		: UNTOPEN10S02.html  ( e-10-02 )
+* 업무		: 비대면계좌개설 > 1원송금 입금자확인 
+* 설명		: 1원송금 입금자확인
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.12
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+	<div class="container e_10_02">
+        
+        <div class="untact_open_steps">
+            <ul>
+                <li><span>01</span></li>
+                <li><span>02</span></li>
+                <li><span>03</span></li>
+                <li><span>04</span></li>
+                <li><span>05</span></li>
+                <li><span>06</span></li>
+                <li><span>07</span></li>
+                <li class="is_active"><span>08</span></li>
+                <li><span>09</span></li>
+            </ul>
+        </div>
+
+        <h3 class="untact_instructions">
+            <span>고객님 [<span class="bk_name" id="i_amt_bnk_nm"><!-- 국민은행 --></span>] 계좌로<br>
+                1원을 보내드렸습니다.</span>
+        </h3>
+        <p class="txt_2x"><span class="bk_num" id="acnt_no_pat"><!-- 123456-12-45400000 --></span></p>
+        
+        
+        <!-- 변경 -->
+        <div class="certi_num">
+            <input type="number" class="input inp_with_btn" pattern="\d*" maxlength="4" id="nintv_sm_cnfr_cd"  placeholder="인증번호 4자리 입력하기" acno required title="송금확인코드">
+        </div>
+
+        <!-- 21-05-11 버튼 교체 -->
+        <div class="bt-wrap">
+            <button class="bt bt-color" id="btnNext"><span>확인</span></button>
+        </div>
+         <!-- 변경 -->
+         
+    </div>
+    <!-- //popup -->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/untactOpen/UNTOPEN10S02.js"></script>
+</th:block>

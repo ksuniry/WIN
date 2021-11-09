@@ -1,0 +1,177 @@
+<!--
+* 파일명 		: PENSEXE04S01.html
+* 업무		: 거래 (연금실행)> 마이머플러 자문안 > 실행절차안내 (t-04-01)
+* 설명		: 실행절차안내
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.04
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+
+	<div class="container t_04_01">
+  
+        <div class="box_color">
+           
+            <div class="procedure_slide" id="procedureSlide">
+                <div class="procedure_item">
+                    <div class="box_r">
+                        <h2 class="blind">연금저축 계좌이전</h2>
+                        <p class="txt_2x">
+                            연금저축계좌 이체과정은 통상 두개 이상의 금융기관으로부터 상호정보교환을 통해 아래와 같은 순서로 진행됩니다. 
+                            <br>
+                            <br>
+                            통상적으로 소요기간이 1~2일 필요하며 진행과정에서 <b>고객님에게 반드시 확인전화를 받으셔야 정상적으로 진행됩니다.</b>
+                        </p>
+                        <div class="diagram">
+                            <div class="top">
+                                <div class="input">
+                                    <p>계좌이전 의사<br>재확인(녹취 등)</p>
+                                    <span>방문생략</span>
+                                </div>
+                                
+                                <div class="joiner">
+                                    <p>가입자</p>
+                                </div>
+
+                                <div class="output">
+                                    <p>신규계좌 개설 및<br>이체신청</p>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <p class="origin_comp">기존<br>회사</p>
+                                <ul class="transfer">
+                                    <li>이체요청</li>
+                                    <li>이체예정/취소통보</li>
+                                    <li>이체접수/거절통보</li>
+                                    <li>환매 후 송금</li>
+                                </ul>
+                                <p class="new_comp">신규<br>회사</p>
+                            </div>
+                        </div>
+                        <p class="txt_2x">
+                            상기 순서대로 이체과정이 완료되면 마이머플러에서 제공한 포트폴리오 매입이 가능한 상태가 됩니다. 
+                            그 시점에서 판매사로부터 고객님에게 포트폴리오 매입을 위한 최종확인이 진행됩니다.
+                        </p>
+                    </div>
+                </div>
+                <!-- 01 -->
+
+                <div class="procedure_item t_04_02">
+                    <div class="box_r">
+                        <h2 class="blind">보유계좌 펀드환매</h2>
+                        <p class="txt_2x">마이머플러로부터 고객님이 이미 보유 중인 계좌에 제공한 포트폴리오는 아래와 같이 실행이 진행됩니다.</p>
+                        <div class="diagram">
+                            <ul class="steps">
+                                <li class="step_con"> 
+                                    <div class="step_head gray">환매</div>
+                                    <p>
+                                        <span>보유펀드<br>환매신청</span>
+                                    </p>
+                                </li>
+                                <li class="step_arr">▶</li>
+                                <li class="step_con"> 
+                                    <div class="step_head black">입금</div>
+                                    <p>
+                                        <span>환매자금입금<br>국내 D+3일<br>해외 D+7~9일</span>
+                                    </p>
+                                </li>
+                                <li class="step_arr">▶</li>
+                                <li class="step_con"> 
+                                    <div class="step_head orange">매수</div>
+                                    <p>
+                                        <span>마이머플러 제안<br>포트폴리오<br>실행</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <p class="txt_2x">상기 순서대로 펀드 환매자금이 모두 계좌로 입금이 되면 마이머플러에서 제공한 포트폴리오 매입이 가능한 상태가 됩니다. 그 시점에 판매사로부터 고객님에게 포트폴리오 매입을 위한 최종확인과정이 진행됩니다.</p>
+                    </div>
+                </div>
+                <!-- 02 -->
+
+                <div class="procedure_item t_04_03">
+                    <div class="box_r">
+                        <h2 class="blind">상품해지후 현금입금</h2>
+                        <p class="txt_2x">
+                            가장 복잡한 과정을 거쳐야 합니다.<br>
+                            특히 고객님께서 직접 해당회사를 내방해서 처리해야할 수도 있습니다.<br>
+                            아래와 같은 과정을 거쳐 진행됩니다.<br>
+                        </p>
+                        <div class="diagram">
+                            <ul class="steps">
+                                <li class="step_con">
+                                    <span>상품<br>해지</span>
+                                </li>
+                                <li class="step_arr">▶</li>
+                                <li class="step_con">
+                                    <span>이체<br>입금</span>
+                                </li>
+                                <li class="step_arr">▶</li>
+                                <li class="step_con">
+                                    <span>매수</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <p class="txt_2x">
+                            통상적으로 해지환급금이 천만원 이하인 경우 온라인으로 해지가 가능합니다. 
+                            반면 천만원 이상의 경우는 고객님께서 직접 해당 금융기관에 내방을 해야만 계약해지가 가능합니다. 
+                            이 부분은 직접 실행해주셔야 마이머플러 제안대로 자산배분이 진행됩니다.
+                            <br><br>
+                            온라인 또는 고객님께서 직접 내방을 통해 계약을 해지한 후 해당 자금을 마이머플러가 제안한 계좌로 이체하면 판매사로부터 고객님에게 포트폴리오 매입을 위한 최종확인과정이 진행됩니다.
+                        </p>
+                    </div>
+                </div>
+                <!-- 03 -->
+
+                <div class="procedure_item t_04_04">
+                    <div class="box_r">
+                        <h2 class="blind">신규계좌 현금입금</h2>
+                        <p class="txt_2x">국민연금 등 직역연금만 있고 다른 개인연금상품이 없는 고객님께서는 아래와 같이 포트폴리오 실행이 진행됩니다.</p>
+                        <div class="diagram">
+                            <ul class="steps">
+                                <li class="step_con"> 
+                                    <div class="step_head black">이체입금</div>
+                                    <p>
+                                        <span>마이머플러 제안 해당<br>계좌로 해당금액을<br>입금(이체)</span>
+                                    </p>
+                                </li>
+                                <li class="step_arr">▶</li>
+                                <li class="step_con"> 
+                                    <div class="step_head orange">매수</div>
+                                    <p>
+                                        <span>마이머플러 제안<br>포트폴리오<br>실행</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <p class="txt_2x">계좌로 포트폴리오 실행할 금액이 입금되면 판매사로부터 고객님에게 포트폴리오 매입을 위한 최종확인과정이 진행됩니다.</p>
+                    </div>
+                </div>
+                <!-- 04 -->
+            
+            </div>
+
+
+		</div>
+        <div class="bt-wrap">
+            <button class="bt bt-color" id="btnProcessGuideOk"><span>확인</span></button>
+        </div>
+        <!-- 버튼변경 21-05-10 -->
+    </div>      
+            
+    
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/pensionExecution/PENSEXE04S01.js"></script>
+</th:block>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-07-05</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+
+    <div class="header">
+        <div class="page_head">
+            <a href="javascript:history.back();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">연금 계좌이체 신청</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+
+        </div>
+    </section>
+
+    <div class="modal-page-wrap e_07_05">
+        <div class="dim"></div>
+
+        <div class="modal-page modal-position-bottom">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>연금계좌 연간 납입한도 확인</span>
+                </p>
+
+                <div class="modal-page-prd">
+                    <ul class="modal-acc-list">
+                        <li class="modal-acc-list-item">
+                            <p class="title">
+                                <span>연금저축계좌 이름 1</span>
+                            </p>
+                            <div class="limit-value">
+                                <span class="value">250</span><em class="unit">만원</em>
+                            </div>
+                        </li>
+                        <!--1-->
+        
+                        <li class="modal-acc-list-item">
+                            <p class="title">
+                                <span>연금저축계좌 이름 2</span>
+                            </p>
+                            <div class="limit-value">
+                                <span class="value">250</span><em class="unit">만원</em>
+                            </div>
+                        </li>
+                        <!--2-->
+
+                        <li class="modal-acc-list-item">
+                            <p class="title">
+                                <span>연금저축계좌 이름 3</span>
+                            </p>
+                            <div class="limit-value">
+                                <span class="value">250</span><em class="unit">만원</em>
+                            </div>
+                        </li>
+                        <!--3-->
+                    </ul>
+
+                    <div class="limit-total flex">
+                        <p class="title">총 한도(합계)</p>
+                        <div class="total-value">
+                            <span class="value">1000</span><em class="unit">만원</em>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 납입한도가 부족한 경우에만 보여지도록 -->
+                <div class="problem-box">
+                    <p class="problem-title problem-caution">
+                        <span>부족한 납입한도는 타금융기관 납입한도 감액 후 당사 마이머플러 앱을 통해 해당 계좌의 납입한도 증액 신청을 하셔야 합니다. </span>
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="modal-page-btn">
+                <button class="bt bt-normal"><span>재설정</span></button>
+                <button class="bt bt-color"><span>확인</span></button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function modalClose(){
+                $('.modal-page-wrap').hide();
+            }
+
+            $('.modal-page-btn button, .dim').on("click",modalClose);
+
+        });
+
+        //toast
+        function launch_toast(toastId) {
+            $(`#${toastId}`).addClass('show');
+            setTimeout(function(){ 
+                $(`#${toastId}`).removeClass('show');
+            }, 2950);
+        }
+    </script>
+
+</body>
+</html>

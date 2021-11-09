@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m-12-01</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <!-- case3 -->
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">적립액 상세보기</p>
+        </div>
+    </div>
+
+
+    <section>
+        <div class="container m_12_01">
+
+            <div class="tab-head">
+                <ul role="tablist" class="tab-label">
+                    <li class="tab-label-item"><a href="#tabPanel-1" role="tab" class="is_active">적립액 합계</a></li>
+                    <li class="tab-label-item"><a href="#tabPanel-2" role="tab">계좌별 적립액</a></li>
+                </ul>
+            </div>
+    
+            <div class="tab-panel" id="tabPanel-1" role="tabpanel">
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">
+                            <p>자문계좌 합계</p>
+                            <div class="switch_box">
+                                <span>장기추이</span>
+                                <input type="checkbox" class="inp_switch" id="aaaaa" checked>
+                                <label for="aaaaa"></label>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-wrap">
+                            <div class="chart chart-line">
+                                <canvas id="lineChart2"></canvas>
+                            </div>
+                        </div>
+                        <p class="txt align_r">
+                            <span class="title">조회일 : </span>
+                            <span class="date">2021-02-20</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">적립
+                            <div class="this-percent">
+                                <span class="percent-name over">목표 초과</span>
+                                <!-- 초과시 클래스 over
+                                    미달시 클래스 lock -->
+                            </div>
+                        </div>
+
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit type02">A. 목표적립액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">437</span>
+                                    <em class="unit">만원</em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit type01">B. 현재평가액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">437</span>
+                                    <em class="unit">만원</em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit">적립금 차액(B-A)</div>
+                                <div class="assess-item-value">
+                                    <span class="value minus">437</span>
+                                    <em class="unit minus">만원</em>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="section-title">원인
+                            <div class="this-percent">
+                                <span class="percent-name over">초과납입</span>
+                            </div>
+                        </div>
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit type02">C. 목표적립액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">437</span>
+                                    <em class="unit">만원</em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit type01">D. 현재평가액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">437</span>
+                                    <em class="unit">만원</em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit">적립금 차액(C-D)</div>
+                                <div class="assess-item-value">
+                                    <span class="value plus">437</span>
+                                    <em class="unit plus">만원</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="problem-box">
+                            <div class="section-title">제안
+                                <div class="this-percent">
+                                    <span class="percent-name">월 저축액 유지</span> 
+                                </div>
+                            </div>
+                            <p class="txt_2x">
+                                <span>미납입액을 납입하시면 목표선(<b>&mdash;</b>)으로 복귀할 수 있습니다.</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- tab01 -->
+    
+            <div class="tab-panel" id="tabPanel-2" role="tabpanel">
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="box">
+                            <div class="select-wrap">
+                                <div class="select-droptitle">
+                                    <p>타이틀</p>
+                                </div>
+                                <ul class="select-dropmenu">
+                                    <li class="select-dropmenu-item">    
+                                        [<span class="bankName">KB증권</span>]
+                                        <span class="prdName">개인IRP</span>
+                                    </li>
+            
+                                    <li class="select-dropmenu-item">    
+                                        [<span class="bankName">KB증권</span>]
+                                        <span class="prdName">신연금저축</span>
+                                    </li>
+            
+                                    <li class="select-dropmenu-item">    
+                                        [<span class="bankName">KB증권</span>]
+                                        <span class="prdName">평생든든뭐시기</span>
+                                    </li>
+                                </ul>
+            
+                                <i class="select-ico"></i>
+                            </div>
+                            
+                            <div class="switch_box">
+                                <span>장기추이</span>
+                                <input type="checkbox" class="inp_switch" id="aaaaa" checked>
+                                <label for="aaaaa"></label>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-wrap">
+                            <div class="chart chart-line">
+                                <canvas id="lineChart3"></canvas>
+                            </div>
+                        </div>
+                        <p class="txt align_r">
+                            <span class="title">조회일 : </span>
+                            <span class="date">2021-02-20</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">적립
+                            <div class="this-percent">
+                                <span class="percent-name lock">목표 미달</span>
+                            </div>
+                        </div>
+
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit type02">A. 목표적립액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">437</span>
+                                    <em class="unit">만원</em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit type01">B. 현재평가액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">437</span>
+                                    <em class="unit">만원</em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit">적립금 차액(B-A)</div>
+                                <div class="assess-item-value">
+                                    <span class="value minus">437</span>
+                                    <em class="unit minus">만원</em>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="section-title">원인
+                            <div class="this-percent">
+                                <span class="percent-name lock">미납입금</span>
+                            </div>
+                        </div>
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit type02">C. 목표적립액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">437</span>
+                                    <em class="unit">만원</em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit type01">D. 현재평가액</div>
+                                <div class="assess-item-value">
+                                    <span class="value">437</span>
+                                    <em class="unit">만원</em>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit">적립금 차액(C-D)</div>
+                                <div class="assess-item-value">
+                                    <span class="value plus">437</span>
+                                    <em class="unit plus">만원</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="problem-box">
+                            <div class="section-title">제안
+                                <div class="this-percent">
+                                    <span class="percent-name">월 저축액 유지</span> 
+                                </div>
+                            </div>
+                            <p class="txt_2x">
+                                <span>미납입액을 납입하시면 목표선(<b>&mdash;</b>)으로 복귀할 수 있습니다.</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="box-gray">
+                <div class="box-gray-title">분석의 한계</div>
+                <div class="box-inner">
+                    <div class="bar_box left_bar">
+                        <p class="txt">
+                            적립액, 납입액, 중도인출액 등 분석의 기초가 되는 연금 데이타가 실시간으로 갱신되지 않을 수 있으며, 이 경우 조회일과 기초 데이타의 평가기준일 차이로 인해 발생하는 오차가 있을 수 있습니다. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+
+    <!-- chart.js -->
+    <script src="../../js/chart.v2.9.4.js"></script>
+    <script src="../../js/chart.plugin.annotation.js"></script>
+
+
+    <script>
+        $(document).ready(function(){
+            
+            //Tab
+            $('.tab-label-item:nth-child(1) a').addClass('is_active');
+            $('#tabPanel-1').show();
+
+            $(".tab-label-item a").on("click", function(e){
+                e.preventDefault();
+
+                //label
+                var target = $(this).attr("href");
+                $(".tab-label-item a").removeClass("is_active");
+                $(this).addClass("is_active");
+
+                //panel
+                $(".tab-panel").hide();
+                $(target).show();
+            });
+
+            //select
+            const $select = $('.select-wrap');
+            const $selectTitle = $('.select-droptitle');
+
+            $(document).mouseup(e => {
+                if (!$select.is(e.target) && $select.has(e.target).length === 0){
+                    selectRemove();
+                }
+            });
+            $selectTitle.on('click', () => {
+                //$selectTitle.toggleClass('active');
+                if(!$selectTitle.hasClass('active')){
+                    $selectTitle.addClass('active');
+                    $(".select-ico").addClass("arr_up");
+                    $(".select-dropmenu").addClass("showMenu");
+                    $(".select-dropmenu > li").click(function(){
+                        $(".select-droptitle > p").text($(this).text());
+                        selectRemove();
+                    });
+                }else{
+                    selectRemove();
+                };
+            });
+            function selectRemove(){
+                $selectTitle.removeClass('active');
+                $(".select-dropmenu").removeClass("showMenu");
+                $(".select-ico").removeClass("arr_up");
+            }
+        });
+
+
+        //bg color
+        const ctx4 = document.getElementById('lineChart2').getContext('2d');
+        const ctx5 = document.getElementById('lineChart3').getContext('2d');
+
+        var today = ['24-01-31'];
+        var annotations = today.map(function(old) {
+            return {
+                type: 'line',
+                id: 'dashLine',
+                mode: 'vertical',
+                scaleID: 'x-axis-0',
+                yScaleID: 'y-axis-0',
+                value: old,
+                borderColor: '#333333',
+                borderWidth: 1,
+                borderDash:[2,3],
+                yMin: 0,
+                yMax: 100,
+                label: {
+                    enabled: false,
+                    position: "top",
+                    content: '현재',
+                    backgroundColor:'rgb(102, 102, 102)',
+                    fontSize:11
+                }
+            }
+        });
+
+        //data4
+        var data4={
+            labels: ['21-01-31','22-01-31','23-01-31','24-01-31','25-01-31','26-01-31','27-01-31','28-01-31','29-01-31'],
+            datasets: [{
+                label: '목표적립액',
+                data: [50,50,100,100,150,200,220,220,220],
+                borderColor: '#ff952b', // 21-06-14 수정
+                borderWidth: 2,
+                backgroundColor: 'transparent',
+                pointBackgroundColor: 'transparent',
+                pointBorderColor: 'transparent',
+                pointHoverBackgroundColor: 'rgba(0,0,0, .5)',
+                borderWidth:2,
+                lineTension:0,
+                },{
+                label: '실제적립액',
+                data: [10,40,30,120],
+                borderColor: '#28d150', // 21-06-14 수정
+                borderWidth: 2,
+                backgroundColor: 'transparent',
+                pointBackgroundColor: 'transparent',
+                pointBorderColor: 'transparent',
+                pointHoverBackgroundColor: 'rgba(0,0,0, .5)',
+                borderWidth:2,
+                lineTension:0,
+                }
+            ]
+        }
+
+        var options4 ={
+            elements: {
+                // point:{
+                //     radius: 0
+                // },
+                line: {
+                    tension: 0
+                }
+            },
+            layout: { 
+                padding: { 
+                    top:10, 
+                    left: 0, 
+                    bottom: 10, 
+                    right: 0 
+                } 
+            },
+
+            responsive: true,
+            aspectRatio:3/2,
+            tooltips: {
+                enabled: false
+            },
+            legend: {
+                display: false,
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    ticks: {
+                        fontColor:"#999999",
+                        fontSize:10,
+                        padding:5,
+                        autoSkip: false,
+                        maxRotation: 90,
+                        minRotation: 90
+                    },
+                    gridLines:{
+                        color:'#dddddd'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        fontColor:"#999999",
+                        fontSize:10,
+                        min:0,
+                        max:300,
+                        stepSize:50,
+                    },
+                    gridLines:{
+                        color:'#dddddd'
+                    }
+                }]
+            },
+            animation: {
+                easing: "easeInOutBack"
+            },
+            annotation: {
+                drawTime: 'afterDatasetsDraw',
+                annotations: annotations
+            }
+        }
+
+        
+        const originalLineDraw = Chart.controllers.line.prototype.draw;
+        Chart.helpers.extend(Chart.controllers.line.prototype, {
+            draw : function() {
+
+                originalLineDraw.apply(this, arguments);
+                var chart = this.chart;
+                var ctx = chart.chart.ctx;
+
+                var now = chart.options.annotation.annotations[0].value;
+                // 위 annotation의 value
+                   
+                var xaxis = chart.scales['x-axis-0'];
+                var yaxis = chart.scales['y-axis-0'];
+ 
+                //rounded corner
+                CanvasRenderingContext2D.prototype.roundedRectangle = function(x, y, width, height, rounded) {
+                    const radiansInCircle = 2 * Math.PI
+                    const halfRadians = (2 * Math.PI)/2
+                    const quarterRadians = (2 * Math.PI)/4  
+                    
+                    // top left arc
+                    this.arc(x , y , 0, -quarterRadians, halfRadians, true)
+                    // line from top left to bottom left
+                    this.lineTo(x, y + height)
+                    // bottom left arc  
+                    this.arc( x -1, height + y, 0, halfRadians, quarterRadians, true)  
+                    // line from bottom left to bottom right
+                    this.lineTo(x + width - rounded, y + height)
+                    // bottom right arc
+                    this.arc(x + width - rounded, y + height - rounded, rounded, quarterRadians, 0, true)  
+                    // line from bottom right to top right
+                    this.lineTo(x + width, y + rounded)  
+                    // top right arc
+                    this.arc(x + width - rounded, y + rounded, rounded, 0, -quarterRadians, true)  
+                    // line from top right to top left
+                    this.lineTo(x + rounded, y)  
+                }
+
+                ctx.save();
+
+                ctx.beginPath();
+                ctx.fillStyle = "#333333";
+                ctx.roundedRectangle(xaxis.getPixelForValue(now), 30 , 37, 20, 10);  
+                ctx.fill();
+
+                ctx.font = "bold 12px Arial";
+                ctx.fillStyle = "#ffffff";
+                ctx.textAlign = "center";
+                ctx.fillText("현재", xaxis.getPixelForValue(now) + 17, 45);  
+
+            }
+        });
+
+        
+        Chart.pluginService.register(originalLineDraw);
+
+        //자문계좌 적립액 차트
+        new Chart(ctx4, {
+            type :'line',
+            data : data4,
+            options : options4
+        });
+
+        new Chart(ctx5, {
+            type :'line',
+            data : data4,
+            options : options4
+        });
+
+
+             
+    </script>
+
+</body>
+</html>

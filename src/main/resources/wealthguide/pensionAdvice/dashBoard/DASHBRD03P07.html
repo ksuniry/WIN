@@ -1,0 +1,76 @@
+<!--
+* 파일명 		: DASHBRD03P07.html (D-03-07)
+* 업무		: 마이머플러플랜 3단계 >> 은퇴주기별 3단계
+* 설명		: 마이머플러 연금자산관리 은퇴주기별 3단계  팝업
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.03.17
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/popLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="P0307-content">
+
+	<div class="popup_wrap d_03_07 index02">
+        <div class="popup_header">
+        	<!-- 21-05-17 타이틀 추가 -->
+            <h2><span>은퇴주기별 3단계</span></h2>
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+        <div class="popup_content">
+
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">은퇴주기별 3개 구간</div>
+                    <p class="txt_2x">
+                        100세 시대에 은퇴 후 30~40년 간 노후생활을 하게 됩니다. 마이머플러는 은퇴기간을 3개의 구간으로 나누어 각 구 간에 맞는 장기 연금자산관리안을 제공합니다.
+                    </p>
+                    <div class="box_r">
+                        <div class="box-inner">
+                            <h4 class="title_l"><span>1기. 소득 크레바스</span></h4>
+                            <p class="txt">
+                                은퇴시점부터 국민연금이 개시되기 전까지의 소득단절구간을 의미합니다. 은퇴시점에 따라 사람마다 차이는 나지만 통상적으로 55~65세 구간에서 발생합니다.
+                            </p>
+        
+                            <h4 class="title_l"><span>2기. 적극적 노후생활기</span></h4>
+                            <p class="txt">
+                                투자기간이 장기인 경우 주식형 자산 비중을 높이고, 수령시점이 가까워지고 투자기간이 줄어들면 채권형 자산 비중을 높여, 연금자산이 최대한 안전하면서 높은 수익률이 달성되도록 해줍니다.
+                            </p>
+        
+                            <h4 class="title_l"><span>3기. 안전한 노후생활기</span></h4>
+                            <p class="txt">
+                                머플러는 절세효과를 누리면서 운용기간을 늘려 연금소득을 증대시키기 위해 은퇴기간을 3개 구간으로 나누어 관리합니다. 각 구간별 최적의 연금상품을 배치하고 세금까지 고려하여 더 많은 연금을 수령하실 수 있도록 해줍니다. 
+                            </p>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">구간별 상품(계좌) 배정</div>
+                    <p class="txt_2x">마이머플러는 자문대상 상품(또는 계좌)의 정보를 분석하여 연금상품별 법적요건을 충족하는 동시에 절세효과 및 위험대비 수익률을 최적화할 수 있는 상품 또는 계좌를 은퇴구간별로 배정합니다.</p>
+                </div>
+            </div>
+
+            <!-- 21-05-17 버튼 교체 -->
+            <div class="modal-page-btn">
+                <button class="bt bt-color" onclick="javascript:gfn_closePopup();"><span>확인</span></button>
+            </div>
+
+      
+        </div>
+    </div>
+    <!-- //popup -->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/pensionAdvice/dashBoard/DASHBRD03P07.js"></script>
+</th:block>

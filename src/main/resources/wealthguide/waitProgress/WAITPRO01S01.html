@@ -1,0 +1,355 @@
+<!--
+* 파일명 		: WAITPRO01S01.html
+* 업무		: 연금대기 메인화면(W-01-01)
+* 설명		: 연금대기 메인화면
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.04.26
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+
+	<div class="container w_01_01">
+
+        <div class="box">
+            <div class="box-inner">
+                <div class="left">
+                    <div class="title_2x">자문안 실행하기</div>
+                    <p class="txt"><span class="date" id="approval_date_msg"></span></p>
+                    
+                </div>
+                <div class="right">
+                    <div class="title_2x"><span class="value" id="num_unexec"><!-- 3 --></span><span class="unit">건</span></div>
+                    <p class="txt"><span id="advc_exe_status_msg"><!-- 실행 중 --></span></p>
+                </div>
+            </div>
+        </div>
+		
+		<!-- 본문 리스트 영역 시작 -->
+		<div id="ulUnexecList">
+		</div>
+		<!-- 본문 리스트 영역 끝 -->
+		
+		
+		<script id="_dumyUnexecList" type="text/x-handlebars-template">
+		<div class="section" id="unexec_{{idx}}">
+            <div class="section-link-top tooltip-wrap">
+                <div class="title">
+					<p class="section-link-name-bold"><span>{{mTitle}}</span></p>
+			{{#ifCond acnt_status 'indexOf' '|26|'}}
+					<p class="section-link-name-bold"><span>매수주문 승인하기</span></p>
+			{{/ifCond}}
+			{{#ifCond acnt_status 'indexOf' '|25|'}}
+					<p class="section-link-name-bold">총<span class="value">{{tot_mon_pay_dis}}</span><em class="unit">{{tot_mon_pay_unit}}</em></p>
+					<i class="ico question" id="btnTooltip_{{idx}}" data-idx="{{idx}}"></i>
+					<div class="tooltip" id="tootip_{{idx}}">
+                        <div class="tooltip-txt">
+                            <div class="assess">
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">자문안 제안 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value">{{orgn_reserved_dis}}</span>
+                                        <em class="unit">{{orgn_reserved_unit}}</em>
+                                    </div>
+                                </div>
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">자문안 월적립액(누적)</div>
+                                    <div class="assess-item-value">
+                                        <span class="value">{{tot_mon_pay_dis}}</span>
+                                        <em class="unit">{{tot_mon_pay_unit}}</em>
+                                    </div>
+                                </div>
+                                    <div class="assess-item">
+                                    <div class="assess-item-tit">실제 납입한 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value">{{crnt_pay_dis}}</span>
+                                        <em class="unit">{{crnt_pay_unit}}</em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="assess">
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">입금해야 할 합계 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value">{{must_pay_dis}}</span>
+                                        <em class="unit">{{must_pay_unit}}</em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+			{{/ifCond}}
+                </div>
+				<a href="javascript:void(0);" class="section-link" id="btnAdviceDetail_{{idx}}" data-idx="{{idx}}">
+                    <span class="section-link-name">자문안 보기</span>
+                    <i class="ico arr_right"></i>
+                </a>
+            </div>
+			
+			<!-- 중단 -->
+			<div class="section-inner">
+				<!-- 중단 Text -->
+                <div class="prd-head">
+                    <p class="prd-range">
+                        <span class="value">{{section_info}}</span>
+                    </p>    
+                    <span class="prd-name">{{chng_acnt_nm}}</span>
+                </div>
+				<!--// 중단 Text -->
+
+				<!-- 중단 img -->
+				<div class="prd_list__item__view">
+ 					<div class="acc_before"><!-- 기존  -->
+                        <img src="{{imgSrc_1}}" class="bank_ico">
+                        <span>{{imgTitle_1}}</span>
+                    </div>
+			<!-- 로고 2개  -->
+			{{#ifCond acnt_status 'indexOf' '|14|15|21|23|25|26|'}}
+					<div class="arr_wrap">
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#00f" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                    </div>
+			<!-- 로고 3개  -->
+			{{else}}
+					<div class="arr_wrap min"> 
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                    </div>
+                    <div class="acc_after">
+                        <img src="{{imgSrc_2}}" class="bank_ico">
+                        <span>{{imgTitle_2}}</span>
+                    </div> 
+                    <div class="arr_wrap min">
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                        <div class="arr_item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                        </div>
+                    </div>
+			{{/ifCond}}
+					<div class="acc_after"><!-- 변경  -->
+                        <img src="{{imgSrc_3}}" class="bank_ico">
+                        <span>{{imgTitle_3}}</span>
+                    </div>
+				</div>
+				<!--// 중단 img -->
+
+				<!-- 중단 박스 -->
+				<div class="problem-box">
+			{{#ifCond acnt_status 'indexOf' '|14|21|'}}	<!-- 타이틀이 있는경우 -->
+					<div class="title_l tooltip-wrap"><span>{{mBoxTitle}}</span><i class="ico info big" id="btnCallPopup_{{idx}}" data-idx="{{idx}}"></i></div>
+			{{/ifCond}}
+					<p class="problem-title problem-x">
+                        <span>{{{mBoxMsg}}}</span>
+                    </p>
+			{{#ifCond acnt_status 'indexOf' '|05|15|16|19|21|23|24|25|26|27|'}} <!-- 버튼이 있는경우 -->
+                    <div class="problem-bt-wrap">
+                        <button class="bt problem-bt-color" id="btnBox_{{idx}}" data-idx="{{idx}}"><span>{{mBtnTitle}}</span></button>
+                    </div>
+			{{/ifCond}}
+				</div>
+				<!--// 중단 박스 -->
+			</div>
+			<!--// 중단  -->
+
+		</div>
+		</script>
+		
+      
+        <div class="box-gray">
+            <div class="box-gray-title">안내</div>
+            <div class="box-inner">
+                <div class="bar_box left_bar">
+                    <p class="txt">
+                        이체·입금·매도주문 등이 완료되면 매수주문을 확인하는 내용이 안내될 예정입니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+	    
+	    <!-- 하단 모달창 영역 시작 pop2 -->
+	    <div class="modal-page-wrap" style="display:none;" id="w0101Pop2">
+        <div class="dim"></div>
+
+        <div class="modal-page modal-position-bottom w_01_01_pop_02">
+
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <i class="ico warn"></i><span>유의사항</span>
+                </p>
+                <p class="modal-page-txt">
+                    연금계좌 이전이 진행 중입니다. 이전하는 금융기관은 전화 통화를 통해 계좌 이전 여부를 확인합니다. 경우에 따라 이전하는 계좌의 계좌번호를 확인하는 경우도 있습니다. 이미 전화를 받고 확인한 경우 처리 완료까지 기다려주십시오.
+                    <br><br>
+                    일반적인 경우 신청일 기준 2~3일 소요될 예정이며 이체하는 계좌에 해외펀드가 있는 경우 매도 후 현금화 과정이 최장 9일까지 소요될 수 있습니다.
+                </p>
+
+                <p class="modal-page-title">
+                    <span>이전하는 계좌</span>
+                </p>
+
+                <div class="box_r">
+                    <div class="account">
+                        <div class="account-logo"><img id="pop2_imgSrc" src="/images/bank_circle_logo/294.png" class="bank_ico"></div>
+                        <div class="account-title">
+                            <span class="account-title-name" id="orgn_fncl_agc_nm"><!--카카오뱅크 --></span>
+                            <span class="account-title-number" id="orgn_acnt_no_pt"><!--0000-111-456789 --></span>
+                        </div>
+                        <div class="account-balance">
+                            <span class="account-balance-title">예금주</span>
+                            <div class="account-balance-value">
+                                <span class="balance-value" id="pop2_acnt_holder_nm"><!--마연금--></span>
+                            </div>
+                        </div>
+                        <div class="account-balance">
+                            <span class="account-balance-title">입금금액</span>
+                            <div class="account-balance-value">
+                                <span class="balance-value" id="orgn_reserved_dis" data-nounit="true"><!--100,000--></span>
+                                <em class="balance-currency" id="orgn_reserved_unit"><!-- 원 --></em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-color" id="pop2Close"><span>닫기</span></button>
+            </div>
+            
+        </div>
+    </div>         
+    <!-- 하단 모달창 영역 끝 pop2 -->
+    
+    <!-- 하단 모달창 영역 시작 pop3 -->
+    <div class="modal-page-wrap" style="display:none;" id="w0101Pop3">
+        <div class="dim"></div>
+
+        <div class="modal-page modal-position-bottom w_01_01_pop_03">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>계좌이전 재신청</span>
+                </p>
+                <p class="modal-page-txt">
+                    계좌이전 여부를 확인하는 전화를 받지 않았거나 계좌이전을 거부한 경우 신청했던 계좌이전이 최소 됩니다. 아래 재신청을 선택하여 이전신청을 하시면 됩니다.
+                </p>
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span id="acnt_type_nm"><!-- 개인연금 --></span>
+                        <!-- <span id="pop3_section_info">1기</span> -->
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img src="/images/bank_circle_logo/294.png" id="pop3_imgSrc" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name">
+                                [<span class="bankName" id="orgn_fncl_agc_nm"><!-- KB증권 --></span>]
+                                <span class="prdName" id="orgn_acnt_nm"><!-- 미래보장증권고배당많이주세요 --></span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" id="orgn_acnt_no_pt" data-type="orgn"><!-- 123456-456789-45 --></span>
+                            </p>
+
+                            <div class="p_assess">
+                                <div class="p_assess_deposit">
+                                    <p>예상 이전액</p>
+                                    <p><span class="value" id="orgn_reserved_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                        <em class="unit" id="orgn_reserved_unit"><!-- 원 --></em>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+               
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-normal" id="pop3Close"><span>닫기</span></button>
+                <button class="bt bt-color" id="btnRetryTrans"><span>이전 재실행</span></button>
+            </div>
+        </div>
+
+    </div>
+    <!-- 하단 모달창 영역 끝 pop3 -->
+    
+    <!-- KB키패드 시작 -->
+        <!-- <div class="modal-page modal-position-bottom" id="msgCase_pwd" style="display: none;">
+        	<div class="modal-page-body container" style="height: 700px;">
+		  		<h3 class="untact_instructions">
+          			<span id="msg">계좌 비밀번호를<br>입력해주세요</span>
+      		 	</h3><br/>
+		  		<div class="resi_num" id="divKeyPad">
+      				<input id="vkpad_rr_no" name="vkpad_rr_no" type="password" knc_etoe="N" maxlength="4" placeholder="계좌 비밀번호 4자리를 입력해주세요" class="input">
+      			</div>
+	        </div>
+        </div> -->	
+    <!-- KB키패드 끝 -->
+    
+ </div>
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/waitProgress/WAITPRO01S01.js"></script>
+<!-- <script src="/js/cmm/kbkeypad/vKeypad.min.js"></script>
+<script src="/js/cmm/kbkeypad/kjscrypto.min.js"></script>
+<script src="/js/cmm/kbkeypad/kjscrypto_contrib.min.js"></script>
+<script src="/js/cmm/kbkeypad/vKeypadAPI.js"></script> -->
+<script>
+        //tooltip
+        $(document).ready(function(){
+            $('.tooltip').click(function(){
+                $(this).removeClass('show');
+            });
+        });
+        function tooltip(toastId) {
+            $(`#${toastId}`).toggleClass('show');
+        }
+
+        //toast
+        function launch_toast(toastId) {
+            $(`#${toastId}`).addClass('show');
+            setTimeout(function(){ 
+                $(`#${toastId}`).removeClass('show');
+            }, 2950);
+        }
+
+</script>
+</th:block>

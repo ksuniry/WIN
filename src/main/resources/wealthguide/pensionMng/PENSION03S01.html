@@ -1,0 +1,177 @@
+<!--
+* 파일명 		: PENSION03S01.html (pension-m-03-01)
+* 업무		: 웰컴보드 > 자산배분 > 계좌 클릭   자문 계좌 상세정보 화면
+* 설명		: 계좌 상세정보를 조회 한다.
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.11.15
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="P0301-content">
+	<div class="container m_03_01_new" id="P0301_container">
+        <div class="section">
+            <div class="section-inner">
+                
+                <div class="breadCrumbs">
+                    <span id="acnt_type_nm"><!-- 개인연금 --></span>
+                    <span>계좌</span>
+                </div>
+                
+                
+                <div class="account__head">
+                    <div class="account__head__logo"><img src="../../images/bank_circle_logo/294.png" class="bank_ico" id="company_img"></div>
+                    <div class="account__head__tit">
+                    	<p class="account__head__name"> <!-- 20-15-12 [증권사] 추가 -->
+                            [<span class="bankName" id="fncl_agc_nm"><!-- KB증권 --></span>]
+                            <span class="prdName" id="pnsn_prdt_gbn_nm"><!-- 미래보장증권고배당많이주세요계좌이름긴이름길고긴이름 --></span>
+                        </p>
+                        
+                        <p class="account__head__name">
+                            <span id="fncl_funll_nm"><!-- IRP연금저축 IRP연금저축 IRP연금저축 IRP연금저축 IRP연금저축 IRP연금저축 IRP연금저축 --></span>
+                        </p>
+                        
+                        
+                        <p class="account__head__number">
+                            <span id="advice_acnt_no_nm"><!-- 123456-456789-45 --></span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="assess" id="divTerminateN" style="display:none;">
+                    <div class="assess-item">
+                        <div class="assess-item-tit">현재평가액</div>
+                        <div class="assess-item-value">
+                            <span class="value" id="crnt_evlt_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                            <em class="unit" id="crnt_evlt_unit"><!-- 원 --></em>
+                        </div>
+                    </div>
+                    <div class="assess-item">
+                        <div class="assess-item-tit">총 납입금액</div>
+                        <div class="assess-item-value">
+                            <span class="value" id="tot_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                            <em class="unit" id="tot_pay_unit">원</em>
+                        </div>
+                    </div>
+                    <div class="assess-item">
+                        <div class="assess-item-tit">누적수익률</div>
+                        <div class="assess-item-value">
+                            <span class="value" id="rvnu_dis" data-nounit="true" data-addclass="true"><!-- 1.2 --></span>
+                            <em class="unit" id="rvnu_unit"><!-- % --></em>
+                        </div>
+                    </div>
+                    <div class="assess-item">
+                        <div class="assess-item-tit">입금한도</div>
+                        <div class="assess-item-value">
+                            <span class="value" id="acnt_set_limit_dis" data-nounit="true"><!-- 1,000 --></span>
+                            <em class="unit" id="acnt_set_limit_unit"><!-- 만원 --></em>
+                            <button class="bt bt-color xs" id="btnPopChangeLmtRmdr"><span>수정</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 해지시 -->
+	            <div class="p_assess" id="divTerminateY" style="display:none;">
+	                <p class="txt_2x"><span>해지된 계좌입니다.</span></p>
+	            </div>
+	            
+	            
+        		<div class="problem-box" id="divWarn" style="display:none;">
+                    <p class="problem-title problem-o" id="pTitleWarn">
+                        <span id="warn_msg"><!-- 2020년 12월 12일 1,000만원의 인출이 발생하였습니다. --></span>
+                    </p>
+                    <div class="problem-bt-wrap">
+                        <button class="bt problem-bt" id="btnHelp" style="display:none;"><span>문제해결</span></button>
+                    </div>
+                </div>
+                
+			</div>
+        	<div class="box-gray">
+                <p class="box-gray-title">제안 포트폴리오<span class="cnt" id="totFundCnt"><!-- 3 --></span></p>
+                
+                <div class="fund-wrap">
+                	<ul class="fund" id="ulFundList"></ul>
+            		<script id="_dumyFundInfo" type="text/x-handlebars-template">
+                		<li class="fund-item" id="fundInfo_{{idx}}">
+                			<a href="javascript:void(0);" id="fundLink_{{idx}}">
+                            <div class="fund-item-head">
+                                <span class="fund-label">펀드</span>
+                                
+							{{#ifCond a_content '==' false}}
+                                <div class="fund-item-percent">
+                                    <span class="percent-name {{addStatusClass}}">{{statusText}}</span>
+                                    <span class="percent-value">{{invt_dis}}{{invt_unit}}</span>
+                                </div>
+							{{/ifCond}}
+                            </div>
+                            <p class="fund-item-name link">
+                                <span class="title">{{fund_nm}}</span>
+                                <i class="ico arr_right"></i>
+                            </p>
+                			</a>
+                            
+                            <div class="view_more" id="btnCallFundDetail_{{idx}}">
+                                <a href="javascript:void(0);">펀드정보</a>
+                            </div>
+                        </li>	
+					</script>
+                </div>
+			</div>
+			
+        </div>
+        
+        <div class="btn_box" id="divBtnAcntEnd" style="display:none">
+            <a href="javascript:void(0);" class="btn btn_color02" id="btnAcntEnd">
+                <span>계좌해지</span>
+            </a>
+        </div>
+        
+    </div>
+    <!-- //container-->
+    
+    
+    <!-- modal -->
+    <div class="modal_wrap" id="divPop0301_01" style="display:none;">
+        <div class="dim" id='dimPop0301_01Close'></div>
+        <div class="modal">
+            <p class="modal_txt">
+                <span>추가로 설정 가능한<br>
+                    입급한도가 없습니다.</span>
+            </p>
+            <div class="modal_btn">
+                <button class="ok" id="btnPopClose"><span>확인</span></button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal_wrap c_03_10_pop" id="divPop0301_02" style="display:none;">
+        <div class="dim" id='dimPop0301_02Close'></div>
+        <div class="modal"> 
+            <div class="modal_close">
+            	<div class="retire_now">
+                    최대 설정가능 금액은 <span id="tot_limit_dis" data-space=" ">1,800만원</span> 입니다.
+                </div>
+                <div class="change">
+                    <input type="number" pattern="\d*" id="set_limit_amt" value=""><span><em id="lmt_rmdr_unit"></em></span>
+                </div>
+            </div>
+            <div class="modal_btn half">
+                <button class="cancel" 	id="btnPopChangeLmtRmdrCancel"><span>취소</span></button>
+                <button class="ok" 		id="btnPopChangeLmtRmdrOk"><span>확인</span></button>
+            </div>
+        </div>
+    </div>
+    <!-- //modal -->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/pensionMng/PENSION03S01.js"></script>
+</th:block>

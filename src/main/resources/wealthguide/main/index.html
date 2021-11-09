@@ -1,0 +1,27 @@
+<!--
+* 파일명 		: Index.html
+* 업무		: 네이티브 진입화면
+* 설명		: 사용자의 상태값에 따라 분기한다. 
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.02
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content" style="display:none;">
+
+<input type="hidden" id="pageType" th:value="${pageType}"/>
+<input type="hidden" id="noticeYn" th:value="${noticeYn}"/>
+<input type="hidden" id="exceptionType" th:value="${exceptionType}"/>
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/main/index.js"></script>
+</th:block>

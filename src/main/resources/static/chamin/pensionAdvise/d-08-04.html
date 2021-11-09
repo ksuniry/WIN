@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d-08-04</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        d-08-04 페이지
+        
+    </div>
+
+    <!-- 요기서 부터-->
+
+    <div class="popup_wrap d_08_04 fixed index02">
+        <div class="popup_header">
+            <a href="#" class="popup_back"> <i class="ico arr_left"></i></a>
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+        <div class="popup_content">
+             
+            <div class="top_bold_tit">
+                <h3>기대수익률과<br>위험 산출 기준</h3>
+            </div>
+
+            <div class="box_color">
+
+                <div class="box_r">
+                    <h4 class="title_l color"><span>기대 수익률</span></h4>
+                    <div class="p20">
+                        <p class="txt">
+                            현재수익률은 금감원 통합연금포털 공시수익률을  적용하여 산출하였으며, 제안수익률은 웰스가이드 자산별 기대수익률을 적용하였습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box_r">
+                    <h4 class="title_l color"><span>위험(표준편차)</span></h4>
+                    <div class="p20">
+                        <p class="txt">
+                            기대수익률과 최저수익률 시뮬레이션은 글로벌 자산배분을 위해 과거 90년(1926~2015년) 동안 미국의 금융데이터를 사용하여 산출했습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box_r">
+                    <h4 class="title_l"><span>데이터 (Ibbotson 미국금융지수)</span></h4>
+                    <div class="p20">
+                        <p class="txt">
+                            주식 : 대형주 총수익지수 <br>
+                            채권 : 장기국채 총수익지수<br>
+                            현금 : Short bill 총수익지수<br>
+                        </p>
+                    </div>
+
+                    <h4 class="title_l"><span>데이터 관찰기간</span></h4>
+                    <div class="p20">
+                        <p class="txt">
+                            90년 (1926~2015년)    
+                        </p>
+                    </div>
+
+                    <h4 class="title_l"><span>물가조정수익률 사용</span></h4>
+                    <div class="p20">
+                        <p class="txt">
+                            미국물가로 할인하여 실질수익률로 환산한 후, 한국의 기대
+                            물가 수준을 적용하여 물가 조정지수를 만들어 사용
+                        </p>
+                    </div>
+                </div>
+
+                <div class="box_r">
+                    <h4 class="title_l"><span>투자(운용)기간</span></h4>
+                    <div class="p20">
+                        <p class="txt_2x">안정적인 노후 생활을 위해서는</p>
+                        <p class="txt">
+                            기대수익률과 최저수익률 시뮬레이션은 글로벌 자산배분을 위해 과거 90년(1926~2015년) 동안 미국의 금융데이터를 사용하여 산출했습니다.
+                        </p>
+
+                        <p class="txt_2x">이런 원칙을 반영하여 
+                            시뮬레이션에 적용되는 투자기간을 
+                            다음과 같이 설정했습니다.</p>
+                        <p class="txt">
+                            · 대상연금: 현재보유 및 로보제안(동일 적용) <br>
+                            · 산출방법: 연금수령 개시전까지 가중평균 년수    
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div class="popup_btn btn_box">
+                    <button class="btn btn_color02"><span>확인</span></button>
+                </div>
+            </div>
+      
+        </div>
+    </div>
+    <!-- //popup -->
+
+
+
+    
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         
+
+            $('.popup_close').click(function(){
+                $(this).parents('.popup_wrap').hide();
+            });
+
+
+            //accor
+            $('.accor_title').click(function(){
+                if($(this).find('.ico').hasClass('arr_down') === true){
+                    $(this).next().show();
+                    $(this).find('.ico').removeClass('arr_down').addClass('arr_up');
+                }else{
+                    $(this).next().hide();
+                    $(this).find('.ico').removeClass('arr_up').addClass('arr_down');
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>

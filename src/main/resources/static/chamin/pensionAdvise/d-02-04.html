@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d-02-04</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        d-02-04 페이지
+        
+    </div>
+
+    <!-- 요기서 부터-->
+
+    <div class="popup_wrap d_02_03 fixed index02">
+        <div class="popup_header">
+            <a href="#" class="popup_back"> <i class="ico arr_left"></i></a>
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+        <div class="popup_content">
+            <div class="mp_product">
+                <img src="../../images/bank_circle_logo/089.png" alt="">
+                <div>
+                    <p class="pd_name">[<span>신한은행</span>] <span>개인 IRP</span></p>
+                    <p class="bk_name"><span>신한은행</span></p> 
+                </div>
+                
+            </div>
+
+            <div class="box_color">
+                <div class="box_r">
+
+                    <div class="prd_info">
+                        <div class="flex">
+                            <div class="prd_info_tit">
+                                <p>A. 총 납입액</p>
+                                <span>기준일: <span>2020-03-21</span></span>
+                            </div>
+                            <div class="prd_info_p"><span>3,550,000</span>원</div>
+                        </div>
+
+                        <div class="flex">
+                            <div class="prd_info_tit">
+                                <p>B. 총 납입액</p>
+                                <span>기준일: <span>2020-03-21</span></span>
+                            </div>
+                            <div class="prd_info_p"><span>3,550,000</span>원</div>
+                        </div>
+
+                        <div class="flex">
+                            <div class="prd_info_tit">
+                                <p>총 누적 수익률</p>
+                                <span><span>(B+인출금액)/A-1</span></span>
+                            </div>
+                            <div class="prd_info_p"><span>+0.52</span>%</div>
+                        </div>
+
+                        <div class="flex">
+                            <div class="prd_info_tit">
+                                <p>연 평균 수익률</p>
+                                <span><span>가입이후 0.5년간</span></span>
+                            </div>
+                            <div class="prd_info_p"><span>-1.26</span>%</div>
+                        </div>
+
+                        <div class="flex">
+                            <div class="prd_info_tit">
+                                <p>예상 연금 적립액</p>
+                                <span>예상 수익률<span>2.5</span>%</span>
+                            </div>
+                            <div class="prd_info_p"><span>3,550,000</span>원</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="box_r mp_info">
+                    <h4 class="title_l"><span>연금정보</span></h4>
+                    <ul class="list_dots">
+                        <li>
+                            <p>가입일</p> <span>2020-07-05</span>
+                        </li>
+                        <li>
+                            <p>납입종료일</p> <span>2029-07-05</span>
+                        </li>
+                        <li>
+                            <p>연금개시일</p> <span>2030-07-05</span>
+                        </li>
+                        <li>
+                            <p>연금수령종료일</p> <span>2040-07-05</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="box_r">
+                    <div class="accor_title">
+                        <p>
+                            <span>[자료] 금감원 연금포털 / 웰스가이드</span>
+                        </p>
+                        <div class="ask_r">
+                            <i class="ico arr_down"></i>
+                        </div>
+                    </div>
+                    <div class="accor_txt">
+                        <ul class="list_dots">
+                            <li>
+                                <p><b>예상연금적립액:</b>납입종료일까지 연 납입액을 모두 납입하였을 때 연금개시 예정일 기준의 예상적립금액입니다. (추가납입시 변경가능) </p>
+                            </li>
+                            <li>
+                                <p><b>연금개시일:</b>만 60세를 연금개시 예정일로 가정합니다.</p>
+                            </li>
+                            <li>
+                                <p><b>연금수령종료일:</b>20년간 퇴직연금 수령을 가정합니다.</p>
+                            </li>
+                            <li>
+                                <p><b>수익률:</b>총 누적 수익률과 연평균 수익률은 연금포털에서 수집한 정보를 기초로 작성됐습니다.</p>
+                            </li>
+                        </ul>
+                        <p>예상연금적립액은 예상 납입액 및 예상 수익률 등으로 추정한 금액이며, 향후 납입정보, 수익률 등 상황 변화에 따라 변동될 수 있습니다.</p>
+                        
+                    </div>
+                    <!-- 1 -->
+                </div>
+
+                <div class="popup_btn btn_box">
+                    <button class="btn btn_color02"><span>확인</span></button>
+                </div>
+            </div>
+      
+        </div>
+    </div>
+    <!-- //popup -->
+
+
+
+    
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         
+
+            $('.popup_close').click(function(){
+                $(this).parents('.popup_wrap').hide();
+            });
+
+
+            //accor
+            $('.accor_title').click(function(){
+                if($(this).find('.ico').hasClass('arr_down') === true){
+                    $(this).next().show();
+                    $(this).find('.ico').removeClass('arr_down').addClass('arr_up');
+                }else{
+                    $(this).next().hide();
+                    $(this).find('.ico').removeClass('arr_up').addClass('arr_down');
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>

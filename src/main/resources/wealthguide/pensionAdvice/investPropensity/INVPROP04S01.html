@@ -1,0 +1,58 @@
+<!--
+* 파일명 		: INVPROP04S01.html (D-04-01)
+* 업무		: 투자성향분석시작하기
+* 설명		: 투자성향분석 시작하기
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.13
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+	<div class="container d_04_01">        
+        
+        <div class="box">
+            <div class="box-inner">
+                <h3 class="page_title">
+                    <span>나의 투자성향<br>분석하기</span>
+                </h3>
+
+                <p class="txt_2x">마이머플러 자문을 위해서는 [자본시장법] 투자 권유 및 계약을 위해 <span class="bold">투자성향</span> 확인이 필요합니다. 간편하게 투자 성향을 분석해 보세요!</p>
+                
+                <!-- 분석시작을 알리는 이미지 -->
+                <div class="analize_start_img">
+                    <img src="../../images/analyze.svg" alt="분석을 시작합니다">
+                </div>
+
+                <div class="box_r">
+                    <ul class="analize_label">
+                        <li><span>안정형</span></li>
+                        <li><span>안정추구형</span></li>
+                        <li><span>위험중립형</span></li>
+                        <li><span>적극투자형</span></li>
+                        <li><span>공격투자형</span></li>
+                    </ul>
+                </div>
+                
+                
+                <div class="bt-wrap">
+                    <button class="bt bt-color" id="btnInprop"><span>투자분석 시작하기</span></button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+   
+</section>
+
+
+<th:block layout:fragment="f-script">
+<script src="/js/pensionAdvice/investPropensity/INVPROP04S01.js"></script>
+</th:block>

@@ -1,0 +1,323 @@
+<!--
+* 파일명 		: PENSEXE01P02.html
+* 업무		: 거래 (연금실행)> 마이머플러 자문안 > 자문계좌정보 (t-01-02)
+* 설명		: 자문계좌정보
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.03
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/popLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="P02-content">
+
+
+	<div class="popup_wrap index02 t_01_02 fixed">
+		<div class="popup_header">
+            <h2><span>자문내용</span></h2>
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+        
+        <div class="popup_content">
+        	
+            <!-- 21-05-18 타이틀 구역 수정 -->
+            <div class="box popup-title-area">
+                <div class="box-inner">
+                    <div class="page_title" id="acnt_advc_ttl"><!-- 연금저축신탁을 이체합니다 --></div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-inner">
+    
+                    <h4 class="section-tit" id="disPortfolio_title" style="display:none;">마이머플러 제안</h4>
+
+                    <div class="tab-head" id="disPortfolio_tab" style="display:none;">
+                        <ul role="tablist" class="tab-label">
+                            <li class="tab-label-item"><a href="#tabPanel-1" role="tab" class="is_active"><em id="acnt_advc_cntnt_ttl"></em><!-- 계좌이전/운용변경 --></a></li>
+                            <li class="tab-label-item"><a href="#tabPanel-2" role="tab">포트폴리오</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="section-title" style="display:none;" id="disNoPortfolio_title"><em id="acnt_advc_cntnt_ttl"></em><!-- 계좌이전/운용변경 --></div>
+                    
+                    <div class="tab-panel" id="tabPanel-1" role="tabpanel">
+                        <!-- <ul class="list_dots"></ul> -->
+	                    <div class="dots" id="div_acnt_advc_cntnt_expl"></div>
+	                    
+	                    <!-- 신규가 아닐때 -->
+	                    <div class="compare-wrap" id="divNow" style="display:none;">
+                            <div class="compare">
+                                <div class="compare-box before">
+                                    <p class="compare-box-head" id="orgn_prdt_nm"><!-- 연금저축신탁 --></p>
+                                    <div class="compare-box-con">
+                                        <div class="cp-bank">
+                                            <img src="../../images/bank_circle_logo/064.png" alt="" class="bank_ico" id="orgn_fncl_agc_img">
+                                            <p class="cp-bank-name"><span id="orgn_fncl_agc_nm"><!-- 하나은행 --></span></p>
+                                        </div>
+                                        <ul class="cp-list">
+                                        	<li class="cp-list-item"><span id="orgn_mon_pay_dis"><!-- 40만원 --></span></li>
+		                                    <li class="cp-list-item"><span id="orgn_pay_prd"><!-- 5년 --></span></li>
+		                                    <li class="cp-list-item"><span id="orgn_recv_strt_age"><!-- 60세 --></span></li>
+		                                    <li class="cp-list-item"><span id="crnt_recv_prd"><!-- 20년 --></span></li>
+		                                    <li class="cp-list-item"><strong><span id="orgn_expt_rvnu_dis"><!-- 연1.5% --></span></strong></li>
+		                                    <li class="cp-list-item"><strong><span id="crnt_mon_pnsn_dis"><!-- 30만원 --></span></strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="compare-box-center">
+                                    <div class="arr_wrap">
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#00f" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                    </div>
+                                    <ul class="cp-list-name">
+                                        <li class="cp-list-name-item"><span>월납입액</span></li>
+                                        <li class="cp-list-name-item"><span>납입기간</span></li>
+                                        <li class="cp-list-name-item"><span>수령개시</span></li>
+                                        <li class="cp-list-name-item"><span>수령기간</span></li>
+                                        <li class="cp-list-name-item"><strong><span>기대수익</span></strong></li>
+                                        <li class="cp-list-name-item"><strong><span>월연금액</span></strong></li>
+                                    </ul>
+    
+                                </div>
+                                <div class="compare-box after">
+                                    <p class="compare-box-head" id="chng_prdt_nm"><!-- 연금저축펀드 --></p>
+                                    <div class="compare-box-con">
+                                        <div class="cp-bank">
+                                            <img src="../../images/bank_circle_logo/032.png" alt="" class="bank_ico" id="chng_fncl_agc_img">
+                                            <p class="cp-bank-name"><span id="chng_fncl_agc_nm"><!-- 전북은행 --></span></p>
+                                        </div>
+                                        <ul class="cp-list">
+	                                        <li class="cp-list-item"><span id="chng_mon_pay_dis"><!-- 40만원 --></span></li>
+		                                    <li class="cp-list-item"><span id="chng_pay_prd"><!-- 5년 --></span></li>
+		                                    <li class="cp-list-item"><span id="chng_recv_strt_age"><!-- 60세 --></span></li>
+		                                    <li class="cp-list-item"><span id="ppsl_recv_prd"><!-- 20년 --></span></li>
+		                                    <li class="cp-list-item"><strong><span id="chng_expt_rvnu_dis"><!-- 연1.5% --></span></strong></li>
+		                                    <li class="cp-list-item"><strong><span id="ppsl_mon_pnsn_dis"><!-- 30만원 --></span></strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+	                    <!--// 신규가 아닐때 -->
+	                    
+	                    <!-- 신규일때 -->
+	                    <div class="compare-wrap" id="divNew" style="display:none;">
+                            <div class="compare">
+                                <div class="compare-box after">
+                                    <p class="compare-box-head">제안</p>
+                                    <div class="compare-box-con">
+                                        <div class="cp-bank">
+                                            <img src="../../images/bank_circle_logo/064.png" alt="" class="bank_ico" id="new_chng_fncl_agc_img">
+                                            <p class="cp-bank-name"><span id="chng_fncl_agc_nm"><!-- 하나은행 --></span></p>
+                                        </div>
+                                        <div class="cp-list-single">
+                                            <ul class="cp-list-name">
+                                                <li class="cp-list-name-item"><span>월납입액</span></li>
+                                                <li class="cp-list-name-item"><span>납입기간</span></li>
+                                                <li class="cp-list-name-item"><span>수령개시</span></li>
+                                                <li class="cp-list-name-item"><span>수령기간</span></li>
+                                                <li class="cp-list-name-item"><strong><span>기대수익</span></strong></li>
+                                                <li class="cp-list-name-item"><strong><span>월연금액</span></strong></li>
+                                            </ul>
+                                            
+                                            <ul class="cp-list">
+                                                <li class="cp-list-item"><span id="chng_mon_pay_dis"><!-- 40만원 --></span></li>
+			                                    <li class="cp-list-item"><span id="chng_pay_prd"><!-- 5년 --></span></li>
+			                                    <li class="cp-list-item"><span id="chng_recv_strt_age"><!-- 60세 --></span></li>
+			                                    <li class="cp-list-item"><span id="ppsl_recv_prd"><!-- 20년 --></span></li>
+			                                    <li class="cp-list-item"><strong><span id="chng_expt_rvnu_dis"><!-- 연1.5% --></span></strong></li>
+			                                    <li class="cp-list-item"><strong><span id="ppsl_mon_pnsn_dis"><!-- 30만원 --></span></strong></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+	                    <!--// 신규일때 -->
+                        
+                        <p class="txt_2x has_ico"><i class="ico lamp"></i><span id="advc_efft_nm"><!-- 기대효과 --></span></p>
+                        <div class="dots"><em id="advc_efft_expl"></em></div>
+					</div>
+					<!-- tab01 -->
+					
+					
+					<div class="tab-panel" id="tabPanel-2" role="tabpanel">
+						<!-- 신규가 아닐때 -->
+                        <div class="compare-wrap compare-chart" id="divNowPort" style="display:none;">
+                            <div class="compare">
+                                <div class="compare-box before">
+                                    <p class="compare-box-head">현재</p>
+                                    <div class="compare-box-con">
+                                      
+                                        <div class="chart_circle" id="divCrntChart" style="display:none;">
+                                            <canvas id="P02_myCircleCrnt" width="85px" height="85px"></canvas>
+                                            <div class="circle_value">
+                                                <p><span>투자기간</span></p>
+                                                <strong><span id="crnt_invt_prd"><!-- 3년 --></span></strong>
+                                            </div> 
+                                        </div>
+                                        <ul class="cp-list" id="divCrntPer" style="display:none;">
+                                            <li class="cp-list-item"><span class="bold" id="crnt_stck_dis">28%</span></li>
+                                            <li class="cp-list-item"><span class="bold" id="crnt_bond_dis">28%</span></li>
+                                            <li class="cp-list-item"><span class="bold" id="crnt_cash_dis">28%</span></li>
+                                        </ul>
+                                        <div class="compare_con" id="divNoJoin" style="display:none;">
+				                            <div class="no_join">
+				                                <span>미가입</span>
+				                            </div>
+				                        </div>
+                                    </div>
+                                </div>
+                                <div class="compare-box-center">
+                                    <div class="arr_wrap">
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                        <div class="arr_item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#00f" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                        </div>
+                                    </div>
+                                    <ul class="cp-list-name">
+                                        <li class="cp-list-name-item"><strong><span>주식</span></strong></li>
+                                        <li class="cp-list-name-item"><strong><span>채권</span></strong></li>
+                                        <li class="cp-list-name-item"><strong><span>현금</span></strong></li>
+                                    </ul>
+                                </div>
+                                <div class="compare-box after">
+                                    <p class="compare-box-head">제안</p>
+                                    <div class="compare-box-con">
+                                        <div class="chart_circle">
+                                            <canvas id="P02_myCirclePpsl" width="85px" height="85px"></canvas>
+                                            <div class="circle_value">
+                                                <p><span>투자기간</span></p>
+                                                <strong><span id="ppsl_invt_prd"><!-- 3년 --></span></strong>
+                                            </div> 
+                                        </div>
+                                        <ul class="cp-list">
+                                            <li class="cp-list-item"><span class="bold" id="ppsl_stck_dis"><!-- 28% --></span></li>
+                                            <li class="cp-list-item"><span class="bold" id="ppsl_bond_dis"><!-- 28% --></span></li>
+                                            <li class="cp-list-item"><span class="bold" id="ppsl_cash_dis"><!-- 28% --></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// 신규가 아닐때 -->
+                        
+                        <!-- 신규일때 -->
+                        <div class="compare-wrap compare-chart" id="divNewPort" style="display:none;">
+                            <div class="compare">
+                                <div class="compare-box after">
+                                    <p class="compare-box-head">제안</p>
+                                    <div class="compare-box-con">
+                                      
+                                        <div class="chart_circle">
+                                            <canvas id="P02_myCirclePpslNew" width="85px" height="85px"></canvas>
+                                            <div class="circle_value">
+                                                <p><span>투자기간</span></p>
+                                                <strong><span id="ppsl_invt_prd"><!-- 3년 --></span></strong>
+                                            </div> 
+                                        </div>
+    
+                                        <div class="cp-list-single"> <!-- 신규일때 -->     
+                                            <ul class="cp-list-name">
+                                                <li class="cp-list-name-item"><strong><span>주식</span></strong></li>
+                                                <li class="cp-list-name-item"><strong><span>채권</span></strong></li>
+                                                <li class="cp-list-name-item"><strong><span>현금</span></strong></li>
+                                            </ul>
+                                            <ul class="cp-list">
+                                                <li class="cp-list-item"><span class="bold" id="ppsl_stck_dis"><!-- 28% --></span></li>
+	                                            <li class="cp-list-item"><span class="bold" id="ppsl_bond_dis"><!-- 28% --></span></li>
+	                                            <li class="cp-list-item"><span class="bold" id="ppsl_cash_dis"><!-- 28% --></span></li>
+                                            </ul>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <!--// 신규일때 -->
+                        
+                        <div class="box-gradient">
+						<!-- txt_2x > box-gradient 로 변경 cnt 추가 21-05-13 -->
+						<p class="box-gradient-title">제안 포트폴리오<span class="cnt" id="ptflPrdtCnt"><!-- 3 --></span></p>
+							<div class="fund-wrap">
+                                <ul class="fund" id="ulPortfolioPrdtList"></ul>
+                                <script id="_dumyPrdtList" type="text/x-handlebars-template">
+									<li class="fund-item" id="fundItem_{{idx}}">
+                                        <div class="fund-item-head">
+                                            <div class="fund-item-kind">
+                                                <span class="fund-label">펀드</span>
+                                                <span class="fund-type">{{prdt_gbn}}</span>
+                                            </div>
+                                            
+                                            <div class="fund-item-percent">
+                                                <span class="percent-name">비중</span>
+                                                <span class="percent-value">{{prdt_dis}}{{prdt_unit}}</span>
+                                            </div>
+                                        </div>
+                                        <p class="fund-item-name link">
+                                            <span class="title">{{prdt_nm}}</span>
+                                            <i class="ico arr_right"></i>
+                                        </p>
+                                    </li>
+								</script>
+                            </div>
+						</div>
+					</div>
+					<!-- tab02 -->
+					
+				</div>
+			</div>
+			
+			<!-- 21-05-14 버튼이 추가되었습니다 -->
+			<div class="bt-wrap" style="display:none;" id="divBtnCloseOk">
+                <button class="bt bt-color" id="btnPopCloseOk"><span>확인</span></button>
+            </div>
+            <div class="bt-wrap" style="display:none;" id="divBtnClose">
+                <button class="bt bt-color" onClick="javascript:gfn_closePopup();"><span>확인</span></button>
+            </div>
+        	
+	        
+        </div>
+
+        
+          
+    </div>
+            
+    
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/pensionExecution/PENSEXE01P02.js"></script>
+</th:block>

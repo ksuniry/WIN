@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c-02-03</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">내 정보</p>
+        </div>
+    </div>
+
+    <div class="container c_02_03">
+
+        <div class="section">
+            <div class="section-inner">
+                <ul class="service-list">
+                    <li class="service-list-item linkable disabled">
+                        <a href="#" class="service-list-item-link">
+                            <p class="title"><span>앱 인증번호 변경</span></p>
+                            <i class="ico arr_right"></i>
+                        </a>
+                    </li>
+
+                    <li class="service-list-item unlinked">
+                        <p class="title"><span>지문 인식 사용</span></p>
+                        <div class="switch_box">
+                            <input type="checkbox" class="inp_switch" id="aaaaa" checked>
+                            <label for="aaaaa"></label>
+                        </div> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-inner">
+                <ul class="service-list">
+                    <li class="service-list-item linkable">
+                        <a href="#" class="service-list-item-link">
+                            <p class="title"><span>회원탈퇴</span></p>
+                            <i class="ico arr_right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--
+        <div class="section">
+            <div class="section-inner">
+                <ul class="service-list">
+                    <li class="service-list-item linkable">
+                        <a href="#" class="service-list-item-link">
+                            <p class="title"><span>개발용 인증테스트</span></p>
+                            <i class="ico arr_right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        -->
+
+        
+
+
+    </div>
+    <!-- //container-->
+
+    <!-- //footer-->
+    
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.result_ask').click(function(){
+                if($(this).children('i').hasClass('arr_down') === true){
+                    $(this).next().show();
+                    $(this).children('i').removeClass('arr_down').addClass('arr_up');
+                }else{
+                    $(this).next().hide();
+                    $(this).children('i').removeClass('arr_up').addClass('arr_down');
+                }
+            });
+
+            //clear search
+            $("#searchclear").click(function(){
+                $(".search").val('');
+            });
+        });
+    </script>
+</body>
+</html>

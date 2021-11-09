@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m-04-01</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">펀드정보</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container m_04_01_new">
+            <div class="box-gray">
+                <div class="box-inner">
+                    <div class="breadCrumbs">
+                        <span>개인연금</span>
+                        <span>계좌</span>
+                        <span>펀드</span>
+                    </div>
+    
+                    <div class="fund-wrap">
+                        <ul class="fund">
+                            <li class="fund-item">
+                                <div class="fund-item-head">
+                                    <div class="fund-item-kind">
+                                        <span class="fund-label">펀드</span>
+                                        <span class="fund-type">국내주식형</span>
+                                    </div>
+                                    
+                                    <div class="fund-item-percent">
+                                        <span class="percent-name">비중</span>
+                                        <span class="percent-value">21%</span>
+                                    </div>
+                                </div>
+                                <p class="fund-item-name">
+                                    <span>미래에셋 고배당 포커스 증권자투자 신1호(주식) AE 임</span>
+                                </p>
+                                <p class="fund-item-number">
+                                    <span>234-234234-234</span>
+                                </p>
+
+                                <div class="problem-box">
+                                    <p class="problem-title problem-o">
+                                        <span>2020년 12월 12일 1,000만원의 인출이 발생하였습니다.</span>
+                                    </p>
+                                    <div class="problem-bt-wrap">
+                                        <button class="bt problem-bt"><span>문제해결</span></button>
+                                    </div>
+                                </div>
+
+                                <div class="assess">
+                                    <div class="assess-item">
+                                        <div class="assess-item-tit">현재평가액</div>
+                                        <div class="assess-item-value bold">
+                                            <span class="value">145,111,521</span>
+                                            <em class="unit">원</em>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="assess">
+                                    <div class="assess-item">
+                                        <div class="assess-item-tit">총 납입금액</div>
+                                        <div class="assess-item-value">
+                                            <span class="value">145,111,521</span>
+                                            <em class="unit">원</em>
+                                        </div>
+                                    </div>
+                
+                                    <div class="assess-item">
+                                        <div class="assess-item-tit">누적수익률</div>
+                                        <div class="assess-item-value plus">
+                                            <span class="value">10</span>
+                                            <em class="unit">%</em>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="assess">
+                                    <div class="assess-item">
+                                        <div class="assess-item-tit">잔고좌수</div>
+                                        <div class="assess-item-value">
+                                            <span class="value">123,000</span>
+                                            <em class="unit">원</em>
+                                        </div>
+                                    </div>
+                
+                                    <div class="assess-item">
+                                        <div class="assess-item-tit">납입원금수익률</div>
+                                        <div class="assess-item-value">
+                                            <span class="value">100</span>
+                                            <em class="unit">%</em>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="view_more">
+                                    <a href="#">펀드정보</a>
+                                </div>
+
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- //container-->
+
+    <!-- //footer-->
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const winHeight = $('html').height();
+            const headHeight = $('.p_head').outerHeight();
+            const darkHeight = $('.dark').height();
+           
+            $('.m_04_01 .box_color').height(winHeight - headHeight - darkHeight + 15);
+            
+        });
+    </script>
+
+    
+</body>
+</html>

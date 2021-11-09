@@ -1,0 +1,15 @@
+#server
+server:
+  forward-headers-strategy: native
+  port: 80
+  servlet:
+    context-path: '/'
+
+    
+    
+#WG홈페이지
+wealthguide:
+  server-address : "https://www.wealthguide.co.kr"
+  url: 
+    board: "/api/board"                                                       #투자이야기, Study Cafe 목록
+    selectCode: "/api/selectCode"                                                  #code 조회

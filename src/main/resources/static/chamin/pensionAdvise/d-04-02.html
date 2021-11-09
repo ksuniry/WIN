@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d-04-02</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        
+    </div>
+
+    <!-- 요기서 부터-->
+
+    <div class="popup_wrap d_04_02 fixed index01">
+        <div class="popup_header">
+            <h2><span>투자자정보 확인</span></h2>
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+        <div class="popup_content">
+
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">투자권유 희망 및<br>투자자정보 제공 여부 확인</div>
+                    <p class="txt_2x">동 확인서는 투자자가 투자성 상품을 가입하는 경우 투자 권유 희망 및 투자자정보 제공의사를 확인하기 위해 마련되었습니다.</p>
+                    <ol type='1'>
+                        <li class="txt_2x">1. 투자자는 아래의 유의사항을 반드시 읽고 필요한 확인 절차를 거쳐주시기 바랍니다.</li>
+                        <li class="txt_2x">2. 동 확인서는 향후 분쟁 또는 소송이 발생하는 경우 귀하의 권리구제에 불리하게 사용될 수 있으므로 신중하게 작성할 필요가 있습니다.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">
+                        <p><i class="ico warn"></i> 유의사항</p>
+                    </div>
+                    <ol type='1'>
+                        <li class="txt_2x">1. 귀하께서 투자권유를 희망하지 않거나 투자자 정보를 제공하지 않는 경우 금융회사는 적합성 원칙*준수 의무를 부담하지 않습니다.
+                            <p class="txt">* 적합성 원칙(금융소비자보호법 제17조) : 소비자의 재산상황, 금융상품 취득·처분경험등 정보를 파악하고, 소비자에게 부적합한 금융상품의 계약 체결 권유를 금지</p>
+                        </li>
+                        <li class="txt_2x">2. 귀하께서 투자권유를 희망하지 않거나 설명을 요청하지 않는 경우 금융회사는 설명의무*를 부담하지 않습니다. 
+                            <p class="txt">* 설명의무(금융소비자보호법 제19조):금융상품의 중요사항을 소비자가 이해할 수 있도록 설명</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">투자자 확인사항</div> <!-- 21-09-09 수정 -->
+                    <p class="txt_2x">상기 기재한 유의사항을 확인하고 투자권유 여부를 결정하신 경우 아래 항목의 해당사항을 체크하시기 바랍니다.</p>
+                    <ol type='1'>
+                        <li class="txt_2x">1. 투자권유를 희망하지 않거나 투자자정보를 제공하지 않는 경우에는 고객의 별도의사가 있기 전까지 회사가 투자 권유를 할 수 없습니다.</li>
+                        <li class="txt_2x">2. 투자시 원금 손실이 발생할 수 있으며, 투자 손익에 대한 책임은 모두 고객에게 귀속됩니다.</li>
+                    </ol>
+                    <div class="box">
+                        <div class="checkbox-name">투자권유 희망 여부</div>
+                        <label class="checkbox-wrap" for="agree">
+                            <div class="checkbox">
+                                <label for="agree">
+                                    <input type="checkbox" id="agree">
+                                    <i class="check_ico"></i>
+                                    <span>투자권유를 희망하지 않음</span>
+                                </label>
+                            </div>
+                        </label>
+                        
+                        <div class="checkbox-name">투자자정보 제공 여부</div>
+                        <label class="checkbox-wrap" for="agree02">
+                            <div class="checkbox">
+                                <label for="agree02">
+                                    <input type="checkbox" id="agree02">
+                                    <i class="check_ico"></i>
+                                    <span>투자자정보를 제공함</span>
+                                </label>
+                            </div>
+                        </label>
+                    </div>
+                 
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal-page-btn">
+            <button class="bt bt-color" disabled><span>이해하고 확인했습니다</span></button>
+        </div>
+    </div>
+    <!-- //popup -->
+
+    <div class="modal-page-wrap index02 d_04_02">
+        <div class="dim"></div>
+
+        <!-- case : 1 = w-02-02 계좌이전 진행중 -->
+        <div class="modal-page modal-position-bottom">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span><i class="ico warn"></i>투자자정보 확인</span>
+                </p>
+                <p class="modal-page-txt"> <!-- 21-05-28 텍스트 띄어쓰기 -->
+                    고객님께서 투자권유(또는 투자자정보제공)를 희망하지 않아 금융소비자 보호에 관한 법률에 따라 당사는 투자자문서비스를 제공할 수 없습니다. 
+                    <br>
+                    <br>
+                    당사의 투자자문서비스를 원하실 경우<br>
+                    "2. 투자자정보 제공여부"에서 투자자정보를 제공함을 선택하셔야 합니다. 
+                </p>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-normal"><span>서비스 다음에 받기</span></button>
+                <button class="bt bt-color"><span>제공하고 서비스 받기</span></button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script src="../../js/chart.v2.9.4.js"></script>
+    <script>
+
+        $(document).ready(function(){
+         
+
+            $('.popup_close').click(function(){
+                $(this).parents('.popup_wrap').hide();
+            });
+
+            function modalClose(){
+                $('.modal-page-wrap').hide();
+            }
+
+            $('.modal-page-btn button, .dim').on("click",modalClose);
+
+        });
+
+
+    </script>
+
+</body>
+</html>

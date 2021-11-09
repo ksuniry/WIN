@@ -1,0 +1,70 @@
+<!--
+* 파일명 		: DASHBRD08P07.html (D-08-07)
+* 업무		: 연금자문 대시보드 > 마이머플러 자문 설명팝업(1,2,3단계)
+* 설명		: 내연금 상세보기
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.12.20
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/popLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="P87-content">
+
+	<div class="popup_wrap d_08_07 fixed">
+        <div class="popup_header">
+        	<h2><span>마이머플러 로보자문</span></h2>
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+        <div class="popup_content">
+            <div class="section">
+                <div class="section-inner">
+                    <p class="txt_2x">
+                        투자기간이 장기임에도 불구하고 기존 연금은 대부분 채권형 자산으로 운용되어 연금준비율이 낮습니다. 연금자산은 은퇴시점에 전액이 모두 필요한 것이 아니며 일부만 필요합니다. <br> 
+마이머플러는 여기에 착안하여 은퇴 이후를 3구간으로 나누어 투자기간을 확장함으로써 위험을 낮추고 주식형 자산 비중을 증가시켜 연금준비율을 합리적으로 상승시킬 수 있습니다.<br>
+<br>
+머플러는 당신의 연금소득을 증대하는 과정을 총 3단계로 진행합니다.
+                    </p>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title"><p>1단계. 모으기 플랜<span>어떻게 저축하는 것이 좋은가?</span></p></div>
+                    <p class="txt_border">저축액 배분</p>
+                    <p class="txt_2x">
+                        세액공제가 적용되는 연금저축, 개인형퇴직연금(IRP) 등에 저축액을 우선 배분하여 납입금액과 연금자산이 실질적으로 늘어나도록 해줍니다.  
+                    </p>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title"><p>2단계. 불리기 플랜<span>어떻게 운용하는 것이 좋은가?</span></p></div>
+                    <p class="txt_border">자산배분 + 리밸런싱</p>
+                    <p class="txt_2x">투자기간이 장기인 경우 주식형 자산 비중을 높이고, 수령시점이 가까워지고 투자기간이 줄어들면 채권형 자산 비중을 높여, 연금자산이 최대한 안전하면서 높은 수익률이 달성되도록 해줍니다.</p>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title"><p>3단계. 더받기 플랜<span>어떻게 수령하는 것이 좋은가?</span></p></div>
+                    <p class="txt_border">연금 수령시기 분할 관리</p>
+                    <p class="txt_2x">머플러는 절세효과를 누리면서 운용기간을 늘려 연금소득을 증대시키기 위해 은퇴기간을 3개 구간으로 나누어 관리합니다. 각 구간별 최적의 연금상품을 배치하고 세금까지 고려하여 더 많은 연금을 수령하실 수 있도록 해줍니다. </p>
+                </div>
+            </div>
+	         <div class="modal-page-btn">
+            	<button class="bt bt-color" onClick="javascript:gfn_closePopup();"><span>확인</span></button>
+        	</div>
+        </div>
+    </div>
+    <!-- //popup -->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/pensionAdvice/dashBoard/DASHBRD08P07.js"></script>
+</th:block>

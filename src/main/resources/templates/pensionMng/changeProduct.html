@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{layouts/mainLayout}">
+	<th:block layout:fragment="html_head">
+    <title>WEALTH GUIDE</title>
+    
+	<script type="text/javascript" src="/js/chart.v2.9.4.js"></script>
+    <script type="text/javascript">
+    $(function() {  //onready
+		//여기에 최초 실행될 자바스크립트 코드를 넣어주세요
+		$("#pTitle").text("상품구성변경");
+    
+		gfn_OnLoad();
+		
+		fn_init();
+		
+		fn_content();
+	});
+	
+	// 화면내 초기화 부분
+	function fn_init() {
+	
+	}
+	
+////////////////////////////////////////////////////////////////////////////////////
+	// 호출부분 정의
+	// 리스트 조회
+	function fn_content() {
+	
+		var inputParam = new Object();
+		inputParam.sid 				= "change_pnsn_product";
+		inputParam.url 				= "/pension/change_pnsn_product";
+		
+		inputParam.data = new Object();		
+		inputParam.data.pay_amt_cd = $("#payAmtCd").val();
+		
+		gfn_Transaction( inputParam );
+	
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////
+	// 콜백 함수
+	function fn_callBack(sid, result, success){
+		//debugger;
+		
+		if(success != "success" ) {
+		//if (!result.success) {
+			alert("서버에서 오류가 발생하였습니다.");
+			history.back();
+			return;
+		}
+		//alert(sid);
+		//alert(result.year_max_pay_lmt_expl);
+		
+		// fn_content
+		if(sid == "change_pnsn_product"){
+			// 시뮬레이션 가능 여부 체크
+			if(result.psb_simul == "0") {
+				alert(result.sts_msg);
+				return;
+			}
+			
+			//상품목록 생성
+			fn_setContent(result.pnsn_list);
+			// 차트 처리
+			fn_drawChart(result.pnsn_list);
+		}
+	}
+
+	//상품목록 구성
+	function fn_setContent(productList) {
+		var productHtml = "";
+		for( var i = 0; i < productList.length; i++) {
+			productHtml += '<li class="box_r">';
+			if("na" == productList[i].stck_dis) {
+				productHtml += '	<a href="javascript:fn_goChangeProductDetail(\'na\')" class="flex row">';
+			} else {
+				productHtml += '	<a href="javascript:fn_goChangeProductDetail(\'' + productList[i].prdt_cd + '\')" class="flex row">';				
+			}
+			productHtml += '		<div class="box_title">';
+			productHtml += '			<p class="txt tit">[' + productList[i].company +'] ' + productList[i].product + '</p>';
+			productHtml += '			<p class="price"><em> '+ productList[i].save_dis + '</em><span>' + productList[i].save_unit + '</span></p>';
+			if(parseFloat(productList[i].rvnu_rate) > 0) {
+                	// 플러스 값일때 per_plu
+                productHtml += '			<span class="per_plu">+' + productList[i].rvnu_dis + '%</span>';
+			} else {
+                // 마이너스 값일때 per_min
+                productHtml += '			<span class="per_min">' + productList[i].rvnu_dis + '%</span>';				
+			}
+			productHtml += '		</div>';
+			productHtml += '		<div class="box_chart">';
+			productHtml += '			<canvas id="myChart' + i +'" width="85px" height="85px"></canvas>';
+		    productHtml += '			<div class="tooltipCanvas">';
+			productHtml += '				<span class="chart_label">주식</span><br>';
+			productHtml += '				<span class="chart_value">' + productList[i].stck_dis + '%</span>';
+			productHtml += '			</div>';
+			productHtml += '		</div>';
+			productHtml += '	</a>';
+			productHtml += '</li>';
+		}
+		$("#productList").html(productHtml);
+	}
+	
+	function fn_drawChart(productList) {
+		 // v2.1.3 플러그인 사용가능
+        // round corners
+        Chart.pluginService.register({
+            afterUpdate: function (chart) {
+                if (chart.config.options.elements.arc.roundedCornersFor !== undefined) {
+                    var arc = chart.getDatasetMeta(0).data[chart.config.options.elements.arc.roundedCornersFor];
+                    arc.round = {
+                        x: (chart.chartArea.left + chart.chartArea.right) / 2,
+                        y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
+                        radius: (chart.outerRadius + chart.innerRadius) / 2,
+                        thickness: (chart.outerRadius - chart.innerRadius) / 2 - 1,
+                        backgroundColor: arc._model.backgroundColor
+                    }
+                }
+            },
+
+            afterDraw: function (chart) {
+                if (chart.config.options.elements.arc.roundedCornersFor !== undefined) {
+                    var ctx = chart.chart.ctx;
+                    var arc = chart.getDatasetMeta(0).data[chart.config.options.elements.arc.roundedCornersFor];
+                    var startAngle = Math.PI / 2 - arc._view.startAngle;
+                    var endAngle = Math.PI / 2 - arc._view.endAngle;
+
+                    ctx.save();
+                    ctx.translate(arc.round.x, arc.round.y);                    
+                    ctx.fillStyle = arc.round.backgroundColor;
+                    ctx.beginPath();
+                    ctx.arc(arc.round.radius * Math.sin(startAngle), arc.round.radius * Math.cos(startAngle), arc.round.thickness, 0, 2 * Math.PI);
+                    ctx.arc(arc.round.radius * Math.sin(endAngle), arc.round.radius * Math.cos(endAngle), arc.round.thickness, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.restore();
+                }
+            },
+        });
+
+        // draw options
+        var options ={
+            maintainAspectRatio: false,
+            cutoutPercentage: 80,
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                enabled: false
+            },
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            elements: {
+                arc: {
+                    roundedCornersFor: 0
+                }
+            }
+        }
+        
+        for( var i = 0; i < productList.length; i++) {
+            var chartData = {
+                labels: ['주식'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [productList[i].stck_dis ,100-50],
+                    backgroundColor: [
+                        'rgb(251, 162, 32)'
+                    ],
+                    borderWidth:0,
+                    hoverBackgroundColor:[
+                        'rgb(251, 162, 32)'
+                    ]
+                    
+                }]
+            }
+
+            var ctx1 = document.getElementById('myChart' + i).getContext('2d');
+            new Chart(ctx1, {
+                type :'doughnut',
+                data : chartData,
+                options : options
+            });
+        }
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//연금상세 정보 이동
+	function fn_goChangeProductDetail(prdtCd) {
+		//var inputParam = gfn_makeInputData($("#dataForm"));
+		
+		if(prdtCd == "na") {
+			alert("해당 상품은 상품구성을 변경할 수 없습니다");
+			return;
+		} 
+		var inputParam = new Object;
+		
+		gfn_commonGo("/pensionMng/changeProduct", inputParam, "N");
+	}
+	// 로딩 시작 종료 함수
+	function loadStart() {
+		document.getElementById("loadBar").style.display = "block";
+	}
+	function loadStop() {
+		document.getElementById("loadBar").style.display = "none";
+	}
+	
+    </script>
+</th:block>
+<body>
+	<div layout:fragment="content">	
+		<form id="dataForm" name="dataForm" method="post" action="#" onsubmit="return false;">
+			<input type="hidden" name="activeToken" id="activeToken" th:value="${params.activeToken}" />
+			<input type="hidden" name="refreshToken" id="refreshToken" th:value="${params.refreshToken}"/>
+	    </form>
+        <div class="con_wrap m_03_04" id="contents">
+
+            <h3 class="title ico">내 연금 상품구성 변경하기</h3>
+
+            <div class="con_r_box">
+                <div class="con_inner">
+                    <p class="txt_2x bold">내가 직접 운용하는 연금계좌입니다.<br> 변경할 계좌를 선택해 주세요.</p>
+                    <ul id="productList">
+                    <!-- 내가 보유한 연금 정보 및 주식 비중 차트 정보  -->						
+                    </ul>
+                </div>
+
+            </div>
+            <!-- // con_r_box -->
+        </div>
+       </div>
+		<!-- //container -->
+        
+        <!-- footer -->
+</body>
+</html>

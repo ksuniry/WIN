@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="41" viewBox="0 0 24 41">
+    <g>
+        <g transform="translate(-1145 -2486) translate(-1252 -924)">
+            <path fill="#ff952b" d="M9.4 4.558a3 3 0 0 1 5.209 0l6.83 11.953A3 3 0 0 1 18.83 21H5.17a3 3 0 0 1-2.6-4.488z" transform="translate(2397 3410)"/>
+            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2px" d="M0 0L0 5" transform="translate(2409 3418.5)"/>
+            <circle cx="1" cy="1" r="1" fill="#fff" transform="translate(2408 3426)"/>
+        </g>
+        <text fill="#333" font-family="SpoqaHanSans-Regular, SpoqaHanSans" font-size="12px" letter-spacing="-0.01em" transform="translate(-1145 -2486) translate(1157 2523)">
+            <tspan x="-10.98" y="0">경고</tspan>
+        </text>
+    </g>
+</svg>

@@ -1,0 +1,100 @@
+<!--
+* 파일명 		: DASHBRD01S01.html (pension-D-01)
+* 업무		: 연금자문 대시보스
+* 설명		: 연금자문 대시보스
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.11.24
+* 수정일/내용	: 
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+	<div class="container d_01" id="divMain" style="display:none;">
+		<div class="user">
+            <div class="user_pic">
+                <img src="/images/icon_profile.svg" alt="사용자">
+            </div>
+            <div class="user_info">
+                <p class="user_name"><span id="user_nm"><!-- 홍길동 --></span></p>
+                <p class="user_with">♥ 마이머플러와 <span id="use_prd"><!-- 63 --></span>일 째</p>
+            </div>
+            <div class="switch_box">
+                <span>국민연금</span>
+                <input type="checkbox" class="inp_switch" id="myAnn" checked>
+                <label for="myAnn"></label>
+            </div>
+        </div>
+        
+        <!-- box 클래스명 변경 21-05-12 -->
+        <div class="box">
+            <div class="box-inner">
+	            <div class="refresh" id="divRefresh" style="display:none;">
+	                <div class="refresh_info">
+	                    <!-- i tip 삭제 txt 추가 21-05-12 -->
+	                    <span class="txt">연금데이터 갱신</span>
+	                </div>
+	                <p class="refresh_btn" id="btnRefreshLifePlan"> <!-- 토스트 클릭 추가 21-05-12 -->
+	                    <span class="refresh_date" id="data_sync_date"><!-- 2021.01.21 --></span><i class="ico refresh"></i>
+	                </p>
+	            </div>
+
+            
+	            <div class="box"> <!-- box 클래스명 변경 21-05-12 -->
+	                <div class="pension">
+	                    <div class="pension_now">
+	                        <p class="txt_2x"><span>현재 연금을 유지하면...</span></p>
+	                        <p>월<span id="mon_pnsn_dis" data-nounit="true"><!-- 139 --></span><em id="mon_pnsn_unit"></em><!-- 만원 --></p>
+	                    </div>
+	                    <div class="pension_robo">
+	                        <p class="txt_2x"><span>마이머플러 자문으로 바꾸면...</span></p>
+	                        <p>월<span id="ppsl_mon_pnsn_dis" data-nounit="true"><!-- 201 --></span><em id="ppsl_mon_pnsn_unit"></em><!-- 만원 --></p>
+	                    </div>
+	                </div>
+	
+	                <div class="chart_wrap">
+	                    <div class="chart_info">
+	                        <p>(<span>만원</span>)</p>
+	                        <div class="chart_labels">
+	                            <span class="now">현재</span>
+	                            <span class="muffler">자문</span>
+	                        </div>
+	                    </div>
+	                    <canvas id="d1Chart"></canvas>
+
+	                </div>
+	            </div>
+            </div>
+        </div>
+            
+        <!-- 21-05-18 배너 수정-->
+        <div class="box">
+            <div class="box-inner">
+                 <!-- 21-09-15 수정-->
+                <!-- db 에서 텍스트 내려옵니다 -->               
+                <p class="txt_2x" id="guide_msg">
+                    <!-- 월 수령액 <b>35만원 증가,</b><br> 어떻게 가능할까요? -->
+                </p>
+            </div>
+        </div>
+            
+        <!-- 버튼텍스트 21-05-27 -->
+        <div class="bt-wrap" id="btnNext">
+            <button class="bt bt-color"><span>무료진단 시작하기</span></button>
+        </div> 
+
+    </div>
+    <!-- //container-->
+</section>
+
+
+<th:block layout:fragment="f-script">
+<script src="/js/chart.v2.9.4.js"></script>
+<script src="/js/pensionAdvice/dashBoard/DASHBRD01S01.js"></script>
+</th:block>

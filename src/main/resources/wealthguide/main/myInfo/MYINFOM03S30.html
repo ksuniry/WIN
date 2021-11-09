@@ -1,0 +1,102 @@
+<!--
+* 파일명 		: MYINFOM03S30.html
+* 업무		: 메뉴 > 내 자문 내역 > 마이머플러 자문안 (c-03-30)
+* 설명		: 마이머플러 자문안
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.05.09
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+
+	<div class="container t_01_01">
+		
+        <div class="date-wrap">
+            <span class="date-title">자문일자</span>
+            <span class="date-value" id="join_date"><!-- 2020-04-20 --></span>
+        </div>
+        
+        
+        <div class="section">
+            <div class="section-inner">
+                <div class="section-title">
+                    <p>
+                        가지고 있던 계좌<span>이체/해지/변경</span>
+                    </p>
+                </div>
+                
+                <ul class="goods-list" id="ulOwnAcnt" style="display:none;"></ul>
+				<script id="_dumyList" type="text/x-handlebars-template">
+            		<li class="goods-list-item noLogo" id="{{type}}AcntRow_{{idx}}">
+                        <a href="javascript:void(0);" class="goods-list-link {{addClass}}">
+                            <div class="goods">
+                                <div class="goods-head">
+                                    <div class="goods-title">
+                                        <p class="title">
+                                            <span class="prdState">{{advc_gbn_nm}}</span>
+                                            <span class="prdName">{{acnt_nm}}</span>
+                                        </p>
+                                    </div>
+                                </div>
+								{{#ifCond advc_gbn_cd '==' '3'}}
+								{{else ifCond advc_gbn_cd '==' '4'}}
+								{{else}}
+                                <i class="ico arr_right"></i>
+								{{/ifCond}}
+                            </div>
+                            <div class="goods-assess">
+                                <div class="goods-assess-item">
+                                    <div class="assess-item-value">
+                                        <span class="bankName">{{fncl_agc_nm}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+				</script>
+				
+				<div class="no_result" id="no_resultOwnAcnt" style="display:none"> 
+	                <p>계좌정보가 없습니다.</p>
+	            </div>
+			</div>
+			
+			<div class="section">
+                <div class="section-inner">
+                    <div class="section-title">
+                        <p>
+                            새로 만든 계좌<span>개인/IRP/연금저축/TDF</span>
+                        </p>
+                    </div>
+                    <ul class="goods-list" id="ulNewAcnt" style="display:none;"></ul>
+                    
+                    <div class="no_result" id="no_resultNewAcnt" style="display:none"> 
+		                <p>계좌정보가 없습니다.</p>
+		            </div>
+                
+                
+	                <!-- <div class="bt-wrap">
+	                    <button class="bt bt-color" id="btnNext"><span>다음</span></button>
+	                </div> -->
+				</div>
+			</div>
+		</div>
+		  
+    </div>
+            
+    
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/chart.v2.9.4.js"></script>
+<script src="/js/chart.plugin.annotation.js"></script>
+<script src="/js/main/myInfo/MYINFOM03S30.js"></script>
+</th:block>

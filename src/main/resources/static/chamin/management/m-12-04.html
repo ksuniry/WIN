@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m-12-04</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <!-- case3 -->
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+
+             <!-- 21-07-07 페이지 이름 변경 -->
+            <p class="page_name">내가 모은 연금</p>
+        </div>
+    </div>
+
+
+    <section>
+        <div class="container m_12_04">
+            <div class="tab-head">
+
+                <!-- 21-07-07 탭 이름 변경 -->
+                <ul role="tablist" class="tab-label" id="tablist01">
+                    <li class="tab-label-item"><a href="#tabPanel-1" role="tab" class="is_active">총 연금</a></li>
+                    <li class="tab-label-item"><a href="#tabPanel-2" role="tab">자문계좌 연금</a></li>
+                </ul>
+            </div>
+    
+            <div class="tab-panel tab-panel-01 " id="tabPanel-1" role="tabpanel">
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="chart-circle">
+                            <canvas id="bigCircle"></canvas>
+                            <div class="chart-circle-value">
+                                <p>
+                                    <span class="value">123,123,123</span>
+                                    <em class="unit">원</em>
+                                </p>
+                                <p class="anchor-date"><span>2020-06-12 기준</span></p>
+                            </div> 
+                        </div>
+
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit">국민연금<span class="pers">60%</span></div>
+                                <div class="assess-item-value">
+                                    <span class="value">145,111,521</span>
+                                    <em class="unit">원</em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">퇴직연금<span class="pers">20%</span></div>
+                                <div class="assess-item-value">
+                                    <span class="value">145,111,521</span>
+                                    <em class="unit">원</em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">개인연금<span class="pers">13%</span></div>
+                                <div class="assess-item-value">
+                                    <span class="value">145,111,521</span>
+                                    <em class="unit">원</em>
+                                </div>
+                            </div>
+
+                            <!-- 21-09-09 기타 추가 -->
+                            <div class="assess-item">
+                                <div class="assess-item-tit">기타<span class="pers">7%</span></div>
+                                <div class="assess-item-value">
+                                    <span class="value">145,521</span>
+                                    <em class="unit">원</em>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 21-07-07 내 연금 수익률 / 책임의 한계 삭제 -->
+
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">
+                            보유 연금상품
+                        </div>
+
+                        <div class="section-sub-title">퇴직연금</div>
+                        <ul class="goods-list">
+                            <li class="goods-list-item">
+                                <div class="goods-list-link">
+                                    <div class="goods">
+                                        <div class="goods-head">
+                                            <div class="goods-logo">
+                                                <img src="../../images/bank_circle_logo/045.png" class="bank_ico">
+                                            </div>
+                                            <div class="goods-title">
+                                                <p class="title">
+                                                    [<span class="bankName">신한은행</span>]
+                                                    <span class="prdName">미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="goods-assess">
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="value">145,111,521</span>
+                                                <em class="unit">원</em>
+                                            </div>
+                                            <p class="plus">
+                                                <span class="value">3.4</span>
+                                                <em class="unit">%</em>
+                                            </p>
+                                        </div>
+                                        
+                                        <!-- 21-09-09 조회기준일 추가 -->
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="name">조회기준일 : </span>
+                                                <span class="date">2021-09-09</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- 21-07-07 저번에 변경된 사항입니다 a 링크가 빠져있는게 맞아요-->
+    
+                            <li class="goods-list-item">
+                                <div class="goods-list-link">
+                                    <div class="goods">
+                                        <div class="goods-head">
+                                            <div class="goods-logo">
+                                                <img src="../../images/bank_circle_logo/045.png" class="bank_ico">
+                                            </div>
+                                            <div class="goods-title">
+                                                <p class="title">
+                                                    [<span class="bankName">신한은행</span>]
+                                                    <span class="prdName">미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="goods-assess">
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="value">145,111,521</span>
+                                                <em class="unit">원</em>
+                                            </div>
+                                            <p class="plus">
+                                                <span class="value">3.4</span>
+                                                <em class="unit">%</em>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- 퇴직연금 -->
+
+                        <div class="section-sub-title">연금저축</div>
+                        <ul class="goods-list">
+                            <li class="goods-list-item">
+                                <div class="goods-list-link">
+                                    <div class="goods">
+                                        <div class="goods-head">
+                                            <div class="goods-logo">
+                                                <img src="../../images/bank_circle_logo/045.png" class="bank_ico">
+                                            </div>
+                                            <div class="goods-title">
+                                                <p class="title">
+                                                    [<span class="bankName">신한은행</span>]
+                                                    <span class="prdName">미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="goods-assess">
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="value">145,111,521</span>
+                                                <em class="unit">원</em>
+                                            </div>
+                                            <p class="plus">
+                                                <span class="value">3.4</span>
+                                                <em class="unit">%</em>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+    
+                        </ul>
+
+                        <!-- 연금저축 -->
+
+                        <div class="section-sub-title">연금보험</div>
+                        <ul class="goods-list">
+                            <li class="goods-list-item">
+                                <div class="goods-list-link">
+                                    <div class="goods">
+                                        <div class="goods-head">
+                                            <div class="goods-logo">
+                                                <img src="../../images/bank_circle_logo/045.png" class="bank_ico">
+                                            </div>
+                                            <div class="goods-title">
+                                                <p class="title">
+                                                    [<span class="bankName">신한은행</span>]
+                                                    <span class="prdName">미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="goods-assess">
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="value">145,111,521</span>
+                                                <em class="unit">원</em>
+                                            </div>
+                                            <p class="plus">
+                                                <span class="value">3.4</span>
+                                                <em class="unit">%</em>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- //연금보험 -->
+                       
+
+                    </div>
+                </div>
+                
+                 <!-- 21-07-07 추가 -->
+                <div class="box-gray">
+                    <div class="box-gray-title">자문계좌의 의미</div>
+                    <div class="box-inner">
+                        <div class="bar_box left_bar">
+                            <p class="txt">
+                                자문계좌는 마이머플러가 고객과 자문계약을 맺고 자산관리 서비스를 제공하는 계좌를 의미합니다. 자문계좌를 포함한 연금계좌의 적립/평가액은 통합연금포털 데이터를 사용하고 있습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    
+            <div class="tab-panel tab-panel-02" id="tabPanel-2" role="tabpanel">
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="chart-circle">
+                            <canvas id="bigCircle2"></canvas>
+                            <div class="chart-circle-value">
+                                <p>
+                                    <span class="value">123,123,123</span>
+                                    <em class="unit">원</em>
+                                </p>
+                                <p class="anchor-date"><span>2020-06-12 기준</span></p>
+                            </div> 
+                        </div>
+
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit">국민연금<span class="pers">60%</span></div>
+                                <div class="assess-item-value">
+                                    <span class="value">145,111,521</span>
+                                    <em class="unit">원</em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">퇴직연금<span class="pers">25%</span></div>
+                                <div class="assess-item-value">
+                                    <span class="value">145,111,521</span>
+                                    <em class="unit">원</em>
+                                </div>
+                            </div>
+        
+                            <div class="assess-item">
+                                <div class="assess-item-tit">개인연금<span class="pers">15%</span></div>
+                                <div class="assess-item-value">
+                                    <span class="value">145,111,521</span>
+                                    <em class="unit">원</em>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-inner">
+                        <div class="section-title">
+                            자문계좌 상품
+                        </div>
+
+                        <div class="section-sub-title">퇴직연금</div>
+                        <ul class="goods-list">
+                            <li class="goods-list-item">
+                                <div class="goods-list-link">
+                                    <div class="goods">
+                                        <div class="goods-head">
+                                            <div class="goods-logo">
+                                                <img src="../../images/bank_circle_logo/045.png" class="bank_ico">
+                                            </div>
+                                            <div class="goods-title">
+                                                <p class="title">
+                                                    [<span class="bankName">신한은행</span>]
+                                                    <span class="prdName">미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="goods-assess">
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="value">145,111,521</span>
+                                                <em class="unit">원</em>
+                                            </div>
+                                            <p class="plus">
+                                                <span class="value">3.4</span>
+                                                <em class="unit">%</em>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- 21-07-07 저번에 변경된 사항입니다 a 링크가 빠져있는게 맞아요-->
+    
+                            <li class="goods-list-item">
+                                <div class="goods-list-link">
+                                    <div class="goods">
+                                        <div class="goods-head">
+                                            <div class="goods-logo">
+                                                <img src="../../images/bank_circle_logo/045.png" class="bank_ico">
+                                            </div>
+                                            <div class="goods-title">
+                                                <p class="title">
+                                                    [<span class="bankName">신한은행</span>]
+                                                    <span class="prdName">미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="goods-assess">
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="value">145,111,521</span>
+                                                <em class="unit">원</em>
+                                            </div>
+                                            <p class="plus">
+                                                <span class="value">3.4</span>
+                                                <em class="unit">%</em>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- 퇴직연금 -->
+
+                        <div class="section-sub-title">연금저축</div>
+                        <ul class="goods-list">
+                            <li class="goods-list-item">
+                                <div class="goods-list-link">
+                                    <div class="goods">
+                                        <div class="goods-head">
+                                            <div class="goods-logo">
+                                                <img src="../../images/bank_circle_logo/045.png" class="bank_ico">
+                                            </div>
+                                            <div class="goods-title">
+                                                <p class="title">
+                                                    [<span class="bankName">신한은행</span>]
+                                                    <span class="prdName">미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="goods-assess">
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="value">145,111,521</span>
+                                                <em class="unit">원</em>
+                                            </div>
+                                            <p class="plus">
+                                                <span class="value">3.4</span>
+                                                <em class="unit">%</em>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+    
+                        </ul>
+
+                        <!-- 연금저축 -->
+
+                        <div class="section-sub-title">연금보험</div>
+                        <ul class="goods-list">
+                            <li class="goods-list-item">
+                                <div class="goods-list-link">
+                                    <div class="goods">
+                                        <div class="goods-head">
+                                            <div class="goods-logo">
+                                                <img src="../../images/bank_circle_logo/045.png" class="bank_ico">
+                                            </div>
+                                            <div class="goods-title">
+                                                <p class="title">
+                                                    [<span class="bankName">신한은행</span>]
+                                                    <span class="prdName">미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌 미래설계 연금저축계좌</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="goods-assess">
+                                        <div class="goods-assess-item">
+                                            <div class="assess-item-value">
+                                                <span class="value">145,111,521</span>
+                                                <em class="unit">원</em>
+                                            </div>
+                                            <p class="plus">
+                                                <span class="value">3.4</span>
+                                                <em class="unit">%</em>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- //연금보험 -->
+                       
+
+                    </div>
+                </div>
+                
+                 <!-- 21-07-07 추가 -->
+                <div class="box-gray">
+                    <div class="box-gray-title">자문계좌의 의미</div>
+                    <div class="box-inner">
+                        <div class="bar_box left_bar">
+                            <p class="txt">
+                                자문계좌는 마이머플러가 고객과 자문계약을 맺고 자산관리 서비스를 제공하는 계좌를 의미합니다. 자문계좌를 포함한 연금계좌의 적립/평가액은 통합연금포털 데이터를 사용하고 있습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+
+    <script type="text/javascript" src="../../slick/slick.min.js"></script>  
+    <link rel="stylesheet" href="../../slick/slick.css">
+
+    <!-- chart.js -->
+    <script src="../../js/chart.v2.9.4.js"></script>
+    <script src="../../js/chart.plugin.annotation.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+
+            //Tab
+            $('#tablist01 .tab-label-item:nth-child(1) a').addClass('is_active');
+            $('#tabPanel-1').show();
+
+            $("#tablist01 .tab-label-item a").on("click", function(e){
+                e.preventDefault();
+
+                //label
+                var target = $(this).attr("href");
+                $("#tablist01 .tab-label-item a").removeClass("is_active");
+                $(this).addClass("is_active");
+
+                //panel
+                $(".tab-panel").hide();
+                $(target).show();
+            });
+
+            //Tab-second
+            $('#tablist02 .tab-label-item:nth-child(1) a').addClass('is_active');
+            $('#tabPanel-11').show();
+
+            $("#tablist02 .tab-label-item a").on("click", function(e){
+                e.preventDefault();
+
+                //label
+                var target = $(this).attr("href");
+                $("#tablist02 .tab-label-item a").removeClass("is_active");
+                $(this).addClass("is_active");
+
+                //panel
+                $(".tab-panel-second").hide();
+                $(target).show();
+            });
+        });
+
+        //BigCircle
+
+        Chart.pluginService.register({
+            afterUpdate: function (chart) {
+                var a=chart.config.data.datasets.length -1;
+                for (let i in chart.config.data.datasets) {
+                    for(var j = chart.config.data.datasets[i].data.length - 1; j>= 0;--j) { 
+                        if (Number(j) == (chart.config.data.datasets[i].data.length - 1))
+                            continue;
+                        var arc = chart.getDatasetMeta(i).data[j];
+                        arc.round = {
+                            x: (chart.chartArea.left + chart.chartArea.right) / 2,
+                            y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
+                            radius: chart.innerRadius + chart.radiusLength / 2 + (a * chart.radiusLength),
+                            thickness: chart.radiusLength / 2,
+                            thickness: (chart.outerRadius - chart.innerRadius) / 2,
+                            backgroundColor: arc._model.backgroundColor
+                        }
+                    }
+                    a--;
+                }
+            },
+
+            afterDraw: function (chart) {
+                var ctx = chart.chart.ctx;
+                for (let i in chart.config.data.datasets) {
+                    for(var j = chart.config.data.datasets[i].data.length - 1; j>= 0;--j) { 
+                        if (Number(j) == (chart.config.data.datasets[i].data.length - 1))
+                            continue;
+                        var arc = chart.getDatasetMeta(i).data[j];
+                        var startAngle = Math.PI / 2 - arc._view.startAngle;
+                        var endAngle = Math.PI / 2 - arc._view.endAngle;
+
+                        ctx.save();
+                        ctx.translate(arc.round.x, arc.round.y);
+                        console.log(arc.round.startAngle)
+                        ctx.fillStyle = arc.round.backgroundColor;
+                        ctx.beginPath();
+                        ctx.arc(arc.round.radius * Math.sin(startAngle), arc.round.radius * Math.cos(startAngle), arc.round.thickness, 0, 2 * Math.PI);
+                        ctx.arc(arc.round.radius * Math.sin(endAngle), arc.round.radius * Math.cos(endAngle), arc.round.thickness, 0, 2 * Math.PI);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.restore();
+                    }
+                }
+            }
+        });
+
+        
+        // draw options
+        var optionsBigCircle ={
+            maintainAspectRatio: false,
+            cutoutPercentage: 82,
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                enabled: false
+            },
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            elements: {
+                arc: {
+                    roundedCornersFor: 0
+                }
+            }
+        }
+
+        //data
+        var dataBigCircle={
+            labels: ['내 연금'],
+            datasets: [{
+                label: '# of Votes',
+                data: [60,20,13,7],
+                backgroundColor: [
+                    '#28d150',
+                    '#fdf26a',
+                    '#ff952b',
+                    '#888888'
+                ],
+                borderWidth:0,
+                hoverBackgroundColor:[
+                    '#28d150',
+                    '#fdf26a',
+                    '#ff952b',
+                    '#888888'
+                ]
+            }]
+        }
+
+        var ctx2 = document.getElementById('bigCircle').getContext('2d');
+        new Chart(ctx2, {
+            type :'doughnut',
+            data : dataBigCircle,
+            options : optionsBigCircle
+        });
+
+        var ctx3 = document.getElementById('bigCircle2').getContext('2d');
+        new Chart(ctx3, {
+            type :'doughnut',
+            data : dataBigCircle,
+            options : optionsBigCircle
+        });
+    
+
+</script>
+
+</body>
+</html>

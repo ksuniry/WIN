@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-03-01</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="javascript:history.back();" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+        </div>
+    </div>
+
+    <section>
+        <div class="container e_03_01">
+        
+            <div class="untact_open_steps">
+                <ul>
+                    <li><span>01</span></li>
+                    <li class="is_active"><span>02</span></li>
+                    <li><span>03</span></li>
+                    <li><span>04</span></li>
+                    <li><span>05</span></li>
+                    <li><span>06</span></li>
+                    <li><span>07</span></li>
+                    <li><span>08</span></li>
+                    <li><span>09</span></li>
+                </ul>
+            </div>
+    
+            <h3 class="untact_instructions">
+                <span>계좌개설을 위한 주민번호를<br>
+                    입력해주세요</span>
+            </h3>
+    
+    
+            <div class="resi_num" >        
+                <input type="password" placeholder="주민등록번호 13자리를 입력해주세요" class="input">
+    
+            </div>
+    
+    
+        </div>
+    </section>
+
+
+<div class="modal_wrap">
+    <div class="dim"></div>
+    <div class="modal">
+        <p class="modal_txt">
+            <span>주민등록번호가 일치하지 않습니다.<br>
+                다시 입력해주세요.</span>
+        </p>
+        <div class="modal_btn">
+            <button class="ok"><span>확인</span></button>
+        </div>
+    </div>
+</div>
+<!-- //modal -->
+
+<!-- jquery 01~04 모두 동일합니다다-->
+<script src="../../js/jquery-1.9.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        function modalClose(){
+            $('.modal_wrap').hide();
+        }
+
+        $('.modal button, .dim').on("click",modalClose);
+
+    });
+</script>
+
+</body>
+</html>

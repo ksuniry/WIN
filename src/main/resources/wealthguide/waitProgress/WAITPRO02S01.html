@@ -1,0 +1,558 @@
+<!--
+* 파일명 		: WAITPRO02S01.html
+* 업무		: 연금대기 상세보기(W-02-01)
+* 설명		: 상세보기
+* 작성자		: 배수한
+* 최초 작성일자	: 2021.04.28
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+	<div class="container w_02_01">
+		<div class="section">
+            <div class="section-inner">
+                <div class="section-title tooltip-wrap">
+                	<span id="mTitle"><!-- 계좌이전 진행 중 --></span>
+                	<p id="mTitle_2" style="display:none;" class="section-title-sub"><span>매수주문 승인하기</span></p>
+					<p id="pTotalAmtInfo" style="display:none;" class="section-title-sub">총<span class="value" id="tot_mon_pay_dis" data-nounit="true"><!-- 2,100 --></span><em class="unit" id="tot_mon_pay_unit"><!-- 만원 --></em></p>
+                    <i id="btnTooltip" style="display:none;" class="ico question"></i>
+                    <div class="tooltip" id="divTootip">
+                        <div class="tooltip-txt">
+                            <div class="assess">
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">자문안 제안 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="orgn_reserved_dis" data-nounit="true"><!-- 2,500 --></span>
+                                        <em class="unit" id="orgn_reserved_unit"><!-- 만원 --></em>
+                                    </div>
+                                </div>
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">자문안 월적립액(누적)</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="tot_mon_pay_dis" data-nounit="true"><!-- 100 --></span>
+                                        <em class="unit" id="tot_mon_pay_unit"><!-- 만원 --></em>
+                                    </div>
+                                </div>
+                                    <div class="assess-item">
+                                    <div class="assess-item-tit">실제 납입한 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="tot_pay_dis" data-nounit="true"><!-- 500 --></span>
+                                        <em class="unit" id="tot_pay_unit"><!-- 만원 --></em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="assess">
+                                <div class="assess-item">
+                                    <div class="assess-item-tit">입금해야 할 합계 금액</div>
+                                    <div class="assess-item-value">
+                                        <span class="value" id="must_pay_dis" data-nounit="true"><!-- 2,100 --></span>
+                                        <em class="unit" id="must_pay_unit"><!-- 만원 --></em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+				<div class="problem-box">
+                    <p class="problem-title problem-x">
+                        <span id="mBoxMsg"><!-- 계좌이전·입금이 완료되면 매수주문을<br>확인하는 내용이  안내 될 예정입니다. --></span>
+                    </p>
+                    <div class="problem-bt-wrap" id="btnTopBoxButton" style="display:none;">
+                        <button class="bt problem-bt-color"><span id="mBtnTitle"><!-- 이전 안내 --></span></button>
+                    </div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<div class="section">
+            <div class="section-inner">
+                <div class="flex">
+                    <div class="breadCrumbs">
+                        <span id="acnt_type_nm"><!-- 개인연금 --></span>
+                        <!-- <span>계좌</span>  -->
+                    </div>
+
+                    <p class="txt"><span id="advc_dt"><!-- 2020-04-01 --></span>자문</p>
+                </div>
+
+                <div class="account__head">
+                    <div class="account__head__logo"><img src="/images/bank_circle_logo/294.png" class="bank_ico" id="imgCompany" onerror="this.src='/images/bank_circle_logo/999.png';"></div>
+                    <div class="account__head__tit">
+                        <p class="account__head__name">
+                            [<span class="bankName" id="orgn_fncl_agc_nm"><!-- KB증권 --></span>]
+                            <span class="prdName" id="orgn_acnt_nm"><!-- 미래보장증권고배당많이주세요계좌이름긴이름길고긴이름 --></span>
+                        </p>
+                        <p class="account__head__number" id="pAcntNoArea" style="display:none;">
+                            <span id="orgn_acnt_no_pt"><!-- 123456-456789-45 --></span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 연체평가액/수익률 등이 있을 때 표시 -->
+                <div class="p_assess" id="divAssess" style="display:none;">
+                    <div class="p_assess_now">
+                        <p>현재평가액</p>
+                        <p>
+                            <span class="value" id="orgn_reserved_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                            <span class="unit" id="orgn_reserved_unit"><!-- 원 --></span>
+                        </p>
+                    </div>
+                    <div class="p_assess_total">
+                        <p>총 납입금액</p>
+                        <p>
+                            <span class="value" id="tot_pay_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                            <span class="unit"  id="tot_pay_unit"><!-- 원 --></span>
+                        </p>
+                    </div>
+                    <div class="p_assess_return">
+                        <p>누적수익률</p>
+                        <p id="pSaveRvnuRate">
+                            <span class="value" id="save_rvnu_dis" data-nounit="true"><!-- 11 --></span>
+                            <span class="unit" id="save_rvnu_unit"><!-- % --></span>
+                        </p>
+                        <!-- 마이너스 값일 때 <p class="minus"><span>-10</span>%</p> -->
+                    </div>
+                </div>
+                <!-- 연체평가액/수익률 등이 있을 때 표시 -->
+            </div>
+        </div>
+        
+        
+        <div class="section">
+            <div class="section-inner">
+
+                <h4 class="section-tit">마이머플러 제안</h4>
+
+                <div class="tab-head">
+                    <ul role="tablist" class="tab-label">
+                        <li class="tab-label-item"><a href="#tabPanel-1" role="tab" class="is_active">계좌이전/운용변경</a></li>
+                        <li class="tab-label-item"><a href="#tabPanel-2" role="tab">포트폴리오</a></li>
+                    </ul>
+                </div>
+                <!-- 탭 판넬부분 1 -->
+                <div class="tab-panel" id="tabPanel-1" role="tabpanel">
+                  
+                    <div class="compare-wrap">
+                        <div class="compare">
+                            <div class="compare-box before">
+                                <p class="compare-box-head" id="orgn_prdt_nm"><!-- 연금저축신탁 --></p>
+                                <div class="compare-box-con">
+                                    <div class="cp-bank">
+                                        <img src="/images/bank_circle_logo/064.png" alt="" class="bank_ico" id="orgn_fncl_agc_img" onerror="this.src='/images/bank_circle_logo/999.png';">
+                                        <p class="cp-bank-name"><span id="orgn_fncl_agc_nm"><!-- 하나은행 --></span></p>
+                                    </div>
+                                    <ul class="cp-list">
+                                        <li class="cp-list-item"><span id="orgn_mon_pay_dis"><!-- 40만원 --></span></li>
+	                                    <li class="cp-list-item"><span id="orgn_pay_prd"><!-- 5년 --></span></li>
+	                                    <li class="cp-list-item"><span id="orgn_recv_strt_age"><!-- 60세 --></span></li>
+	                                    <li class="cp-list-item"><span id="crnt_recv_prd"><!-- 20년 --></span></li>
+	                                    <li class="cp-list-item"><strong>연<span id="orgn_expt_rvnu_dis"><!-- 연1.5% --></span></strong></li>
+	                                    <li class="cp-list-item"><strong><span id="crnt_mon_pnsn_dis"><!-- 30만원 --></span></strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="compare-box-center">
+                                <div class="arr_wrap">
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#00f" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                </div>
+                                <ul class="cp-list-name">
+                                    <li class="cp-list-name-item"><span>월납입액</span></li>
+                                    <li class="cp-list-name-item"><span>납입기간</span></li>
+                                    <li class="cp-list-name-item"><span>수령개시</span></li>
+                                    <li class="cp-list-name-item"><span>수령기간</span></li>
+                                    <li class="cp-list-name-item"><strong><span>기대수익</span></strong></li>
+                                    <li class="cp-list-name-item"><strong><span>월연금액</span></strong></li>
+                                </ul>
+
+                            </div>
+                            <div class="compare-box after">
+                                <p class="compare-box-head" id="chgn_prdt_nm"><!-- 연금저축펀드 --></p>
+                                <div class="compare-box-con">
+                                    <div class="cp-bank">
+                                        <img src="/images/bank_circle_logo/032.png" alt="" class="bank_ico" id="chng_fncl_agc_img" onerror="this.src='/images/bank_circle_logo/999.png';">
+                                        <p class="cp-bank-name"><span id="chng_fncl_agc_nm"><!-- 전북은행 --></span></p>
+                                    </div>
+                                    <ul class="cp-list">
+                                        <li class="cp-list-item"><span id="chng_mon_pay_dis"><!-- 40만원 --></span></li>
+	                                    <li class="cp-list-item"><span id="chng_pay_prd"><!-- 5년 --></span></li>
+	                                    <li class="cp-list-item"><span id="chng_recv_strt_age"><!-- 60세 --></span></li>
+	                                    <li class="cp-list-item"><span id="ppsl_recv_prd"><!-- 20년 --></span></li>
+	                                    <li class="cp-list-item"><strong>연<span id="chng_expt_rvnu_dis"><!-- 연1.5% --></span></strong></li>
+	                                    <li class="cp-list-item"><strong><span id="ppsl_mon_pnsn_dis"><!-- 30만원 --></span></strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- tab01 -->
+                
+                
+                
+                <!-- 탭 판넬부분 2 -->
+                <div class="tab-panel" id="tabPanel-2" role="tabpanel">
+                    <div class="compare-wrap compare-chart">
+                        <div class="compare">
+                            <div class="compare-box before">
+                                <p class="compare-box-head">현재</p>
+                                <div class="compare-box-con">
+                                  
+                                    <div class="chart_circle">
+                                        <canvas id="crntChar" width="85px" height="85px"></canvas>
+                                        <div class="circle_value">
+                                            <p><span>투자기간</span></p>
+                                            <strong><span id="crnt_invt_prd"><!-- 3 --></span></strong>
+                                        </div> 
+                                    </div>
+                                    <ul class="cp-list">
+                                        <li class="cp-list-item"><span class="bold" id="crnt_stck_dis"><!-- 28% --></span></li>
+                                        <li class="cp-list-item"><span class="bold" id="crnt_bond_dis"><!-- 28% --></span></li>
+                                        <li class="cp-list-item"><span class="bold" id="crnt_cash_dis"><!-- 28% --></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="compare-box-center">
+                                <div class="arr_wrap">
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#ccc" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                    <div class="arr_item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><clipPath><path fill="#00f" fill-opacity=".514" d="m-7 1024.36h34v34h-34z"/></clipPath><clipPath><path fill="#aade87" fill-opacity=".472" d="m-6 1028.36h32v32h-32z"/></clipPath></defs><path d="m345.44 248.29l-194.29 194.28c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744l171.91-171.91-171.91-171.9c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.29 194.28c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373" transform="matrix(.03541-.00013.00013.03541 2.98 3.02)" fill="#ccc"/></svg>
+                                    </div>
+                                </div>
+                                <ul class="cp-list-name">
+                                    <li class="cp-list-name-item"><strong><span>주식</span></strong></li>
+                                    <li class="cp-list-name-item"><strong><span>채권</span></strong></li>
+                                    <li class="cp-list-name-item"><strong><span>현금</span></strong></li>
+                                </ul>
+
+                            </div>
+                            <div class="compare-box after">
+                                <p class="compare-box-head">제안</p>
+                                <div class="compare-box-con">
+                                    <div class="chart_circle">
+                                        <canvas id="ppslChar" width="85px" height="85px"></canvas>
+                                        <div class="circle_value">
+                                            <p><span>투자기간</span></p>
+                                            <strong><span id="ppsl_invt_prd"><!-- 3 --></span></strong>
+                                        </div> 
+                                    </div>
+                                    <ul class="cp-list">
+                                        <li class="cp-list-item"><span class="bold" id="ppsl_stck_dis"><!-- 28% --></span></li>
+                                        <li class="cp-list-item"><span class="bold" id="ppsl_bond_dis"><!-- 28% --></span></li>
+                                        <li class="cp-list-item"><span class="bold" id="ppsl_cash_dis"><!-- 28% --></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <!-- txt_2x > box-gradient 로 변경 cnt 추가 21-05-13 -->
+                        <p class="box-gradient-title">제안 포트폴리오<span class="cnt" id="advc_ptfl_prdt_list_cnt"><!--3--></span></p>
+
+                        <div class="fund-wrap">
+                        	<ul class="fund" id="ulProdList"></ul>
+                            <script id="_dumyProdList" type="text/x-handlebars-template">
+								<li class="fund-item" id="prodDetail_{{idx}}">
+                                    <div class="fund-item-head">
+                                        <div class="fund-item-kind">
+                                            <span class="fund-label">펀드</span>
+                                            <span class="fund-type">{{prdt_gbn}}</span>
+                                        </div>
+                                        
+                                        <div class="fund-item-percent">
+                                            <span class="percent-name">비중</span>
+                                            <span class="percent-value">{{prdt_rate}}%</span>
+                                        </div>
+                                    </div>
+                                    <p class="fund-item-name link">
+                                        <span class="title">{{prdt_nm}}</span>
+                                        <i class="ico arr_right"></i>
+                                    </p>
+                                </li>
+							</script>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- tab02 -->
+                
+                
+                
+        
+        	</div>
+        </div>
+        
+        
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    
+    
+    
+    
+     <div class="modal-page-wrap" id="msgPopup" style="display: none;">
+        <div class="dim"></div>
+    <!-- modal -->
+    <!-- 계좌이전안내 -->
+        <div class="modal-page modal-position-bottom" id="msgCase_ing" style="display: none;">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>계좌이전안내</span>
+                </p>
+                <p class="modal-page-txt">
+                    신청하신 계좌이전이 진행 중입니다. 이전하는 금융기관은 전화통화로 계좌이전 여부를 확인합니다. 이때 이전하는 계좌번호를 확인하는 경우도 있습니다.  
+
+                </p>
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span>이전하는 계좌번호</span>
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img id="imgSrc" src="/images/bank_circle_logo/294.png" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name"> 
+                                [<span class="bankName" id="orgn_fncl_agc_nm"></span>]
+                                <span class="prdName" id="orgn_prdt_nm"></span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" id="orgn_acnt_no_pt" data-type="orgn"></span>
+                            </p>
+                        </div>
+                        <div class="p_assess">
+                            <div class="p_deposit">
+                                <p>예상 이전액</p>
+                                <p><span class="value" id="orgn_reserved_dis" data-nounit="true"></span><em class="unit" id="orgn_reserved_unit"><!-- 원 --></em></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-normal" id="btnCaseIngClose"><span>닫기</span></button>
+                <button class="bt bt-color" id="btnRetryTrans"><span>이전 재실행</span></button>
+            </div>
+        </div>
+
+        <!-- 입금안내 --> 
+        <div class="modal-page modal-position-bottom" id="msgCase_deposit_noti" style="display: none;">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>입금안내</span>
+                </p>
+                <p class="modal-page-txt">
+                    고객님께서 승인한 자문안에서 해지 후 입금 예정 금액은 아래 예상 입금액입니다. 현재 해당금액 대비 부족한 금액이 입금되었습니다. 부족한 부분이 입금되면 포트폴리오 매수가 가능하도록 안내할 예정입니다. 
+                </p>
+
+                <div class="problem-box mb30">
+                    <p class="problem-title problem-caution">
+                        <span>예상 입금액 대비 90% 이상 입금 후 포트폴리오가 매수되면 완료로 처리됩니다. </span>
+                    </p>
+                </div>
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span>입금할 계좌</span>
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img id="imgSrc" src="/images/bank_circle_logo/294.png" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name"> 
+                                [<span class="bankName" id="orgn_fncl_agc_nm"></span>]
+                                <span class="prdName" id="orgn_prdt_nm"></span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" id="orgn_acnt_no_pt" data-type="orgn"></span>
+                            </p>
+                        </div>
+                        <div class="p_assess">
+                            <div class="p_deposit">
+                                <p>예상 입금액</p>
+                                <p><span class="value" id="orgn_reserved_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="orgn_reserved_unit"><!-- 원 --></em>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-color" id="btnCaseDepositNotiConfirmClose"><span>확인</span></button>
+            </div>
+        </div> 
+    
+
+        <!-- 해지안내 -->
+        <div class="modal-page modal-position-bottom" id="msgCase_acnt_close" style="display: none;">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>해지안내</span>
+                </p>
+                <p class="modal-page-txt">
+                    고객님께서 직접 해지해야 합니다. 해지 후 환급금을 입금하면 마이머플러는 자문안에 따라 포트폴리오를 구성할 수 있도록 안내합니다.
+                </p>
+
+                
+                <div class="problem-box mb30">
+                    <p class="problem-title problem-caution">
+                        <span>일반적으로 1,000만원 미만은 전화로 해지가 가능합니다. 그 이상은 금융기관 방문이 필요하며 금융기관별로 차이가 있습니다.  </span>
+                    </p>
+                </div>
+
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span>입금할 계좌</span>
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img id="imgSrc" src="/images/bank_circle_logo/294.png" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name"> 
+                                [<span class="bankName" id="orgn_fncl_agc_nm"></span>]
+                                <span class="prdName" id="orgn_prdt_nm"></span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" id="orgn_acnt_no_pt" data-type="orgn"></span>
+                            </p>
+                        </div>
+                        <div class="p_assess">
+                            <div class="p_deposit">
+                                <p>예상 해지환급금</p>
+                                <p><span class="value" id="orgn_reserved_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                    <em class="unit" id="orgn_reserved_unit"><!-- 원 --></em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-color" id="btnCaseAcntConfirmClose"><span>확인</span></button>
+            </div>
+        </div> 
+        
+        
+
+        <!-- 계좌이전 재신청 -->
+        <div class="modal-page modal-position-bottom" id="msgCase_retry" style="display: none;">
+            <div class="modal-page-body">
+                <p class="modal-page-title">
+                    <span>계좌이전 재신청</span>
+                </p>
+                <p class="modal-page-txt">
+                    계좌이전 여부를 확인하는 전화를 받지 않았거나 계좌이전을 거부한 경우 신청했던 계좌이전이 최소 됩니다. 아래 재신청을 선택하여 이전신청을 하시면 됩니다.
+                </p>
+
+                <div class="modal-page-prd">
+                    <div class="breadCrumbs">
+                        <span id="acnt_type_nm"><!-- 개인연금 --></span>
+                        <!-- <span id="pop3_section_info">1기</span> -->
+                    </div>
+    
+                    <div class="account__head">
+                        <div class="account__head__logo"><img src="/images/bank_circle_logo/294.png" id="imgSrc" class="bank_ico"></div>
+                        <div class="account__head__tit">
+                            <p class="account__head__name">
+                                [<span class="bankName" id="orgn_fncl_agc_nm"><!-- KB증권 --></span>]
+                                <span class="prdName" id="orgn_acnt_nm"><!-- 미래보장증권고배당많이주세요 --></span>
+                            </p>
+                            <p class="account__head__number">
+                                <span class="underline" id="orgn_acnt_no_pt" data-type="orgn"><!-- 123456-456789-45 --></span>
+                            </p>
+
+                            <div class="p_assess">
+                                <div class="p_assess_deposit">
+                                    <p>예상 이전액</p>
+                                    <p><span class="value" id="orgn_reserved_dis" data-nounit="true"><!-- 145,111,521 --></span>
+                                        <em class="unit" id="orgn_reserved_unit"><!-- 원 --></em>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+               
+
+            </div>
+            <div class="modal-page-btn">
+                <button class="bt bt-normal" id="btnCaseRetryClose"><span>닫기</span></button>
+                <button class="bt bt-color" id="btnRetryTrans2"><span>이전 재실행</span></button>
+            </div>
+        </div>
+        
+         <!-- KB키패드 시작 -->
+        <!-- <div class="modal-page modal-position-bottom" id="msgCase_pwd" style="display: none;">
+        	<div class="modal-page-body container" style="height: 700px;">
+		  		<h3 class="untact_instructions">
+          			<span id="msg">계좌 비밀번호를<br>입력해주세요</span>
+      		 	</h3><br/>
+		  		<div class="resi_num" id="divKeyPad">
+      				<input id="vkpad_rr_no" name="vkpad_rr_no" type="password" knc_etoe="N" maxlength="4" placeholder="계좌 비밀번호 4자리를 입력해주세요" class="input">
+      			</div>
+	        </div>
+        </div> -->	
+        <!-- KB키패드 끝 -->
+         
+    <!-- //modal -->
+	</div>
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/chart.v2.9.4.js"></script>
+<script src="/js/chart.plugin.annotation.js"></script>
+<script src="/js/waitProgress/WAITPRO02S01.js"></script>
+</th:block>

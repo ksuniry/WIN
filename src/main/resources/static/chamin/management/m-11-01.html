@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m-11-01</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="head">
+            <a href="#" class="logo">
+                <span class="blind">MUFFLER</span>
+            </a>
+            <div class="head_right">
+                <a href="#" class="push active">
+                    <span class="blind">알림</span>
+                </a>
+                <a href="#" class="menu">
+                    <span class="blind">메뉴</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container m_11_01">
+
+            <div class="section">
+                <div class="section-inner">
+                    <h4 class="section-title">
+                        <p class="title">
+                            자문계좌 모니터링
+                        </p>
+                        <div class="bt-wrap">
+                            <button class="bt bt-default bt-line"><span>상세보기</span></button>
+                        </div>
+                    </h4>
+                    
+
+                    <div class="chart-wrap">
+                        <div class="chart chart-line">
+                            <canvas id="lineChart"></canvas>
+                        </div>
+
+                        <div class="chart-label">
+                            <div class="chart-label-item">
+                                <p class="title type02">목표적립앱</p>
+                                <p class="chart-value">
+                                    <span class="value">17,000</span>
+                                    <em class="unit">만원</em>
+                                </p>
+                            </div>
+                            <div class="chart-label-item">
+                                <p class="title type01">현재평가액</p>
+                                <p class="chart-value">
+                                    <span class="value">500</span>
+                                    <em class="unit">만원</em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box_r flex">
+                        <div class="box-box">
+                            <p class="title">목표 대비 부족액</p>
+                            <p class="expenses"><span>35</span><em class="unit">만원</em></p>
+                        </div>
+                        <div class="box-box">
+                            <p class="title">목표 미달의 원인</p>
+                            <p class="expenses">
+                                <!-- <span class="sub"></span> -->
+                                <span>미납입액 발생</span>
+                                <!-- <em class="unit">만원</em> -->
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box_r colored">
+                        <a href="#">
+                            <p class="txt_2x">
+                                월 적립식 투자<br>
+                                <b>2 건</b>을 확인해 주세요!
+                            </p>
+                            <i class="ico arr_right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="section">
+                <div class="section-inner">
+                    <h4 class="section-title">
+                        <p class="title">
+                            모은연금
+                        </p>
+                        <div class="bt-wrap">
+                            <button class="bt bt-default bt-line"><span>상세보기</span></button>
+                        </div>
+                    </h4>
+
+                    <div class="box_r flex">
+                        <div class="box-box">
+                            <p class="title">총 연금 적립액</p>
+                            <p class="expenses"><span>6,123</span><em class="unit">만원</em></p>
+                        </div>
+                        <div class="box-box">
+                            <p class="title">자문계좌 적립액</p>
+                            <p class="expenses">
+                                <span>1,123</span>
+                                <em class="unit">만원</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-inner">
+                    <h4 class="section-title">
+                        <p class="title">
+                            받을연금
+                        </p>
+                        <div class="bt-wrap">
+                            <button class="bt bt-default bt-line"><span>상세보기</span></button>
+                        </div>
+                    </h4>
+
+                    <div class="box_r flex">
+                        <div class="box-box">
+                            <p class="title">총 연금수령액(30년)</p>
+                            <p class="expenses"><span>96,123</span><em class="unit">만원</em></p>
+                        </div>
+                        <div class="box-box">
+                            <p class="title">월 평균 연금수령액</p>
+                            <p class="expenses">
+                                <span>323</span>
+                                <em class="unit">만원</em>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-inner">
+                    <h4 class="section-title">
+                        <p class="title">
+                            리밸런싱
+                        </p>
+                        <div class="bt-wrap">
+                            <button class="bt bt-default bt-line"><span>상세보기</span></button>
+                        </div>
+                    </h4>
+
+                    <div class="box_r line">
+                        <div class="assess">
+                            <div class="assess-item">
+                                <div class="assess-item-tit">정기(다음) 리밸런싱</div>
+                                <div class="assess-item-value">
+                                    <span class="value">2022-05-26</span>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit">수시 리밸런싱</div>
+                                <div class="assess-item-value">
+                                    <span class="value">주요 변수 변경 시</span>
+                                </div>
+                            </div>
+
+                            <div class="assess-item">
+                                <div class="assess-item-tit">MY 자산배분</div>
+                                <div class="assess-item-value">
+                                    <span class="value">상품구성비율 변경</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-gray">
+                <div class="box-gray-title">책임의 한계</div>
+                <div class="box-inner">
+                    <div class="bar_box left_bar">
+                        <p class="txt">
+                            마이머플러는 은행연합회, 통합연금포털 등 복수의 외부기관에서 제공하는 연금정보를 사용하고 있습니다. 각 기관별로 제공하는 정보의 범위와 조회기준일이 다르며, 이런 차이에서 발생하는 오차가 있을 수 있음을 고지합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bt-wrap">
+                <button class="bt bt-color"><span>최근 자문내용 다시보기</span></button>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+
+    <!-- chart.js -->
+    <script src="../../js/chart.v2.9.4.js"></script>
+    <script src="../../js/chart.plugin.annotation.js"></script>
+
+  
+    <script>
+        //bg color
+        const ctx4 = document.getElementById('lineChart').getContext('2d'),
+            chartBgGradient01 = ctx4.createLinearGradient(0, 0, 0, 200),
+            chartBgGradient02 = ctx4.createLinearGradient(0, 0, 0, 200);
+
+            chartBgGradient01.addColorStop(0, 'rgba(255, 149, 43, 0.9)');  // 21-06-14 수정
+            chartBgGradient01.addColorStop(0.5, 'rgba(255, 149, 43, 0.4)');
+            chartBgGradient01.addColorStop(0.7, 'rgba(255, 149, 43, 0.1)');
+            chartBgGradient01.addColorStop(1, 'rgba(153, 153, 153, 0)');
+
+            chartBgGradient02.addColorStop(0, 'rgba(40, 209, 80, 0.9)');  // 21-06-14 수정
+            chartBgGradient02.addColorStop(0.5, 'rgba(40, 209, 80, 0.4)');
+            chartBgGradient02.addColorStop(0.7, 'rgba(40, 209, 80, 0.1)');
+            chartBgGradient02.addColorStop(1, 'rgba(255, 149, 43, 0)');
+            
+        var today = ['75세'];
+        var annotations = today.map(function(old) {
+            return {
+                type: 'line',
+                id: 'dashLine',
+                mode: 'vertical',
+                scaleID: 'x-axis-0',
+                yScaleID: 'y-axis-0',
+                value: old,
+                borderColor: '#333333',
+                borderWidth: 1,
+                borderDash:[2,3],
+                yMin: 0,
+                yMax: 100,
+                label: {
+                    enabled: false,
+                    position: "top",
+                    content: '현재',
+                    backgroundColor:'rgb(102, 102, 102)',
+                    fontSize:11
+                }
+            }
+        });
+
+        //data4
+        var data4={
+            labels: ["60세","65세","70세","75세","80세","85세","90세"],
+            datasets: [{
+                label: '목표적립액',
+                data: [50,50,100,100,150,200,250],
+                borderColor: '#ff952b', // 21-06-14 수정
+                backgroundColor: chartBgGradient01,
+                //pointBackgroundColor: '#888',
+                pointBackgroundColor: 'transparent',
+                pointBorderColor: 'transparent',
+                pointHoverBackgroundColor: 'rgba(0,0,0, .5)',
+                borderWidth:2,
+                lineTension:0,
+                },{
+                label: '현재평가액',
+                data: [10,40,30,120],
+                borderColor: '#28d150', // 21-06-14 수정
+                borderWidth: 2,
+                backgroundColor: chartBgGradient02,
+                //pointBackgroundColor: '#ff952b',
+                pointBackgroundColor: 'transparent',
+                pointBorderColor: 'transparent',
+                pointHoverBackgroundColor: 'rgba(0,0,0, .5)',
+                lineTension:0,
+                }
+            ]
+        }
+
+        var options4 ={
+            elements: {
+                // point:{
+                //     radius: 0
+                // },
+                line: {
+                    tension: 0
+                }
+            },
+            layout: { 
+                padding: { 
+                    top:0, 
+                    left: -10, 
+                    bottom: 1, 
+                    right: 0 
+                } 
+            },
+
+            responsive: true,
+            aspectRatio:2/1,
+            tooltips: {
+                enabled: false
+            },
+            legend: {
+                display: false,
+            },
+            scales: {
+                xAxes: [{
+                    display: false,
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        display: false,
+                        Padding:0,
+                        min:0,
+                        max:300,
+                        stepSize:50,
+                        beginAtZero: true,
+                    },
+                    gridLines: {
+                        drawBorder: false,
+                        
+                        //zeroLineColor:'transparent'
+                    }
+                }]
+            },
+            animation: {
+                easing: "easeInOutBack"
+            },
+            annotation: {
+                drawTime: 'afterDatasetsDraw',
+                annotations: annotations
+            }
+        }
+
+        const originalLineDraw = Chart.controllers.line.prototype.draw;
+        Chart.helpers.extend(Chart.controllers.line.prototype, {
+            draw : function() {
+
+                originalLineDraw.apply(this, arguments);
+                var chart = this.chart;
+                var ctx = chart.chart.ctx;
+
+                var now = chart.options.annotation.annotations[0].value;
+                // 위 annotation의 value
+                   
+                var xaxis = chart.scales['x-axis-0'];
+                var yaxis = chart.scales['y-axis-0'];
+                    
+                //rounded corner
+                CanvasRenderingContext2D.prototype.roundedRectangle = function(x, y, width, height, rounded) {
+                    const radiansInCircle = 2 * Math.PI
+                    const halfRadians = (2 * Math.PI)/2
+                    const quarterRadians = (2 * Math.PI)/4  
+                    
+                    // top left arc
+                    this.arc(x , y , 0, -quarterRadians, halfRadians, true)
+                    // line from top left to bottom left
+                    this.lineTo(x, y + height)
+                    // bottom left arc  
+                    this.arc( x -1, height + y, 0, halfRadians, quarterRadians, true)  
+                    // line from bottom left to bottom right
+                    this.lineTo(x + width - rounded, y + height)
+                    // bottom right arc
+                    this.arc(x + width - rounded, y + height - rounded, rounded, quarterRadians, 0, true)  
+                    // line from bottom right to top right
+                    this.lineTo(x + width, y + rounded)  
+                    // top right arc
+                    this.arc(x + width - rounded, y + rounded, rounded, 0, -quarterRadians, true)  
+                    // line from top right to top left
+                    this.lineTo(x + rounded, y)  
+                }
+
+                ctx.save();
+                
+                ctx.beginPath();
+                ctx.fillStyle = "#333333";
+                ctx.roundedRectangle(xaxis.getPixelForValue(now), 30 , 37, 20, 10); 
+                ctx.fill();
+
+                ctx.font = "bold 12px Arial";
+                ctx.fillStyle = "#ffffff";
+                ctx.textAlign = "center";
+                ctx.fillText("현재", xaxis.getPixelForValue(now) + 17, 45); 
+            }
+        });
+
+        
+        Chart.pluginService.register(originalLineDraw);
+
+        //자문계좌 적립액 차트
+        new Chart(ctx4, {
+            type :'line',
+            data : data4,
+            options : options4
+        });
+
+             
+    </script>
+
+</body>
+</html>

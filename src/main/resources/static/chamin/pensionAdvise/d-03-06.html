@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d-03-06</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">기대수익률과 위험산출 기준</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            
+        </div>
+    </section>
+
+    <div class="popup_wrap d_03_06 fixed">
+        <div class="popup_header">
+            <h2><span>기대수익률과 위험산출 기준</span></h2> <!-- 타이틀 추가 21-05-10 -->
+            <button class="popup_close"><span>닫기</span></button>
+        </div>
+        <div class="popup_content">
+            
+            <!-- 21-05-11  section 추가 -->
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">기대수익률</div>
+                    <p class="txt_2x">
+                        현재수익률은 금감원 통합연금포털 공시수익률을  적용하여 산출하였으며, 제안수익률은 웰스가이드 자산별 기대수익률을 적용하였습니다.
+                    </p>
+                    <div class="section-title">위험(표준편차)</div>
+                    <p class="txt_2x">
+                        기대수익률과 최저수익률 시뮬레이션은 글로벌 자산배분을 위해 과거 90년(1926~2015년) 동안 미국의 금융데이터를 사용하여 산출했습니다.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 21-05-11  section 추가 / list_dots 수정 -->
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">데이터 (Ibbotson 미국금융지수)</div>
+                    <ul class="list_dots">
+                        <li class="list_dots-item">
+                            <p>
+                                <b>주식 :</b>
+                                <span>대형주 총수익지수</span>
+                            </p>
+                        </li>
+                        <li class="list_dots-item">
+                            <p>
+                                <b>채권 :</b>
+                                <span>장기국채 총수익지수</span>
+                            </p>
+                        </li>
+                        <li class="list_dots-item">
+                            <p>
+                                <b>현금 :</b>
+                                <span>Short bill 총수익지수</span>
+                            </p>
+                        </li>
+                    </ul>
+
+                    <div class="section-title">데이터 관찰기간</div>
+                    <p class="txt_2x">90년 (1926~2015년)</p>
+                    <div class="section-title">물가조정수익률 사용</div>
+                    <p class="txt_2x">미국물가로 할인하여 실질수익률로 환산한 후, 한국의 기대 물가 수준을 적용하여 물가 조정지수를 만들어 사용</p>
+                </div>
+            </div>
+            
+            <!-- 21-05-11  section 추가 및 클래스 수정 -->
+            <div class="section">
+                <div class="section-inner">
+                    <div class="section-title">투자(운용)기간</div>
+                    <p class="title_l">안정적인 노후 생활을 위해서는</p>
+                    <p class="txt_2x">
+                        · 중도해지/해약 및 일시금 수령을 지양하고<br>
+                        · '장기투자'와 '연금형태의 수령'원칙을 지켜 나가는 것이 중요합니다. <!-- 21-05-11  '' 따옴표수정 br 제거 -->
+                    </p>
+
+                    <p class="title_l">이런 원칙을 반영하여 시뮬레이션에 적용되는 투자기간을 다음과 같이 설정했습니다.</p>
+                    <p class="txt_2x">
+                        · 대상연금: 현재보유 및 로보제안(동일 적용) <br>
+                        · 산출방법: 연금수령 개시전까지 가중평균 년수    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         
+            //Popup
+            $('.popup_close').click(function(){
+                $(this).parents('.popup_wrap').hide();
+            });
+
+        });
+    </script>
+</body>
+</html>

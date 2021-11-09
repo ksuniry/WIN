@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wg.webapp.mapper.home.TestMapper">
+	
+	<!-- QnA 리스트 개수 조회 -->
+	<select id="selectMyQnATotalCount" parameterType="string" resultType="int">
+		SELECT
+			COUNT(0)
+		FROM QNA_LIST
+		WHERE EID = #{eid}
+	</select>
+	
+	<!-- QnA 리스트 조회 -->
+	<select id="selectMyQnAList" parameterType="ValueMap" resultType="ValueMap">
+		select *
+		from wg_user.customer_to_token
+		where user_uid = 'E7B18DEC-06D8-492D-8CD5-DDCAE1EC41F9'
+	</select>
+	
+	<!-- 토큰정보 조회 -->
+	<select id="selectMyToken" parameterType="ValueMap" resultType="ValueMap">
+		select CONVERT(AES_DECRYPT(access_token, wg_user.getDbKey(user_uid, 'HU:KL=;3e^44Bg"C')) using utf8) as accessToken
+			 , CONVERT(AES_DECRYPT(refresh_token, wg_user.getDbKey(user_uid, 'HU:KL=;3e^44Bg"C')) using utf8) as refreshToken
+			 , user_uid
+			 , upd_dt
+		  from wg_user.customer_to_token
+		 where user_uid = #{uUid}
+		  order by upd_dt desc
+		  limit 1
+	</select>
+		 	
+	<!-- 토큰정보 조회 -->
+	<select id="selectMyTokenByName" parameterType="ValueMap" resultType="ValueMap">
+		select CONVERT(AES_DECRYPT(access_token, wg_user.getDbKey(user_uid, 'HU:KL=;3e^44Bg"C')) using utf8) as accessToken
+			 , CONVERT(AES_DECRYPT(refresh_token, wg_user.getDbKey(user_uid, 'HU:KL=;3e^44Bg"C')) using utf8) as refreshToken
+			 , user_uid
+			 , upd_dt
+		  from wg_user.customer_to_token
+		 where user_uid = (
+				select
+					user_uid
+					from wg_user.customer
+					where CONVERT(AES_DECRYPT(user_name, wg_user.getDbKey(user_uid, 'HU:KL=;3e^44Bg"C')) using utf8) = #{USER_NAME}
+			)
+			or user_uid = #{uUid}
+		 order by upd_dt desc
+		 limit 1
+	</select>
+		 	
+	
+</mapper>

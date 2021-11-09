@@ -1,0 +1,98 @@
+<!--
+* 파일명 		: PENSION03S02.html
+* 업무		: 연금관리 > 추가저축 (new_m-03-02.html)
+* 설명		: 저축 대비 연금수령액 시뷸레이션 결과를 보여준다.
+* 작성자		: 배수한
+* 최초 작성일자	: 2020.11.13
+* 수정일/내용	: 
+-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/mainLayout">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	
+
+<section layout:fragment="f-content" id="f-content">
+
+    <nav class="lnb" id="navi">
+        <ul>
+            <li>
+                <a href="javascript:void(0);" class="is_active" data-link="addSave">추가저축</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-link="limitSave">연금저축한도</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" aria-disabled="true" disabled data-link="changeProd">상품구성변경</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-link="adviceHistory">자문이력</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container m_03_02">
+        <h3 class="page_title"><span>저축을 늘리면 내<br>연금은 어떻게 되나요?</span></h3>
+
+        <div class="my_payment">
+            <p class="payment_tit">현재 납입액 <span>(통합연금포털 기준)</span></p>
+            <p class="payment_p"><span id="crnt_pay_dis" data-nounit="true"><!-- 1,234,567 --></span><em id="crnt_pay_unit"><!-- 만원 --></em></p>
+        </div>
+        
+        <div class="box_color">
+            <p class="txt_2x align_c"><b>납입금액을 선택해 주세요</b></p>
+
+            <div class="con_inner">
+                <ul class="choose_box" id="chooseBox">
+                    <li data-paycd="1">
+                        <div class="box_r is_active">
+                            <a href="javascript:void(0);">
+                                <p class="choose_txt">연간 세액공제 한도<br>
+                                    <strong><span id="year_tax_crdt_lmt_expl"><!-- 700만원까지 납입 --></span></strong>
+                                </p>
+                            </a>
+                        </div>
+                    </li>
+                    <li data-paycd="2">
+                        <div class="box_r">
+                            <a href="javascript:void(0);">
+                                <p class="choose_txt">연간 불입한<br>
+                                    <strong><span id="year_pay_lmt_expl"><!-- 1,800만원까지 납입 --></span></strong>
+                                </p>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="box_r chart_wrap" id="chartPaycd1" style="display:none;">
+                    <p class="chart_tit">연간 연금수령액<em>(<span>현재가치:만원</span>)</em></p>
+                    <div>
+                        <canvas id="myBarChart1" height="260px"></canvas>
+                    </div>    
+                </div>
+                
+                <div class="box_r chart_wrap" id="chartPaycd2" style="display:none;">
+                    <p class="chart_tit">연간 연금수령액<em>(<span>현재가치:만원</span>)</em></p>
+                    <div>
+                        <canvas id="myBarChart2" height="260px"></canvas>
+                    </div>    
+                </div>
+
+                <div class="txt">
+                    <p>*참고사항 : 만 60세 은퇴를 기준으로 계산된 값입니다.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- //container-->
+
+</section>
+
+<th:block layout:fragment="f-script">
+<script src="/js/chart.v2.9.4.js"></script>
+<script src="/js/chart.plugin.annotation.js"></script>
+<script src="/js/pensionMng/PENSION03S02.js"></script>
+</th:block>

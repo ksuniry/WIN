@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="79" height="79" viewBox="0 0 79 79">
+    <defs>
+        <linearGradient id="trnok370xa" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#28d150"/>
+            <stop offset="1" stop-color="#fff"/>
+        </linearGradient>
+    </defs>
+    <path fill="url(#trnok370xa)" d="M-3838.25-808v-46.534H-3858l39.5-32.466 39.5 32.466h-20.211V-808z" transform="rotate(180 -1889.5 -404)"/>
+</svg>

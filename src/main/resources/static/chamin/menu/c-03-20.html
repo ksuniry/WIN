@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c-03-20</title>
+    
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="page_head">
+            <a href="#" class="btn_back">
+                <i class="ico"></i>
+                <span class="blind">이전페이지로</span>
+            </a>
+            <p class="page_name">통합연금포털 연결하기</p>
+        </div>
+    </div>
+
+
+    <div class="container c_03_20">
+
+        <div class="p20">
+
+            <div class="fss_tit">
+                <p>통합연금포털에 가입된<br>비밀번호를 입력하세요</p>
+                <!-- <p>통합연금포털에 가입된<br>아이디를 입력하세요</p> -->
+            </div>
+
+            
+            <form action="/" class="form">
+                <div class="fss_user">
+                    <input type="text" class="input" id="fssPw" style="width: 100%;" placeholder="비밀번호를 입력해주세요">
+                </div>
+
+                <div class="floating_label_wrap">
+                    <div class="ft_inp_group">
+                        <label class="ft_label">아이디를 입력해주세요</label>
+                        <input type="text" class="ft_inp">
+                    </div>
+                
+                </div>
+                <!-- labeling input -->
+            </form>
+
+            <a href="#" class="txt_2x">가입된 계정을 모릅니다</a>
+        </div>
+
+        <!-- 21-06-17 공동인증서 연결 버튼 삭제-->
+
+    </div>
+
+ 
+    <script src="../../js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            //floating label
+            var formFields = $('.floating_label_wrap');
+                
+            formFields.each(function() {
+                const field = $(this);
+                const input = field.find('.ft_inp');
+                const label = field.find('.ft_label');
+                
+                input.focusin(  
+                    function(){  
+                        input.parent('.ft_inp_group').addClass('ft_inp__focused');  
+                    }).focusout(  
+                    function(){  
+                        input.parent('.ft_inp_group').removeClass('ft_inp__focused');  
+                });
+                
+                function checkInput() {
+                    var valueLength = input.val().length;
+                    
+                    if (valueLength > 0 ) {
+                        label.parent('.ft_inp_group').addClass('ft_inp__has_value');
+                    } else {
+                            label.parent('.ft_inp_group').removeClass('ft_inp__has_value');
+                    }
+                }
+                
+                input.change(function() {
+                    checkInput()
+                })
+            });
+
+        });
+    </script>
+
+</body>
+</html>
