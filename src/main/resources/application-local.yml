@@ -8,8 +8,8 @@ spring:
       driver-class-name: org.mariadb.jdbc.Driver
 #      jdbc-url: jdbc:mariadb://wg-dev-db02.mariadb.database.azure.com:3306/wg_home?useUnicode=true&characterEncoding=utf-8
 #      username: wg_home@wg-dev-db02
-      jdbc-url: jdbc:mariadb://192.168.56.1:3306/LT?useUnicode=true&characterEncoding=utf-8
-      username: lotto
+      jdbc-url: jdbc:mariadb://192.168.56.1:3306/win?useUnicode=true&characterEncoding=utf-8
+      username: root
       password: 73031523
       type: com.zaxxer.hikari.HikariDataSource
       connection-timeout: 30000
@@ -39,14 +39,3 @@ mybatis:
     configuration:
       map-underscore-to-camel-case: true
       jdbc-type-for-null: 'NULL'
-      
-
-      
-      
-      
-#WG홈페이지
-wealthguide:
-  server-address : "https://www-dev.wealthguide.co.kr"
-  url: 
-    board: "/api/board"                                                       #투자이야기, Study Cafe 목록
-    selectCode: "/api/selectCode"                                                  #code 조회
